@@ -1,0 +1,10 @@
+html {
+    background: url(concert1.jpg) no-repeat center center fixed;
+    background-position: 0 Y;
+    height: 100vh;
+    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
