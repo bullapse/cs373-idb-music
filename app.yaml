@@ -1,4 +1,4 @@
-runtime: python27
+runtime: python35
 api_version: 1
 threadsafe: yes
 
@@ -11,3 +11,4 @@ libraries:
   version: "2.6"
 - name: markupsafe
   version: "0.15"
+- name: flask
