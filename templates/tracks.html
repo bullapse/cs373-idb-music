@@ -33,7 +33,113 @@
     </div>
   </nav>
 
+  <div class="container">
+    <table id="table0" class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th></th>
+          <th onclick="sortCol(1)">Name</th>
+          <th onclick="sortCol(2)">Artist</th>
+          <th onClick="sortCol(3)">Album</th>
+          <th>Preview</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img class="img-rounded" src="https://i.scdn.co/image/960b80f3629e54514414559e94692059097f47a1" width="100px"></img></td>
+          <td>Mountains (feat. Diamond Eyes)</td>
+          <td>Said The Sky</td>
+          <td>Mountains (feat. Diamond Eyes)</td>
+          <td>
+            <audio controls>
+              <source src="https://p.scdn.co/mp3-preview/4a4a39cb0069e0d304350606f31955d3527d8836?cid=null" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td><img class="img-rounded" src="https://i.scdn.co/image/c782f73e268db268125b5d5cfd3b9899169f6fc0" width="100px"></img></td>
+          <td>Hey Ya</td>
+          <td>Sweater Beats</td>
+          <td>Hey Ya</td>
+          <td>
+            <audio controls>
+              <source src="https://p.scdn.co/mp3-preview/2edce4dd0302c64a1c0cb8a96eb7031bd224bd66?cid=null" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td><img class="img-rounded" src="https://i.scdn.co/image/73aa446c9253a71d384df1c75d92af1d058ee014" width="100px"></img></td>
+          <td>Did You Wrong (feat. MAX) [FRND Remix]</td>
+          <td>Sweater Beats</td>
+          <td>Did You Wrong (feat. MAX) [FRND Remix]</td>
+          <td>
+            <audio controls>
+              <source src="https://p.scdn.co/mp3-preview/2a1eecc5f246f25d86cfe14d1c90ff51f96a8d86?cid=null" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 
 </body>
+
+<script>
+function sortCol(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("table0");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc";
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
 
 </html>
