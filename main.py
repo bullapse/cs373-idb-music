@@ -13,5 +13,20 @@ def index():
     return render_template('index.html')
 
 
-# if __name__ == "__main__":
-#     app.run(port=8080)
+@app.route("/artists.html")
+def artist():
+    return render_template('artists.html')
+
+
+@app.route("/albums.html")
+def albums():
+    return render_template('albums.html')
+
+
+@app.route("/tracks.html")
+def tracks():
+    return render_template('tracks.html')
+
+
+if __name__ == "__main__":
+    app.run()
