@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/full.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body class=full>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Name Pending</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="albums.html">Albums</a></li>
+          <li><a href="tracks.html">Tracks</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="text-align:center">
+    <h1>About Notspotify</h1>
+    Notspotify was developed so that you could learn more about the music that you care about. Discover new artists. Obsess over your favorites. <br><br><br>
+      <div class="row">
+        <h2 style="text-align:left">Developers</h2>
+          <div class="col-md-3">
+            <h3>Spencer</h3>
+            <img src="../static/spencer_bio.jpg" style="width:200px;height:200px;"><br>
+            University of Texas at Austin Computer Science student. Interested in music and developement in IoT
+          </div>
+          <div class="col-md-3">
+            <h3>Sam</h3>
+            <img src="../static/sam_bio.jpg" style="width:200px;height:200px;"><br>
+            UTCS 17. Interested in music and music. Chance Chance Chance.
+          </div>
+          <div class="col-md-3">
+            <h3>Cameron</h3>
+            <img src="../static/cam_bio.jpg" style="width:200px;height:200px;"><br>
+            UT Computer Science. I love Kanye.
+          </div>
+          <div class="col-md-3">
+            <h3>Hung</h3>
+            <img src="../static/hung_bio.jpg" style="width:200px;height:200px;"><br>
+            UTCS. I love Kanye... like Kanye loves Kanye
+          </div>
+      </div>
+      <div class="row" style="text-align:left">
+        <h2>Stats</h2>
+          <div container>
+            <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+            <thead>
+              <th>Commits</th>
+              <th>Issues</th>
+              <th>Unit Tests</th>
+            </thead>
+              <tr>
+                <td>17</td>
+                <td>26</td>
+                <td>9</td>
+              </tr>
+            </table>
+          </div>
+          <br>
+          <div container>
+            <table id="link-table" class="table-condensed table-bordered table-striped table-responsive">
+            <thead>
+              <th>Links</th>
+            </thead>
+              <tr><td><a href="https://app.apiary.io/cs373idbmovies/editor">Apiary API</a></td></tr>
+              <tr><td><a href="https://github.com/bullapse/cs373-idb-music/issues">GitHub Issue Tracker</a></td></tr>
+              <tr><td><a href="https://github.com/bullapse/cs373-idb-music">GitHub Repo</a></td></tr>
+              <tr><td><a href="https://github.com/bullapse/cs373-idb-music/wiki">GitHub Wiki</a></td></tr>
+            </table>
+          </div>
+
+      </div>
+      <div class="row" style="text-align:left">
+        <h2>Data</h2>
+        <div container>
+          <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+            <thead>
+              <th>Data Source</th>
+              <th>Description</th>
+            </thead>
+              <tr>
+                <td><a href="https://api.spotify.com">Spotify API</a></td>
+                <td>Made GET requests to Spotify's REST API to scrape data on Artists, Albums and Tracks from their database.</td>
+              </tr>
+            </table>
+        </div>
+      </div>
+      <div class="row" style="text-align:left">
+        <h2 style="text-align:left">Tools</h2>
+        <div container>
+          <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+            <thead>
+              <th>Use</th>
+              <th>Tool</th>
+            </thead>
+              <tr>
+                <td>Front-End</td>
+                <td>
+                  • Bootstrap<br>
+                  • HTML<br>
+                  • CSS<br>
+                  • Javascript<br>
+                  • jQuery<br>
+                </td>
+              </tr>
+              <tr>
+                <td>Back-End</td>
+                <td>
+                  • SQLAlchemy<br>
+                  • Flask<br>
+                  • Python<br>
+                  • Google Cloud App Engine<br>
+                  • Namecheap<br>
+                </td>
+              </tr>
+              <tr>
+                <td>Embedding-Media Services</td>
+                <td>
+                  • Spotify API<br>
+                </td>
+              </tr>
+            </table>
+        </div>
+      </div>
+
+
+  </div>
+
+
+</body>
+<br>
+<br>
+
+</html>
