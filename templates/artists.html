@@ -4,13 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/full.css">
+  <link rel="stylesheet" href="../static/artists.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../sort.js"></script>
 </head>
 
-<body class=full>
-
+<body>
+  <div id="bckgrnd">
+  </div>
+<div class="wrapper">
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -19,12 +22,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Name Pending</a>
+        <a class="navbar-brand" href="#">NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="artists.html">Artists</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="artists.html">Artists</a></li>
           <li><a href="albums.html">Albums</a></li>
           <li><a href="tracks.html">Tracks</a></li>
           <li><a href="about.html">About</a></li>
@@ -33,7 +36,43 @@
     </div>
   </nav>
 
+  <table>
+    <thead>
+    <tr>
+      <th onclick="sortCol(1)">Name</th>
+      <th onclick="sortCol(2)">Followers</th>
+      <th onclick="sortCol(3)">Popularity</th>
+      <th>Genre</th>
+      <th onclick="sortCol(3)"># of Albums Released</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kanye West</td>
+        <td>7000000</td>
+        <td>1</td>
+        <td>Hip-Hop</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>Monstercat</td>
+        <td>2000000</td>
+        <td>80</td>
+        <td>EDM, House, Trance, Progressive House, Dubstep, Melodic Dubstep, Electro</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Gregory Porter</td>
+        <td>3000000</td>
+        <td>50</td>
+        <td>Jazz, Blues, Soul, Gospel</td>
+        <td>7</td>
+      </tr>
+    </tbody>
+  </table>
 
+
+</div>
 </body>
 
 </html>
