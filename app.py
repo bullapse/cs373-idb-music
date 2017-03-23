@@ -28,7 +28,7 @@ def tracks():
     return render_template('tracks.html')
 
 @app.route("/about.html")
-def tracks():
+def about():
     return render_template('about.html')
 
 if __name__ == "__main__":
