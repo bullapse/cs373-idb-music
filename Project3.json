@@ -1,0 +1,30 @@
+{
+  "Project #3": {
+    "Git SHA": "",
+    "GitHub Username": "bullapse",
+    "GitHub URL": "https://github.com/bullapse/cs373-idb-music",
+    "Travis CI URL": "https://travis-ci.org/bullapse/cs373-idb-music",
+    "Website URL": "notspotify.me",
+    "Leader EID": "sgb695",
+    "Leader E-mail": "sbull@cs.utexas.edu",
+    "Leader Estimated Completion Time (hours : integer)": 20,
+    "Leader Actual    Completion Time (hours : integer)": 25,
+    "Member #2 EID": "ccm2676",
+    "Member #2 E-mail": "cameronmoeller1@yahoo.com",
+    "Member #2 Estimated Completion Time (hours : integer)": 20,
+    "Member #2 Actual    Completion Time (hours : integer)": 25,
+    "Member #3 EID": "tsn293",
+    "Member #3 E-mail": "tsnguyen@utexas.edu",
+    "Member #3 Estimated Completion Time (hours : integer)": 20,
+    "Member #3 Actual    Completion Time (hours : integer)": 25,
+    "Member #4 EID": "hqb65",
+    "Member #4 E-mail": "bao.hungqq@gmail.com",
+    "Member #4 Estimated Completion Time (hours : integer)": 20,
+    "Member #4 Actual    Completion Time (hours : integer)": 25,
+    "Member #5 EID": "",
+    "Member #5 E-mail": "",
+    "Member #5 Estimated Completion Time (hours : integer)": 0,
+    "Member #5 Actual    Completion Time (hours : integer)": 0,
+    "Comments": "We noticed a problem that we think is related to caching. Sometimes when we run the app at notspotify.me, the old css file gets lodaded. When running locally or on notspotify-162300.appspot.com we never have the issue. The last member in our group decided to drop the class, so we're only a group of 4."
+  }
+}
