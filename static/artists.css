@@ -31,3 +31,7 @@ th {
     background-color: #82b919;
     color: white;
 }
+tr:hover {
+    background-color: #262626;
+    color: #a7f37f;
+}
