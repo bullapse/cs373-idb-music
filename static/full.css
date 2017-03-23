@@ -1,8 +1,11 @@
-html {
-    background: url(concert1.jpg) no-repeat center center fixed;
-    background-position: 0 Y;
+#slides, img.bg {
     height: 100vh;
     min-height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: -10;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
