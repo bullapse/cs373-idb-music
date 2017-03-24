@@ -1,0 +1,414 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# cs373-idb-movies
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Artist [/artist]
+
+### List All Artist [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id" : "1234553"
+                "name" : "Said the Sky",
+                "spotify_id" : "4LZ4De2MoO3lP6QaNCfvcu",
+                "images" : [
+                    {
+                        "height" : 816,
+                        "url" : "https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903",
+                        "width" : 1000
+                    }
+                ],
+                "popularity" : 59,
+                "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF",
+                "followers" : {
+                    "href" : null,
+                    "total" : 306565
+                },
+            }
+        ]
+## Artist ID [/artist/{id}]
+
+### Get Artist By ID [GET]
+
++ Parameters
+    + id - A path variable that is required for a valid URL
+
++ Response 200 (application/json)
+
+        {
+            "id" : "1234553"
+            "name" : "Said the Sky",
+            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+            "images" : [
+                {
+                    "height" : 816,
+                    "url" : "https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903",
+                    "width" : 1000
+                }
+            ],
+            "popularity" : 59,
+            "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF",
+            "followers" : {
+                "href" : null,
+                "total" : 306565
+            },
+        }
+
+## Artist Name [/artist/{name}]
+
+### Get Artist By Name [GET]
+
++ Parameters
+    + name - A path variable that is required for a valid URL
+
++ Response 200 (application/json)
+
+        {
+            "id" : "1234553"
+            "name" : "Said the Sky",
+            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+            "images" : [
+                {
+                    "height" : 816,
+                    "url" : "https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903",
+                    "width" : 1000
+                }
+            ],
+            "popularity" : 59,
+            "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF",
+            "followers" : {
+                "href" : null,
+                "total" : 306565
+            },
+        }
+
+## Album [/album]
+
+### List All Albums [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id" : "1234553"
+                "name" : "C",
+                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+                "artist" : [
+                    {
+                        "external_urls" : {
+                              "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+                        "id" : "2BTZIqw0ntH9MvilQ3ewNY",
+                        "name" : "Cyndi Lauper",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+                    }
+                ],
+                "copyrights" : [ {
+                    "text" : "(P) 2000 Sony Music Entertainment Inc.",
+                    "type" : "P"
+                } ],
+                "external_ids" : {
+                    "upc" : "5099749994324"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj"
+                },
+                "genres" : [],
+                "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
+                "images" : [ {
+                    "height" : 640,
+                    "url" : "https://i.scdn.co/image/07c323340e03e25a8e5dd5b9a8ec72b69c50089d",
+                    "width" : 640
+                }, {
+                    "height" : 300,
+                    "url" : "https://i.scdn.co/image/8b662d81966a0ec40dc10563807696a8479cd48b",
+                    "width" : 300
+                }, {
+                    "height" : 64,
+                    "url" : "https://i.scdn.co/image/54b3222c8aaa77890d1ac37b3aaaa1fc9ba630ae",
+                    "width" : 64
+                } ],
+                "popularity" : 39,
+                "release_date" : "1983",
+                "release_date_precision" : "year",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj/tracks?offset=0&limit=50",
+                    "items" : [ {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+                        "spotifyid" : "2BTZIqw0ntH9MvilQ3ewNY",
+                        "artist_name" : "Cyndi Lauper",
+                        "spotify_uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+                        }],
+                        "duration_ms" : 305560,
+                        "explicit" : false,
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V"
+                        },
+                        "href" : "https://api.spotify.com/v1/tracks/3f9zqUnrnIq0LANhmnaF0V",
+                        "id" : "3f9zqUnrnIq0LANhmnaF0V",
+                        "name" : "Money Changes Everything",
+                        "preview_url" : "https://p.scdn.co/mp3-preview/01bb2a6c9a89c05a4300aea427241b1719a26b06",
+                        "track_number" : 1,
+                        "type" : "track",
+                        "uri" : "spotify:track:3f9zqUnrnIq0LANhmnaF0V"
+                    },
+                    ...
+                    ],
+                    "total" : 13,
+                    "spotify_uri" : "spotify:album:0sNOF9WDwhWunNAHPD3Baj"
+
+                }
+            }
+        ]
+
+
+## Album ID [/album/{id}]
+
+### Get Album By ID [GET]
+
++ Parameters
+    + id - A path variable that is required for a valid URL
+
++ Response 200 (application/json)
+
+            {
+                "id" : "1234553"
+                "name" : "C",
+                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+                "artist" : [
+                    {
+                        "external_urls" : {
+                              "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+                        "id" : "2BTZIqw0ntH9MvilQ3ewNY",
+                        "name" : "Cyndi Lauper",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+                    }
+                ],
+                "copyrights" : [ {
+                    "text" : "(P) 2000 Sony Music Entertainment Inc.",
+                    "type" : "P"
+                } ],
+                "external_ids" : {
+                    "upc" : "5099749994324"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj"
+                },
+                "genres" : [],
+                "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
+                "images" : [ {
+                    "height" : 640,
+                    "url" : "https://i.scdn.co/image/07c323340e03e25a8e5dd5b9a8ec72b69c50089d",
+                    "width" : 640
+                }, {
+                    "height" : 300,
+                    "url" : "https://i.scdn.co/image/8b662d81966a0ec40dc10563807696a8479cd48b",
+                    "width" : 300
+                }, {
+                    "height" : 64,
+                    "url" : "https://i.scdn.co/image/54b3222c8aaa77890d1ac37b3aaaa1fc9ba630ae",
+                    "width" : 64
+                } ],
+                "popularity" : 39,
+                "release_date" : "1983",
+                "release_date_precision" : "year",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj/tracks?offset=0&limit=50",
+                    "items" : [ {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+                        "spotifyid" : "2BTZIqw0ntH9MvilQ3ewNY",
+                        "artist_name" : "Cyndi Lauper",
+                        "spotify_uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+                        }],
+                        "duration_ms" : 305560,
+                        "explicit" : false,
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V"
+                        },
+                        "href" : "https://api.spotify.com/v1/tracks/3f9zqUnrnIq0LANhmnaF0V",
+                        "id" : "3f9zqUnrnIq0LANhmnaF0V",
+                        "name" : "Money Changes Everything",
+                        "preview_url" : "https://p.scdn.co/mp3-preview/01bb2a6c9a89c05a4300aea427241b1719a26b06",
+                        "track_number" : 1,
+                        "type" : "track",
+                        "uri" : "spotify:track:3f9zqUnrnIq0LANhmnaF0V"
+                    },
+                    ...
+                    ],
+                    "total" : 13,
+                    "spotify_uri" : "spotify:album:0sNOF9WDwhWunNAHPD3Baj"
+
+                }
+            }
+
+## Album Name [/album/{name}]
+
+### Get Album By Name [GET]
+
++ Parameters
+    + name - A path variable that is required for a valid URL
+
++ Response 200 (application/json)
+
+             {
+                "id" : "1234553"
+                "name" : "C",
+                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+                "artist" : [
+                    {
+                        "external_urls" : {
+                              "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+                        "id" : "2BTZIqw0ntH9MvilQ3ewNY",
+                        "name" : "Cyndi Lauper",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+                    }
+                ],
+                "copyrights" : [ {
+                    "text" : "(P) 2000 Sony Music Entertainment Inc.",
+                    "type" : "P"
+                } ],
+                "external_ids" : {
+                    "upc" : "5099749994324"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj"
+                },
+                "genres" : [],
+                "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
+                "images" : [ {
+                    "height" : 640,
+                    "url" : "https://i.scdn.co/image/07c323340e03e25a8e5dd5b9a8ec72b69c50089d",
+                    "width" : 640
+                }, {
+                    "height" : 300,
+                    "url" : "https://i.scdn.co/image/8b662d81966a0ec40dc10563807696a8479cd48b",
+                    "width" : 300
+                }, {
+                    "height" : 64,
+                    "url" : "https://i.scdn.co/image/54b3222c8aaa77890d1ac37b3aaaa1fc9ba630ae",
+                    "width" : 64
+                } ],
+                "popularity" : 39,
+                "release_date" : "1983",
+                "release_date_precision" : "year",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj/tracks?offset=0&limit=50",
+                    "items" : [ {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+                        "spotifyid" : "2BTZIqw0ntH9MvilQ3ewNY",
+                        "artist_name" : "Cyndi Lauper",
+                        "spotify_uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+                        }],
+                        "duration_ms" : 305560,
+                        "explicit" : false,
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V"
+                        },
+                        "href" : "https://api.spotify.com/v1/tracks/3f9zqUnrnIq0LANhmnaF0V",
+                        "id" : "3f9zqUnrnIq0LANhmnaF0V",
+                        "name" : "Money Changes Everything",
+                        "preview_url" : "https://p.scdn.co/mp3-preview/01bb2a6c9a89c05a4300aea427241b1719a26b06",
+                        "track_number" : 1,
+                        "type" : "track",
+                        "uri" : "spotify:track:3f9zqUnrnIq0LANhmnaF0V"
+                    },
+                    ...
+                    ],
+                    "total" : 13,
+                    "spotify_uri" : "spotify:album:0sNOF9WDwhWunNAHPD3Baj"
+
+                }
+            }
+
+## Track [/track]
+
+### List All Tracks [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id" : "1234553"
+                "name" : "Rock",
+                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+                "duration_ms" : 222200,
+                "explicit" : false,
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
+                "popularity" : 73,
+                "preview_url" : "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
+                "uri" : "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp"
+            }
+        ]
+
+## Track ID [/track/{id}]
+
+### Get Track By ID [GET]
+
++ Parameters
+    + id - A path variable that is required for a valid URL
+
++ Response 200 (application/json)
+
+        {
+            "id" : "1234553",
+            "name" : "Rock",
+            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+            "duration_ms" : 222200,
+            "explicit" : false,
+            "external_urls" : {
+                "spotify" : "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
+            "popularity" : 73,
+            "preview_url" : "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
+            "uri" : "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp"
+        }
+
+## Track Name [/track/{name}]
+
+### Get Track By Name [GET]
+
++ Parameters
+    + name - Name of the track
+
++ Response 200 (application/json)
+
+        {
+            "id" : "1234553",
+            "name" : "Rock",
+            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
+            "duration_ms" : 222200,
+            "explicit" : false,
+            "external_urls" : {
+                "spotify" : "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
+            "popularity" : 73,
+            "preview_url" : "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
+            "uri" : "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp"
+        }
