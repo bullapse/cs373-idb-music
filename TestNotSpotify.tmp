@@ -1,0 +1,193 @@
+EEEEEEEEE
+======================================================================
+ERROR: test_case_1 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 32, in test_case_1
+    session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 461, in commit
+    self._prepare_impl()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 441, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2139, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2259, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2223, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 389, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 548, in execute
+    uow
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 835, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1394, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+OperationalError: (sqlite3.OperationalError) no such table: artist [SQL: u'INSERT INTO artist (name, spotify_id, image_url, followers, popularity, genre) VALUES (?, ?, ?, ?, ?, ?)'] [parameters: ('test', '1', 'test.png', 0, 0, None)]
+
+======================================================================
+ERROR: test_case_2 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 38, in test_case_2
+    session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 459, in commit
+    self._assert_active(prepared_ok=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 276, in _assert_active
+    % self._rollback_exception
+InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.OperationalError) no such table: artist [SQL: u'INSERT INTO artist (name, spotify_id, image_url, followers, popularity, genre) VALUES (?, ?, ?, ?, ?, ?)'] [parameters: ('test', '1', 'test.png', 0, 0, None)]
+
+======================================================================
+ERROR: test_case_3 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 44, in test_case_3
+    session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 459, in commit
+    self._assert_active(prepared_ok=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 276, in _assert_active
+    % self._rollback_exception
+InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.OperationalError) no such table: artist [SQL: u'INSERT INTO artist (name, spotify_id, image_url, followers, popularity, genre) VALUES (?, ?, ?, ?, ?, ?)'] [parameters: ('test', '1', 'test.png', 0, 0, None)]
+
+======================================================================
+ERROR: test_case_4 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 48, in test_case_4
+    artist = session.query(Artist).first()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2755, in first
+    ret = list(self[0:1])
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2547, in __getitem__
+    return list(res)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2854, in __iter__
+    self.session._autoflush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1365, in _autoflush
+    self.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2139, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2219, in _flush
+    subtransactions=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 798, in begin
+    nested=nested)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 297, in _begin
+    self._assert_active()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 276, in _assert_active
+    % self._rollback_exception
+InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.OperationalError) no such table: artist [SQL: u'INSERT INTO artist (name, spotify_id, image_url, followers, popularity, genre) VALUES (?, ?, ?, ?, ?, ?)'] [parameters: ('test', '1', 'test.png', 0, 0, None)]
+
+======================================================================
+ERROR: test_case_5 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 52, in test_case_5
+    artist = session.query(Album).first()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2755, in first
+    ret = list(self[0:1])
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2547, in __getitem__
+    return list(res)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2854, in __iter__
+    self.session._autoflush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1365, in _autoflush
+    self.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2139, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2219, in _flush
+    subtransactions=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 798, in begin
+    nested=nested)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 297, in _begin
+    self._assert_active()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 276, in _assert_active
+    % self._rollback_exception
+InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.OperationalError) no such table: artist [SQL: u'INSERT INTO artist (name, spotify_id, image_url, followers, popularity, genre) VALUES (?, ?, ?, ?, ?, ?)'] [parameters: ('test', '1', 'test.png', 0, 0, None)]
+
+======================================================================
+ERROR: test_case_6 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 56, in test_case_6
+    artist = session.query(Track).first()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2755, in first
+    ret = list(self[0:1])
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2547, in __getitem__
+    return list(res)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2854, in __iter__
+    self.session._autoflush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1365, in _autoflush
+    self.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2139, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2219, in _flush
+    subtransactions=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 798, in begin
+    nested=nested)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 297, in _begin
+    self._assert_active()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 276, in _assert_active
+    % self._rollback_exception
+InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.OperationalError) no such table: artist [SQL: u'INSERT INTO artist (name, spotify_id, image_url, followers, popularity, genre) VALUES (?, ?, ?, ?, ?, ?)'] [parameters: ('test', '1', 'test.png', 0, 0, None)]
+
+======================================================================
+ERROR: test_case_7 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 61, in test_case_7
+    session.delete(new_artist)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1714, in delete
+    self._delete_impl(state, instance, head=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1722, in _delete_impl
+    state_str(state))
+InvalidRequestError: Instance '<Artist at 0x7fb9ddbb7590>' is not persisted
+
+======================================================================
+ERROR: test_case_8 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 67, in test_case_8
+    session.delete(new_album)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1714, in delete
+    self._delete_impl(state, instance, head=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1722, in _delete_impl
+    state_str(state))
+InvalidRequestError: Instance '<Album at 0x7fb9ddbb7590>' is not persisted
+
+======================================================================
+ERROR: test_case_9 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "app/tests.py", line 73, in test_case_9
+    session.delete(new_track)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1714, in delete
+    self._delete_impl(state, instance, head=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1722, in _delete_impl
+    state_str(state))
+InvalidRequestError: Instance '<Track at 0x7fb9ddbb7590>' is not persisted
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.013s
+
+FAILED (errors=9)
