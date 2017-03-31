@@ -52,3 +52,6 @@ def add_tracks(obj):
                           runtime=obj['duration_ms'],
                           popularity=obj['popularity'],
                           preview_url=obj['preview_url']))
+
+
+# Add all songs from lib

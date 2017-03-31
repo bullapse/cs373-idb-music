@@ -10,12 +10,12 @@
 # imports
 # -------
 
-from requests import get
-import requests_toolbelt.adapters.appengine
-
-# Use the App Engine Requests adapter. This makes sure that Requests uses
-# URLFetch.
-requests_toolbelt.adapters.appengine.monkeypatch()
+import requests
+# import requests_toolbelt.adapters.appengine
+#
+# # Use the App Engine Requests adapter. This makes sure that Requests uses
+# # URLFetch.
+# requests_toolbelt.adapters.appengine.monkeypatch()
 
 
 CLIENT_ID = "78237eb54be441c7bafdf02459e9d5ad"
@@ -38,14 +38,23 @@ PLAYLISTS = [{
 }]
 
 SCOPE = "playlist-read-private"
+ACCESS_TOKEN = None
+AUTH_HEADER = 'NzgyMzdlYjU0YmU0NDFjN2JhZmRmMDI0NTllOWQ1YWQ6M2NkZTNkNDgxYzhiNDMyYmE2ODAwZTgwNDEyNzIyYTk='
+
 # ----------
 # auth
 # ----------
 
 
 def auth():
-    res = get('https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE)
-    return res.text
+    global ACCESS_TOKEN
+    url = 'https://accounts.spotify.com/api/token'
+    body = {
+    	'grant_type': 'client_credentials'
+    }
+    res = requests.post(url, data=body, auth=requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET))
+    ACCESS_TOKEN = res.json()['access_token']
+    return ACCESS_TOKEN
 
 
 # ----------
@@ -56,8 +65,8 @@ def auth():
 def get_artist():
     ret_obj = []
     for spotify_id in ARTISTS:
-        response = get('https://api.spotify.com/v1/artists/' + spotify_id)
-        response.raise_for_status()
+        response = requests.get('https://api.spotify.com/v1/artists/' + spotify_id)
+        # response.raise_for_status()
         res = response.json()
         obj = {}
         obj['id'] = 42  # TODO: remove
@@ -79,8 +88,8 @@ def get_artist():
 def get_album():
     ret_obj = []
     for spotify_id in ALBUMS:
-        response = get('https://api.spotify.com/v1/albums/' + spotify_id)
-        response.raise_for_status()
+        response = requests.get('https://api.spotify.com/v1/albums/' + spotify_id)
+        # response.raise_for_status()
         res = response.json()
         obj = {}
         obj['id'] = 42  # TODO: remove
@@ -111,8 +120,8 @@ def get_album():
 def get_track():
     ret_obj = []
     for spotify_id in TRACKS:
-        response = get('https://api.spotify.com/v1/tracks/' + spotify_id)
-        response.raise_for_status()
+        response = requests.get('https://api.spotify.com/v1/tracks/' + spotify_id)
+        # response.raise_for_status()
         res = response.json()
         obj = {}
         obj['id'] = 42  # TODO: remove
@@ -134,18 +143,22 @@ def get_track():
 # get_playlist
 # ------------
 
-
+# spotify:user:1229502046:playlist:2GejolY4BJCsbUxf0yPydq
 def get_playlist(user):
+    global ACCESS_TOKEN
+    if ACCESS_TOKEN is None:
+        auth()
     ret = {}
     pl_info = (next(pl for pl in PLAYLISTS if pl['user'] == user), None)[0]
     print(pl_info)
     if pl_info is not None:
         url = 'https://api.spotify.com/v1/users/' + pl_info['user_id'] + '/playlists/' + pl_info['playlist_id']
-        print(url)
-        res = get(url)
-        ret['followers'] = res['followers']
-        ret['description'] = res['description']
-        ret['images'] = res['images']
-        ret['owner'] = res['owner']
-        ret['tracks'] = res['tracks']
+        header = {'Authorization': 'Bearer {0}'.format(ACCESS_TOKEN), 'Content-Type': 'application/json'}
+        res = requests.get(url, headers=header)
+        res_obj = res.json()
+        ret['followers'] = res_obj['followers']
+        ret['description'] = res_obj['description']
+        ret['images'] = res_obj['images']
+        ret['owner'] = res_obj['owner']
+        ret['tracks'] = res_obj['tracks']
     return ret

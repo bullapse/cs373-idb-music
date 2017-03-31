@@ -1,21 +1,22 @@
 
 from flask import Flask, render_template, request
 import spotify
-
+from  base64 import standard_b64encode
 import requests
-import requests_toolbelt.adapters.appengine
+# import requests_toolbelt.adapters.appengine
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
 # URLFetch.
-requests_toolbelt.adapters.appengine.monkeypatch()
+# requests_toolbelt.adapters.appengine.monkeypatch()
 
 app = Flask(__name__)
 
 API_VERSION = "v1"
 
-
-CLIENT_ID = "78237eb54be441c7bafdf02459e9d5ad"
-CLIENT_SECRET = "3cde3d481c8b432ba6800e80412722a9"
+ACCESS_TOKEN = None
+CLIENT_ID = '78237eb54be441c7bafdf02459e9d5ad'
+CLIENT_SECRET = '3cde3d481c8b432ba6800e80412722a9'
+AUTH_HEADER = 'NzgyMzdlYjU0YmU0NDFjN2JhZmRmMDI0NTllOWQ1YWQ6M2NkZTNkNDgxYzhiNDMyYmE2ODAwZTgwNDEyNzIyYTk='
 SCOPE = "playlist-read-private"
 
 
@@ -51,10 +52,19 @@ def about():
 
 @app.route("/login")
 def login():
-    url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE
-    res = requests.get(url)
-    res.raise_for_status()
-    return res.text
+    # url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE
+    # res = requests.get(url)
+    # res.raise_for_status()
+    global ACCESS_TOKEN
+    url = 'https://accounts.spotify.com/api/token'
+    body = {
+    	'grant_type': 'client_credentials'
+    }
+    headers = {'Authorization': 'Basic ' + AUTH_HEADER}
+    print(headers)
+    res = requests.post(url, data=body, auth=requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET))
+    ACCESS_TOKEN = res.json()['access_token']
+    return ACCESS_TOKEN # TODO REMOVE
 
 
 # ========================================================== #
@@ -97,7 +107,7 @@ def spotifycallback():
     state = request.args.get('state')
     error = requests.args.get('state')
     if error is not None:
-        console.log("ERROR: " + error)
+        print("ERROR: " + error)
     else:
         body = {
             "grant_type": "authorization_code",
