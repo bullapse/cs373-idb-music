@@ -3,6 +3,12 @@ from flask import Flask, render_template, request
 import spotify
 
 import requests
+import requests_toolbelt.adapters.appengine
+
+# Use the App Engine Requests adapter. This makes sure that Requests uses
+# URLFetch.
+requests_toolbelt.adapters.appengine.monkeypatch()
+
 app = Flask(__name__)
 
 API_VERSION = "v1"
