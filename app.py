@@ -51,7 +51,9 @@ def about():
 
 @app.route("/login")
 def login():
-    res = requests.get('https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE).text
+    url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE
+    res = requests.get(url)
+    res.raise_for_status()
     return res.text
 
 
