@@ -11,6 +11,12 @@
 # -------
 
 from requests import get
+import requests_toolbelt.adapters.appengine
+
+# Use the App Engine Requests adapter. This makes sure that Requests uses
+# URLFetch.
+requests_toolbelt.adapters.appengine.monkeypatch()
+
 
 CLIENT_ID = "78237eb54be441c7bafdf02459e9d5ad"
 CLIENT_SECRET = "3cde3d481c8b432ba6800e80412722a9"
@@ -51,6 +57,7 @@ def get_artist():
     ret_obj = []
     for spotify_id in ARTISTS:
         response = get('https://api.spotify.com/v1/artists/' + spotify_id)
+        response.raise_for_status()
         res = response.json()
         obj = {}
         obj['id'] = 42  # TODO: remove
@@ -73,6 +80,7 @@ def get_album():
     ret_obj = []
     for spotify_id in ALBUMS:
         response = get('https://api.spotify.com/v1/albums/' + spotify_id)
+        response.raise_for_status()
         res = response.json()
         obj = {}
         obj['id'] = 42  # TODO: remove
@@ -104,6 +112,7 @@ def get_track():
     ret_obj = []
     for spotify_id in TRACKS:
         response = get('https://api.spotify.com/v1/tracks/' + spotify_id)
+        response.raise_for_status()
         res = response.json()
         obj = {}
         obj['id'] = 42  # TODO: remove
