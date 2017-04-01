@@ -7,7 +7,6 @@ import config
 # URLFetch.
 # requests_toolbelt.adapters.appengine.monkeypatch()
 
-app = Flask(__name__)
 app = notspotify.create_app(config)
 
 

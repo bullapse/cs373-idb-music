@@ -21,14 +21,14 @@ You can create and manage projects at https://console.developers.google.com
 import os
 
 # The secret key is used by Flask to encrypt session cookies.
-SECRET_KEY = 'cs373-netflix'
+SECRET_KEY = 'cs373-notspotify'
 
 # There are three different ways to store the data in the application.
 # You can choose 'datastore', 'cloudsql', or 'mongodb'. Be sure to
 # configure the respective settings for the one you choose below.
 # You do not have to configure the other data backends. If unsure, choose
 # 'datastore' as it does not require any additional configuration.
-DATA_BACKEND = 'datastore'
+DATA_BACKEND = 'cloudsql'
 
 # Google Cloud Project ID. This can be found on the 'Overview' page at
 # https://console.developers.google.com
@@ -38,17 +38,17 @@ PROJECT_ID = 'notspotify-162300'
 # Replace the following values the respective values of your Cloud SQL
 # instance.
 CLOUDSQL_USER = 'root'
-CLOUDSQL_PASSWORD = 'cs373-netflix'
+CLOUDSQL_PASSWORD = 'cs373-notspotify'
 CLOUDSQL_DATABASE = 'notspotify'
 # Set this value to the Cloud SQL connection name, e.g.
 #   "project:region:cloudsql-instance".
 # You must also update the value in app.yaml.
-CLOUDSQL_CONNECTION_NAME = 'notspotify-162300:us-central1:notspotify'
+CLOUDSQL_CONNECTION_NAME = 'notspotify-162300:us-central1:notspotify-mysql'
 
 # The CloudSQL proxy is used locally to connect to the cloudsql instance.
 # To start the proxy, use:
 #
-#   $ cloud_sql_proxy -instances=your-connection-name=tcp:3306
+#   $ cloud_sql_proxy -instances=notspotify-162300:us-central1:notspotify-mysql=tcp:3306
 #
 # Port 3306 is the standard MySQL port. If you need to use a different port,
 # change the 3306 to a different port number.

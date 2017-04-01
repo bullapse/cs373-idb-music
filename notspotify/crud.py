@@ -1,3 +1,4 @@
+from notspotify import get_model
 from flask import Blueprint, render_template, request
 import spotify
 import requests
@@ -22,19 +23,25 @@ def index():
     return render_template('index.html')
 
 
+# [START list_artist]
 @crud.route("/artists.html")
 def artist():
     return render_template('artists.html')
+# [END list_artist]
 
 
+# [START list_albums]
 @crud.route("/albums.html")
 def albums():
     return render_template('albums.html')
+# [END list_albums]
 
 
+# [START list_tracks]
 @crud.route("/tracks.html")
 def tracks():
     return render_template('tracks.html')
+# [END list_tracks]
 
 
 @crud.route("/about.html")

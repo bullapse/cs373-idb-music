@@ -1,12 +1,8 @@
-# import os
-# import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-# from sqlalchemy import create_engine
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-builtin_list = list
 
 db = SQLAlchemy()
 
@@ -83,11 +79,9 @@ def update_artist(data, id):
 # [END update_artist]
 
 
-# [START delete_artist]
 def delete_artist(id):
     Artist.query.filter_by_(id=id).delete()
     db.session.commit()
-# [END delete_artist]
 
 
 # [START model]
@@ -131,11 +125,9 @@ def update_album(data, id):
 # [END update_album]
 
 
-# [START delete_album]
 def delete_album(id):
     Album.query.filter_by_(id=id).delete()
     db.session.commit()
-# [END delete_album]
 
 
 # [START model]
@@ -179,11 +171,9 @@ def update_track(data, id):
 # [END update_track]
 
 
-# [START delete_track]
 def delete_track(id):
     Track.query.filter_by_(id=id).delete()
     db.session.commit()
-# [END delete_track]
 
 
 def _create_database():
