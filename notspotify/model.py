@@ -1,7 +1,7 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from spotify import get_playlist, get_artist, get_album, get_track
+from json import dumps
 
 builtin_list = list
 
@@ -17,26 +17,27 @@ def init_app(app):
 def from_sql(row):
     """Translates a SQLAlchemy model instance into a dictionary"""
     data = row.__dict__.copy()
-    data['sppotify_id'] = row.spotify_id
+    data['id'] = row.id
     data.pop('_sa_instance_state')
     return data
 
 
-Base = declarative_base()
-
-album_artist_association = db.Table('album_artist_association', Base.metadata,
-    db.Column('artist_spotify_id', db.String, db.ForeignKey('album_spotify_id')),
-    db.Column('album_spotify_id', db.String, db.ForeignKey('artist_spotify_id')),
+artist_album_association = db.Table('artist_album_association',
+    db.Column('artist_id', db.String(32), db.ForeignKey('album.id')),
+    db.Column('album_id', db.String(32), db.ForeignKey('artist.id')),
+    db.PrimaryKeyConstraint('artist_id', 'album_id')
 )
 
-artist_track_association = db.Table('track_artist_association', Base.metadata,
-    db.Column('track_spotify_id', db.String, db.ForeignKey('artist_sptoify_id')),
-    db.Column('artist_spotify_id', db.String, db.ForeignKey('track_spotify_id'))
+artist_track_association = db.Table('artist_track_association',
+    db.Column('artist_id', db.String(32), db.ForeignKey('track.id')),
+    db.Column('track_id', db.String(32), db.ForeignKey('artist.id')),
+    db.PrimaryKeyConstraint('artist_id', 'track_id')
 )
 
-album_track_association = db.Table('album_track_association', Base.metadata,
-    db.Column('album_spotify_id', db.String, db.ForeignKey('track_spotify_id')),
-    db.Column('track_spotfiy_id', db.String, db.ForeignKey('album_spotify_id'))
+album_track_association = db.Table('album_track_association',
+    db.Column('album_id', db.String(32), db.ForeignKey('track.id')),
+    db.Column('track_id', db.String(32), db.ForeignKey('album.id')),
+    db.PrimaryKeyConstraint('album_id', 'track_id')
 )
 
 
@@ -44,13 +45,13 @@ album_track_association = db.Table('album_track_association', Base.metadata,
 class Artist(db.Model):
     __tablename__ = 'artist'
 
-    spotify_id = db.Column(db.String(32), primary_key=True)
+    id = db.Column(db.String(32), primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     image_url = db.Column(db.String(128))
     followers = db.Column(db.Integer)
     popularity = db.Column(db.Integer, nullable=False)
-    albums = relationship("Album", secondary=album_artist_association, backref="album")
-    tracks = relationship("Track", secondary=artist_track_association, backref="track")
+    albums = db.relationship("Album", secondary=artist_album_association, backref="artist")
+    tracks = db.relationship("Track", secondary=artist_track_association, backref="artist")
 # [END model]
 
 
@@ -109,14 +110,14 @@ def delete_artist(id):
 class Album(db.Model):
     __tablename__ = 'album'
 
-    spotify_id = db.Column(db.String(32), primary_key=True)
+    id = db.Column(db.String(32), primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     image_url = db.Column(db.String(128))
     release_date = db.Column(db.Date, nullable=False)
     number_of_tracks = db.Column(db.Integer, nullable=False)
-    artists = relationship("Artist", secondary=album_artist_association, backref="artist")
+    artists = db.relationship("Artist", secondary=artist_album_association, backref="album")
     popularity = db.Column(db.Integer, nullable=False)
-    tracks = relationship("Track", secondary=album_track_association, backref="track")
+    tracks = db.relationship("Track", secondary=album_track_association, backref="album")
 # [END model]
 
 
@@ -155,10 +156,10 @@ def delete_album(id):
 class Track(db.Model):
     __tablename__ = 'track'
 
-    spotify_id = db.Column(db.String(32), primary_key=True)
+    id = db.Column(db.String(32), primary_key=True)
     name = db.Column(db.String(64), nullable=False)
-    artists = relationship("Artist", secondary=artist_track_association, backref="artist")
-    albums = relationship("Album", secondary=album_track_association, backref="album")
+    artists = db.relationship("Artist", secondary=artist_track_association, backref="track")
+    albums = db.relationship("Album", secondary=album_track_association, backref="track")
     explicit = db.Column(db.Boolean)
     runtime = db.Column(db.Integer, nullable=False)
     popularity = db.Column(db.Integer, nullable=False)
@@ -210,5 +211,79 @@ def _create_database():
     print("All tables created")
 
 
+def _load_database_from_playlist():
+    app = Flask(__name__)
+    app.config.from_pyfile('../config.py')
+    init_app(app)
+    with app.app_context():
+        pl_obj = get_playlist("Spencer")
+        itterations = 0
+        # print(dumps(pl_obj['tracks']['items'], indent=4, sort_keys=True))
+        print(len(pl_obj['tracks']['items']))
+        for item in pl_obj['tracks']['items']:
+            itterations += 1
+            print(itterations)
+            # print(dumps(item['track'], indent=4, sort_keys=True))
+            # Add all artists if they don't exist
+            artists = item['track']['album']['artists']
+            print("Number of artist: " + str(len(artists)))
+            for artist in artists:
+                artist_id = artist['id']
+                cur_artist = Artist.query.filter_by(id=artist_id).first()
+                if not cur_artist:
+                    obj = dict()
+                    obj['id'] = artist_id
+                    artist_res = get_artist(artist_id)
+                    obj['name'] = artist_res['name']
+                    obj['image_url'] = artist_res['images'][0]['image_url'] if len(artist_res['images']) > 0 else None
+                    obj['followers'] = artist_res['followers']['total']
+                    obj['popularity'] = artist_res['popularity']
+                    cur_artist = Artist(obj)
+
+                # Create an Album Object
+                album_id = item['track']['album']['id']
+                cur_album = Album.query.filter_by(id=album_id).first()
+                if not cur_album:
+                    obj = dict()
+                    obj['id'] = album_id
+                    album_res = get_album(album_id)
+                    obj['name'] = album_res['name']
+                    obj['image_url'] = artist_res['images'][0]['images_url'] if len(album_res['images']) > 0 else None
+                    obj['release_date'] = album_res['release_date']
+                    obj['number_of_tracks'] = album_res['tracks']['total']
+                    obj['popularity'] = album_res['popularity']
+                    cur_album = Album(obj)
+
+                # Create a Track Object
+                track_id = item['track']['id']
+                cur_track = Track.query.filter_by(id=track_id).first()
+                if not cur_track:
+                    obj = dict()
+                    obj['id'] = track_id
+                    track_res = get_track(track_id)
+                    obj['name'] = track_res['name']
+                    obj['id'] = track_res['id']
+                    obj['explicit'] = track_res['explicit']
+                    obj['runtime'] = track_res['duration_ms']
+                    obj['popularity'] = track_res['popularity']
+                    obj['preview_url'] = track_res['preview_url']
+
+                cur_album.artist.append(cur_artist)
+                cur_artist.albums.append(cur_album)
+                cur_track.artist.append(cur_artist)
+                cur_track.albums.append(cur_album)
+                cur_album.tracks.append(cur_track)
+                cur_artist.tracks.append(cur_track)
+
+                # Finally add the artist object containing the albums and track
+                print(cur_artist)
+                db.session.add(cur_artist)
+                db.session.commit()
+
+
 if __name__ == '__main__':
-    _create_database()
+    # _create_database()
+    _load_database_from_playlist()
+
+if __name__ == 'load_database':
+    _load_database_from_playlist()

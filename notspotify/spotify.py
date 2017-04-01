@@ -63,18 +63,20 @@ def auth():
 
 
 def get_artist(spotify_id):
+    ret_obj = []
     response = requests.get('https://api.spotify.com/v1/artists/' + spotify_id)
     # response.raise_for_status()
     res = response.json()
     obj = {}
     obj['id'] = 42  # TODO: remove
-    obj['name'] = res['name']
+    obj['name'] = ['name']
     obj['spotify_id'] = res['id']
     obj['images'] = res['images']
     obj['popularity'] = res['popularity']
     obj['uri'] = res['uri']
     obj['followers'] = res['followers']
-    return obj
+    ret_obj.append(obj)
+    return ret_obj
 
 
 # ----------
@@ -83,6 +85,7 @@ def get_artist(spotify_id):
 
 
 def get_album(spotify_id):
+    ret_obj = []
     response = requests.get('https://api.spotify.com/v1/albums/' + spotify_id)
     # response.raise_for_status()
     res = response.json()
@@ -103,7 +106,8 @@ def get_album(spotify_id):
     obj['release_date_precision'] = res['release_date_precision']
     obj['tracks'] = res['tracks']
     obj['spotif_uri'] = res['uri']
-    return obj
+    ret_obj.append(obj)
+    return ret_obj
 
 
 # ----------
@@ -112,6 +116,7 @@ def get_album(spotify_id):
 
 
 def get_track(spotify_id):
+    ret_obj = []
     response = requests.get('https://api.spotify.com/v1/tracks/' + spotify_id)
     # response.raise_for_status()
     res = response.json()
@@ -127,7 +132,8 @@ def get_track(spotify_id):
     obj['href'] = res['href']
     obj['preview_url'] = res['preview_url']
     obj['spotify_uri'] = res['uri']
-    return obj
+    ret_obj.append(obj)
+    return ret_obj
 
 
 # ------------
