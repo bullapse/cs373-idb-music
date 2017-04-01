@@ -20,6 +20,9 @@ You can create and manage projects at https://console.developers.google.com
 
 import os
 
+# Current API Version
+API_VERSION = 'v1'
+
 # The secret key is used by Flask to encrypt session cookies.
 SECRET_KEY = 'cs373-notspotify'
 

@@ -14,7 +14,7 @@
 
 import logging
 
-from flask import current_app, Flask, redirect, url_for
+from flask import current_app, Flask, url_for, render_template
 
 
 def create_app(config, debug=False, testing=False, config_overrides=None):
@@ -38,12 +38,13 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     # Register the Bookshelf CRUD blueprint.
     from .crud import crud
-    app.register_blueprint(crud, url_prefix='/books')
+    version = config.API_VERSION
+    app.register_blueprint(crud, url_prefix='/notspotify/api/' + version)
 
     # Add a default root route.
     @app.route("/")
     def index():
-        return redirect(url_for('crud.list'))
+        return render_template('index.html')
 
     # Add an error handler. This is useful for debugging the live application,
     # however, you should disable the output of the exception for production
@@ -55,6 +56,70 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         See logs for full stacktrace.
         """.format(e), 500
 
+    @app.route("/index.html")
+    def index_main():
+        return render_template('index.html')
+
+    @app.route("/artists.html")
+    def artist():
+        return render_template('artists.html')
+
+    @app.route("/albums.html")
+    def albums():
+        return render_template('albums.html')
+
+    @app.route("/tracks.html")
+    def tracks():
+        return render_template('tracks.html')
+
+    @app.route("/about.html")
+    def about():
+        return render_template('about.html')
+
+    @crud.route("/login")
+    def login():
+        # url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE
+        # res = requests.get(url)
+        # res.raise_for_status()
+        global ACCESS_TOKEN
+        url = 'https://accounts.spotify.com/api/token'
+        body = {
+        	'grant_type': 'client_credentials'
+        }
+        headers = {'Authorization': 'Basic ' + AUTH_HEADER}
+        print(headers)
+        res = requests.post(url, data=body, auth=requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET))
+        ACCESS_TOKEN = res.json()['access_token']
+        return ACCESS_TOKEN # TODO REMOVE
+
+    @app.route("/spotifycallback", methods=['GET'])
+    def spotifycallback():
+        code = request.args.get('code')
+        state = request.args.get('state')
+        error = requests.args.get('state')
+        if error is not None:
+            print("ERROR: " + error)
+        else:
+            body = {
+                "grant_type": "authorization_code",
+                "code": code,
+                "redirect_uri": "https%3A%2F%2Fnotspotify.me%2Fspotfiycallback"
+            }
+            payload = {
+                "client_id": CLIENT_ID,
+                "client_secret": CLIENT_SECRET
+            }
+            res = requests.post('https://accounts.spotify.com/api/token', data=body, params=payload)
+
+            # Create a user with the following creds
+            access_token = res['access_token']
+            token_type = res['token_type']
+            scope = res['scope']
+            expires_in = res['expires_in']
+            refresh_token = res['refresh_token']
+            # Stoped at step 6 https://developer.spotify.com/web-api/authorization-guide/
+        return render_template('index.html')
+
     return app
 
 
@@ -63,6 +128,12 @@ def get_model():
     if model_backend == 'cloudsql':
         from . import model
         model = model
+    # elif model_backend == 'datastore':
+    #     from . import model_datastore
+    #     model = model_datastore
+    # elif model_backend == 'mongodb':
+    #     from . import model_mongodb
+    #     model = model_mongodb
     else:
         raise ValueError(
             "No appropriate databackend configured. "

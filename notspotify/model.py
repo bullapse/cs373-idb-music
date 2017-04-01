@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+builtin_list = list
 
 db = SQLAlchemy()
 
@@ -53,6 +54,19 @@ class Artist(db.Model):
 # [END model]
 
 
+# [START list_artists]
+def list_artists(limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query
+             .order_by(Artist.name)
+             .limit(limit)
+             .offset(cursor))
+    artists = builtin_list(map(from_sql, query.all()))
+    next_page = cursor + limit if len(artists) == limit else None
+    return (artists, next_page)
+# [END list_artists]
+
+
 # [START create_artist]
 def create_artist(data):
     artist = Artist(**data)
@@ -62,11 +76,18 @@ def create_artist(data):
 # [END create_artist]
 
 
-# [START read_artist]
+# [START read_artist_id]
 def read_artist(id):
     result = Artist.query.get(id)
     return from_sql(result) if result else None
-# [END read_artist]
+# [END read_artist_id]
+
+
+# [START read_artist_name]
+def read_artist_name(name):
+    return Artist.query.filter_by_(name=name).first()
+
+# [END read_artist_name]
 
 
 # [START update_artist]

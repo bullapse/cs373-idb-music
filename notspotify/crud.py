@@ -3,7 +3,6 @@ from flask import Blueprint, render_template, request
 import spotify
 import requests
 
-API_VERSION = "v1"
 ACCESS_TOKEN = None
 CLIENT_ID = '78237eb54be441c7bafdf02459e9d5ad'
 CLIENT_SECRET = '3cde3d481c8b432ba6800e80412722a9'
@@ -13,117 +12,100 @@ SCOPE = "playlist-read-private"
 crud = Blueprint('crud', __name__)
 
 
-@crud.route("/")
-def base():
-    return render_template('index.html')
-
-
-@crud.route("/index.html")
-def index():
-    return render_template('index.html')
-
-
-# [START list_artist]
-@crud.route("/artists.html")
-def artist():
-    return render_template('artists.html')
-# [END list_artist]
-
-
-# [START list_albums]
-@crud.route("/albums.html")
-def albums():
-    return render_template('albums.html')
-# [END list_albums]
-
-
-# [START list_tracks]
-@crud.route("/tracks.html")
-def tracks():
-    return render_template('tracks.html')
-# [END list_tracks]
-
-
-@crud.route("/about.html")
-def about():
-    return render_template('about.html')
-
-
-@crud.route("/login")
-def login():
-    # url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE
-    # res = requests.get(url)
-    # res.raise_for_status()
-    global ACCESS_TOKEN
-    url = 'https://accounts.spotify.com/api/token'
-    body = {
-    	'grant_type': 'client_credentials'
-    }
-    headers = {'Authorization': 'Basic ' + AUTH_HEADER}
-    print(headers)
-    res = requests.post(url, data=body, auth=requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET))
-    ACCESS_TOKEN = res.json()['access_token']
-    return ACCESS_TOKEN # TODO REMOVE
-
-
 # ========================================================== #
 # ---------------------- REST API -------------------------- #
 # ========================================================== #
 
-# ---------------------- ARTISTS ----------------------------#
-@crud.route("/" + API_VERSION + "/artists", methods=['GET'])
-def get_artists():
-    if "id" in request.args:
-        return spotify.get_artist_by_id(request.args.get('id'))
-    elif "name" in request.args:
-        return spotify.get_artist_by_name(request.args.get('name'))
-    return spotify.get_artists()
+# [START list_artists]
+@crud.route('/artists', methods=['GET'])
+def list_artists():
+    token = request.args.get('page_token', None)
+    if token:
+        token = token.encode('utf-8')
+
+    artists, next_page_token = get_model().list_artists(cursor=token)
+
+    return render_template(
+        "artist.html",
+        artists=artists,
+        next_page_token=next_page_token)
+# [END list_artists]
 
 
-# ------------------------ ALBUM ----------------------------#
-@crud.route("/" + API_VERSION + "/album", methods=['GET'])
-def get_albums():
-    if "id" in request.args:
-        return spotify.get_album_by_id(request.args.get('id'))
-    elif "name" in request.args:
-        return spotify.get_album_by_name(request.args.get('name'))
-    return spotify.get_albums()
+# [START list_artist_description_id]
+@crud.route('/artist/<id>')
+def list_artist_description_id(id):
+    artist = get_model().read_artist_id(id)
+    return render_template("artist_description.html", artist=artist)
+# [END list_artist_description_id]
 
 
-# ------------------------ TRACK ----------------------------#
-@crud.route("/" + API_VERSION + "/track", methods=['GET'])
-def get_tracks():
-    if "id" in request.args:
-        return spotify.get_track_by_id(request.args.get('id'))
-    elif "name" in request.args:
-        return spotify.get_track_by_name(request.args.get('name'))
-    return spotify.get_tracks()
+# [START artist_description_name]
+@crud.route('/artist/name/<name>')
+def artist_description_name(name):
+    artist = get_model().read_artist_name(name)
+    return render_template("artist_description.html", artist=artist)
+# [END artist_description_name]
 
 
-@crud.route("/spotifycallback", methods=['GET'])
-def spotifycallback():
-    code = request.args.get('code')
-    state = request.args.get('state')
-    error = requests.args.get('state')
-    if error is not None:
-        print("ERROR: " + error)
-    else:
-        body = {
-            "grant_type": "authorization_code",
-            "code": code,
-            "redirect_uri": "https%3A%2F%2Fnotspotify.me%2Fspotfiycallback"
-        }
-        payload = {
-            "client_id": CLIENT_ID,
-            "client_secret": CLIENT_SECRET
-        }
-        res = requests.post('https://accounts.spotify.com/api/token', data=body, params=payload)
+# [START albums]
+@crud.route('/albums', methods=['GET'])
+def list_albums():
+    token = request.args.get('page_token', None)
+    if token:
+        token = token.encode('utf-8')
 
-        # Create a user with the following creds
-        access_token = res['access_token']
-        token_type = res['token_type']
-        scope = res['scope']
-        expires_in = res['expires_in']
-        refresh_token = res['refresh_token']
-        # Stoped at step 6 https://developer.spotify.com/web-api/authorization-guide/
-    return render_template('index.html')
+    albums, next_page_token = get_model().list_artists(cursor=token)
+
+    return render_template(
+        "albums.html",
+        albums=albums,
+        next_page_token=next_page_token)
+# [END list_albums]
+
+
+# [START album_description_id]
+@crud.route('/album/<id>')
+def album_description_id(id):
+    album = get_model().read_album_id(id)
+    return render_template("album_description.html", album=album)
+# [END album_description_id]
+
+
+# [START album_description_name]
+@crud.route('/album/name/<name>')
+def album_description_name(name):
+    album = get_model().read_album_name(name)
+    return render_template("album_description.html", album=album)
+# [END album_description_name]
+
+# [START list_tracks]
+@crud.route('/tracks', methods=['GET'])
+def list_tracks():
+    token = request.args.get('page_token', None)
+    if token:
+        token = token.encode('utf-8')
+
+    albums, next_page_token = get_model().list_artists(cursor=token)
+
+    return render_template(
+        "tracks.html",
+        tracks=tracks,
+        next_page_token=next_page_token)
+# [END list_tracks]
+
+
+# [START album_description_id]
+@crud.route('/tracks/<id>')
+def track_description_id(id):
+    track = get_model().read_album_id(id)
+    return render_template("album_description.html", track=track)
+# [END album_description_id]
+
+
+# [START album_description_name]
+@crud.route('/tracks/name/<name>')
+def track_description_name(name):
+    track = get_model().read_album_name(name)
+    return render_template("album_description.html", track=track)
+# [END album_description_name]
