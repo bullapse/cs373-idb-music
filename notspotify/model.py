@@ -1,8 +1,5 @@
-# import os
-# import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-# from sqlalchemy import create_engine
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -57,6 +54,19 @@ class Artist(db.Model):
 # [END model]
 
 
+# [START list_artists]
+def list_artists(limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query
+             .order_by(Artist.name)
+             .limit(limit)
+             .offset(cursor))
+    artists = builtin_list(map(from_sql, query.all()))
+    next_page = cursor + limit if len(artists) == limit else None
+    return (artists, next_page)
+# [END list_artists]
+
+
 # [START create_artist]
 def create_artist(data):
     artist = Artist(**data)
@@ -66,11 +76,18 @@ def create_artist(data):
 # [END create_artist]
 
 
-# [START read_artist]
+# [START read_artist_id]
 def read_artist(id):
     result = Artist.query.get(id)
     return from_sql(result) if result else None
-# [END read_artist]
+# [END read_artist_id]
+
+
+# [START read_artist_name]
+def read_artist_name(name):
+    return Artist.query.filter_by_(name=name).first()
+
+# [END read_artist_name]
 
 
 # [START update_artist]
@@ -83,11 +100,9 @@ def update_artist(data, id):
 # [END update_artist]
 
 
-# [START delete_artist]
 def delete_artist(id):
     Artist.query.filter_by_(id=id).delete()
     db.session.commit()
-# [END delete_artist]
 
 
 # [START model]
@@ -131,11 +146,9 @@ def update_album(data, id):
 # [END update_album]
 
 
-# [START delete_album]
 def delete_album(id):
     Album.query.filter_by_(id=id).delete()
     db.session.commit()
-# [END delete_album]
 
 
 # [START model]
@@ -179,11 +192,9 @@ def update_track(data, id):
 # [END update_track]
 
 
-# [START delete_track]
 def delete_track(id):
     Track.query.filter_by_(id=id).delete()
     db.session.commit()
-# [END delete_track]
 
 
 def _create_database():
