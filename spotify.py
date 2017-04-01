@@ -62,21 +62,20 @@ def auth():
 # ----------
 
 
-def get_artist():
+def get_artist(spotify_id):
     ret_obj = []
-    for spotify_id in ARTISTS:
-        response = requests.get('https://api.spotify.com/v1/artists/' + spotify_id)
-        # response.raise_for_status()
-        res = response.json()
-        obj = {}
-        obj['id'] = 42  # TODO: remove
-        obj['name'] = ['name']
-        obj['spotify_id'] = res['id']
-        obj['images'] = res['images']
-        obj['popularity'] = res['popularity']
-        obj['uri'] = res['uri']
-        obj['followers'] = res['followers']
-        ret_obj.append(obj)
+    response = requests.get('https://api.spotify.com/v1/artists/' + spotify_id)
+    # response.raise_for_status()
+    res = response.json()
+    obj = {}
+    obj['id'] = 42  # TODO: remove
+    obj['name'] = ['name']
+    obj['spotify_id'] = res['id']
+    obj['images'] = res['images']
+    obj['popularity'] = res['popularity']
+    obj['uri'] = res['uri']
+    obj['followers'] = res['followers']
+    ret_obj.append(obj)
     return ret_obj
 
 
@@ -85,30 +84,29 @@ def get_artist():
 # ----------
 
 
-def get_album():
+def get_album(spotify_id):
     ret_obj = []
-    for spotify_id in ALBUMS:
-        response = requests.get('https://api.spotify.com/v1/albums/' + spotify_id)
-        # response.raise_for_status()
-        res = response.json()
-        obj = {}
-        obj['id'] = 42  # TODO: remove
-        obj['name'] = res['name']
-        obj['spotify_id'] = res['id']
-        obj['images'] = res['images']
-        obj['popularity'] = res['popularity']
-        obj['uri'] = res['uri']
-        obj['artists'] = res['artists']
-        obj['copyrights'] = res['copyrights']
-        obj['external_ids'] = res['external_ids']
-        obj['external_urls'] = res['external_urls']
-        obj['genres'] = res['genres']
-        obj['href'] = res['href']
-        obj['release_date'] = res['release_date']
-        obj['release_date_precision'] = res['release_date_precision']
-        obj['tracks'] = res['tracks']
-        obj['spotif_uri'] = res['uri']
-        ret_obj.append(obj)
+    response = requests.get('https://api.spotify.com/v1/albums/' + spotify_id)
+    # response.raise_for_status()
+    res = response.json()
+    obj = {}
+    obj['id'] = 42  # TODO: remove
+    obj['name'] = res['name']
+    obj['spotify_id'] = res['id']
+    obj['images'] = res['images']
+    obj['popularity'] = res['popularity']
+    obj['uri'] = res['uri']
+    obj['artists'] = res['artists']
+    obj['copyrights'] = res['copyrights']
+    obj['external_ids'] = res['external_ids']
+    obj['external_urls'] = res['external_urls']
+    obj['genres'] = res['genres']
+    obj['href'] = res['href']
+    obj['release_date'] = res['release_date']
+    obj['release_date_precision'] = res['release_date_precision']
+    obj['tracks'] = res['tracks']
+    obj['spotif_uri'] = res['uri']
+    ret_obj.append(obj)
     return ret_obj
 
 
@@ -117,25 +115,24 @@ def get_album():
 # ----------
 
 
-def get_track():
+def get_track(spotify_id):
     ret_obj = []
-    for spotify_id in TRACKS:
-        response = requests.get('https://api.spotify.com/v1/tracks/' + spotify_id)
-        # response.raise_for_status()
-        res = response.json()
-        obj = {}
-        obj['id'] = 42  # TODO: remove
-        obj['name'] = res['name']
-        obj['spotify_id'] = res['id']
-        obj['duration_ms'] = res['duration_ms']
-        obj['popularity'] = res['popularity']
-        obj['uri'] = res['uri']
-        obj['explicit'] = res['explicit']
-        obj['external_urls'] = res['external_urls']
-        obj['href'] = res['href']
-        obj['preview_url'] = res['preview_url']
-        obj['spotify_uri'] = res['uri']
-        ret_obj.append(obj)
+    response = requests.get('https://api.spotify.com/v1/tracks/' + spotify_id)
+    # response.raise_for_status()
+    res = response.json()
+    obj = {}
+    obj['id'] = 42  # TODO: remove
+    obj['name'] = res['name']
+    obj['spotify_id'] = res['id']
+    obj['duration_ms'] = res['duration_ms']
+    obj['popularity'] = res['popularity']
+    obj['uri'] = res['uri']
+    obj['explicit'] = res['explicit']
+    obj['external_urls'] = res['external_urls']
+    obj['href'] = res['href']
+    obj['preview_url'] = res['preview_url']
+    obj['spotify_uri'] = res['uri']
+    ret_obj.append(obj)
     return ret_obj
 
 

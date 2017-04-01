@@ -1,56 +1,48 @@
-
-from flask import Flask, render_template, request
+from flask import Blueprint, render_template, request
 import spotify
-from  base64 import standard_b64encode
 import requests
-# import requests_toolbelt.adapters.appengine
-
-# Use the App Engine Requests adapter. This makes sure that Requests uses
-# URLFetch.
-# requests_toolbelt.adapters.appengine.monkeypatch()
-
-app = Flask(__name__)
 
 API_VERSION = "v1"
-
 ACCESS_TOKEN = None
 CLIENT_ID = '78237eb54be441c7bafdf02459e9d5ad'
 CLIENT_SECRET = '3cde3d481c8b432ba6800e80412722a9'
 AUTH_HEADER = 'NzgyMzdlYjU0YmU0NDFjN2JhZmRmMDI0NTllOWQ1YWQ6M2NkZTNkNDgxYzhiNDMyYmE2ODAwZTgwNDEyNzIyYTk='
 SCOPE = "playlist-read-private"
 
+crud = Blueprint('crud', __name__)
 
-@app.route("/")
+
+@crud.route("/")
 def base():
     return render_template('index.html')
 
 
-@app.route("/index.html")
+@crud.route("/index.html")
 def index():
     return render_template('index.html')
 
 
-@app.route("/artists.html")
+@crud.route("/artists.html")
 def artist():
     return render_template('artists.html')
 
 
-@app.route("/albums.html")
+@crud.route("/albums.html")
 def albums():
     return render_template('albums.html')
 
 
-@app.route("/tracks.html")
+@crud.route("/tracks.html")
 def tracks():
     return render_template('tracks.html')
 
 
-@app.route("/about.html")
+@crud.route("/about.html")
 def about():
     return render_template('about.html')
 
 
-@app.route("/login")
+@crud.route("/login")
 def login():
     # url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE
     # res = requests.get(url)
@@ -72,7 +64,7 @@ def login():
 # ========================================================== #
 
 # ---------------------- ARTISTS ----------------------------#
-@app.route("/" + API_VERSION + "/artists", methods=['GET'])
+@crud.route("/" + API_VERSION + "/artists", methods=['GET'])
 def get_artists():
     if "id" in request.args:
         return spotify.get_artist_by_id(request.args.get('id'))
@@ -82,7 +74,7 @@ def get_artists():
 
 
 # ------------------------ ALBUM ----------------------------#
-@app.route("/" + API_VERSION + "/album", methods=['GET'])
+@crud.route("/" + API_VERSION + "/album", methods=['GET'])
 def get_albums():
     if "id" in request.args:
         return spotify.get_album_by_id(request.args.get('id'))
@@ -92,7 +84,7 @@ def get_albums():
 
 
 # ------------------------ TRACK ----------------------------#
-@app.route("/" + API_VERSION + "/track", methods=['GET'])
+@crud.route("/" + API_VERSION + "/track", methods=['GET'])
 def get_tracks():
     if "id" in request.args:
         return spotify.get_track_by_id(request.args.get('id'))
@@ -101,7 +93,7 @@ def get_tracks():
     return spotify.get_tracks()
 
 
-@app.route("/spotifycallback", methods=['GET'])
+@crud.route("/spotifycallback", methods=['GET'])
 def spotifycallback():
     code = request.args.get('code')
     state = request.args.get('state')
@@ -128,7 +120,3 @@ def spotifycallback():
         refresh_token = res['refresh_token']
         # Stoped at step 6 https://developer.spotify.com/web-api/authorization-guide/
     return render_template('index.html')
-
-
-if __name__ == "__main__":
-    app.run()
