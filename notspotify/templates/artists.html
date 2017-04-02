@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h3>Artists</h3>
-<a href="/notspotify/api/v1/artist/add" class="btn btn-success btn-sm">
+<!-- <h3>Artists</h3> -->
+<!-- <a href="/notspotify/api/v1/artist/add" class="btn btn-success btn-sm">
   <i class="glyphicon glyphicon-plus"></i>
   Add Artist
-</a>
+</a> -->
 
   <div class="container">
     <table id="table0">
@@ -16,8 +16,8 @@
           <th onclick="sortCol(1)">Name</th>
           <th onclick="sortCol(2)">Followers</th>
           <th onclick="sortCol(3)">Popularity</th>
-          <th>Genre</th>
           <th onclick="sortCol(5)"># of Albums Released</th>
+          <th onclick="sortCol(5)"># of Tracks Released</th>
         </tr>
       </thead>
       <tbody>
@@ -37,11 +37,11 @@
           </td>
           <td>
             <!-- TODO: need to get the lenth -->
-            <!-- {{artist.albums}} -->
             8
           </td>
           <td>
-
+            <!-- TODO: need to get the lenth -->
+            8
           </td>
         </tr>
         {% endfor %}

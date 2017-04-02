@@ -24,20 +24,17 @@ def from_sql(row):
 
 artist_album_association = db.Table('artist_album_association',
     db.Column('artist_id', db.String(32), db.ForeignKey('album.id')),
-    db.Column('album_id', db.String(32), db.ForeignKey('artist.id')),
-    db.PrimaryKeyConstraint('artist_id', 'album_id')
+    db.Column('album_id', db.String(32), db.ForeignKey('artist.id'))
 )
 
 artist_track_association = db.Table('artist_track_association',
     db.Column('artist_id', db.String(32), db.ForeignKey('track.id')),
-    db.Column('track_id', db.String(32), db.ForeignKey('artist.id')),
-    db.PrimaryKeyConstraint('artist_id', 'track_id')
+    db.Column('track_id', db.String(32), db.ForeignKey('artist.id'))
 )
 
 album_track_association = db.Table('album_track_association',
     db.Column('album_id', db.String(32), db.ForeignKey('track.id')),
-    db.Column('track_id', db.String(32), db.ForeignKey('album.id')),
-    db.PrimaryKeyConstraint('album_id', 'track_id')
+    db.Column('track_id', db.String(32), db.ForeignKey('album.id'))
 )
 
 
@@ -147,6 +144,11 @@ def update_album(data, id):
 # [END update_album]
 
 
+# # [START get_number_of_albums_by_artist]
+# def get_number_of_albums_by_artist(artist_id):
+#     result = Album.query.filter_by(ar)
+# # [END get_number_of_albums_by_artist]
+
 def delete_album(id):
     Album.query.filter_by_(id=id).delete()
     db.session.commit()
@@ -163,7 +165,7 @@ class Track(db.Model):
     explicit = db.Column(db.Boolean)
     runtime = db.Column(db.Integer, nullable=False)
     popularity = db.Column(db.Integer, nullable=False)
-    preview_url = db.Column(db.String(128), nullable=False)
+    preview_url = db.Column(db.String(128), nullable=True)
 # [END model]
 
 
@@ -233,12 +235,17 @@ def _load_database_from_playlist():
                 if not cur_artist:
                     obj = dict()
                     obj['id'] = artist_id
+                    print("artist_ID: " + artist_id)
                     artist_res = get_artist(artist_id)
+                    print(dumps(artist_res, indent=4, sort_keys=True))
                     obj['name'] = artist_res['name']
-                    obj['image_url'] = artist_res['images'][0]['image_url'] if len(artist_res['images']) > 0 else None
+                    if len(artist_res['images']) > 0:
+                        obj['image_url'] = artist_res['images'][0]['url']
+                    else:
+                        obj['image_url'] = None
                     obj['followers'] = artist_res['followers']['total']
                     obj['popularity'] = artist_res['popularity']
-                    cur_artist = Artist(obj)
+                    cur_artist = Artist(**obj)
 
                 # Create an Album Object
                 album_id = item['track']['album']['id']
@@ -248,11 +255,15 @@ def _load_database_from_playlist():
                     obj['id'] = album_id
                     album_res = get_album(album_id)
                     obj['name'] = album_res['name']
-                    obj['image_url'] = artist_res['images'][0]['images_url'] if len(album_res['images']) > 0 else None
+                    if len(album_res['images']) > 0:
+                        obj['image_url'] = album_res['images'][0]['url']
+                    else:
+                        obj['image_url'] = None
+                    print(album_res['release_date'])
                     obj['release_date'] = album_res['release_date']
                     obj['number_of_tracks'] = album_res['tracks']['total']
                     obj['popularity'] = album_res['popularity']
-                    cur_album = Album(obj)
+                    cur_album = Album(**obj)
 
                 # Create a Track Object
                 track_id = item['track']['id']
@@ -261,12 +272,14 @@ def _load_database_from_playlist():
                     obj = dict()
                     obj['id'] = track_id
                     track_res = get_track(track_id)
+                    print
                     obj['name'] = track_res['name']
                     obj['id'] = track_res['id']
                     obj['explicit'] = track_res['explicit']
                     obj['runtime'] = track_res['duration_ms']
                     obj['popularity'] = track_res['popularity']
                     obj['preview_url'] = track_res['preview_url']
+                    cur_track = Track(**obj)
 
                 cur_album.artist.append(cur_artist)
                 cur_artist.albums.append(cur_album)

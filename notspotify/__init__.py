@@ -39,7 +39,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     # Register the Bookshelf CRUD blueprint.
     from .crud import crud
     version = config.API_VERSION
-    app.register_blueprint(crud, url_prefix='/notspotify/api/' + version)
+    app.register_blueprint(crud)
 
     # Add a default root route.
     @app.route("/")
@@ -60,23 +60,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     def index_main():
         return render_template('index.html')
 
-    @app.route("/artists.html")
-    def artist():
-        return render_template('artists.html')
-
-    @app.route("/albums.html")
-    def albums():
-        return render_template('albums.html')
-
-    @app.route("/tracks.html")
-    def tracks():
-        return render_template('tracks.html')
-
-    @app.route("/about.html")
-    def about():
-        return render_template('about.html')
-
-    @crud.route("/login")
+    @app.route("/login")
     def login():
         # url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE
         # res = requests.get(url)

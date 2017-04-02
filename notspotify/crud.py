@@ -26,7 +26,7 @@ def list_artists():
     artists, next_page_token = get_model().list_artists(cursor=token)
 
     return render_template(
-        "artist.html",
+        "artists.html",
         artists=artists,
         next_page_token=next_page_token)
 # [END list_artists]
