@@ -38,7 +38,6 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     # Register the Bookshelf CRUD blueprint.
     from .crud import crud
-    version = config.API_VERSION
     app.register_blueprint(crud)
 
     # Add a default root route.
@@ -76,33 +75,33 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         ACCESS_TOKEN = res.json()['access_token']
         return ACCESS_TOKEN # TODO REMOVE
 
-    @app.route("/spotifycallback", methods=['GET'])
-    def spotifycallback():
-        code = request.args.get('code')
-        state = request.args.get('state')
-        error = requests.args.get('state')
-        if error is not None:
-            print("ERROR: " + error)
-        else:
-            body = {
-                "grant_type": "authorization_code",
-                "code": code,
-                "redirect_uri": "https%3A%2F%2Fnotspotify.me%2Fspotfiycallback"
-            }
-            payload = {
-                "client_id": CLIENT_ID,
-                "client_secret": CLIENT_SECRET
-            }
-            res = requests.post('https://accounts.spotify.com/api/token', data=body, params=payload)
-
-            # Create a user with the following creds
-            access_token = res['access_token']
-            token_type = res['token_type']
-            scope = res['scope']
-            expires_in = res['expires_in']
-            refresh_token = res['refresh_token']
-            # Stoped at step 6 https://developer.spotify.com/web-api/authorization-guide/
-        return render_template('index.html')
+    # @app.route("/spotifycallback", methods=['GET'])
+    # def spotifycallback():
+    #     code = requests.args.get('code')
+    #     state = requests.args.get('state')
+    #     error = requests.args.get('state')
+    #     if error is not None:
+    #         print("ERROR: " + error)
+    #     else:
+    #         body = {
+    #             "grant_type": "authorization_code",
+    #             "code": code,
+    #             "redirect_uri": "https%3A%2F%2Fnotspotify.me%2Fspotfiycallback"
+    #         }
+    #         payload = {
+    #             "client_id": CLIENT_ID,
+    #             "client_secret": CLIENT_SECRET
+    #         }
+    #         res = requests.post('https://accounts.spotify.com/api/token', data=body, params=payload)
+    #
+    #         # Create a user with the following creds
+    #         access_token = res['access_token']
+    #         token_type = res['token_type']
+    #         scope = res['scope']
+    #         expires_in = res['expires_in']
+    #         refresh_token = res['refresh_token']
+    #         # Stoped at step 6 https://developer.spotify.com/web-api/authorization-guide/
+    #     return render_template('index.html')
 
     return app
 
