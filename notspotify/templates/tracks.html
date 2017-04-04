@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/artists.css">
-  <link rel="stylesheet" href="../static/styles.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="../static/scripts/sort.js"></script>
-</head>
+{% extends 'base.html' %}
 
-<body>
+{% block background %}
   <div id="bckgrnd">
   </div>
-<div class="wrapper">
-  <nav class="navbar navbar-inverse">
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -28,64 +20,69 @@
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
           <li><a href="index.html">Home</a></li>
-          <li><a href="artists.html">Artists</a></li>
-          <li><a href="albums.html">Albums</a></li>
-          <li class="active"><a href="tracks.html">Tracks</a></li>
+          <li><a href="artists">Artists</a></li>
+          <li><a href="albums">Albums</a></li>
+          <li class="active"><a href="tracks">Tracks</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </div>
     </div>
   </nav>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
 
   <div class="container">
     <table id="table0">
       <thead>
         <tr>
           <th></th>
-          <th onclick="sortCol(1)">Name</th>
-          <th onclick="sortCol(2)">Artist</th>
-          <th onClick="sortCol(3)">Album</th>
-          <th>Preview</th>
+          <th href="tracs?sort=name">Name</th>
+          <th onclick="sortCol(2)">Followers</th>
+          <th onclick="sortCol(3)">Popularity</th>
+          <th>Genre</th>
+          <th onclick="sortCol(5)"># of tracks Released</th>
         </tr>
       </thead>
       <tbody>
+        {% for track in tracks %}
         <tr>
-          <td><img class="img-rounded" src="https://i.scdn.co/image/960b80f3629e54514414559e94692059097f47a1" width="100px"></img></td>
-          <td>Mountains (feat. Diamond Eyes)</td>
-          <td>Said The Sky</td>
-          <td>Mountains (feat. Diamond Eyes)</td>
           <td>
-            <audio controls>
-              <source src="https://p.scdn.co/mp3-preview/4a4a39cb0069e0d304350606f31955d3527d8836?cid=null" type="audio/mpeg">
-              </audio>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="img-rounded" src="https://i.scdn.co/image/c782f73e268db268125b5d5cfd3b9899169f6fc0" width="100px"></img></td>
-            <td>Hey Ya</td>
-            <td>Sweater Beats</td>
-            <td>Hey Ya</td>
-            <td>
-              <audio controls>
-                <source src="https://p.scdn.co/mp3-preview/2edce4dd0302c64a1c0cb8a96eb7031bd224bd66?cid=null" type="audio/mpeg">
-                </audio>
-              </td>
-            </tr>
-            <tr>
-              <td><img class="img-rounded" src="https://i.scdn.co/image/73aa446c9253a71d384df1c75d92af1d058ee014" width="100px"></img></td>
-              <td>Did You Wrong (feat. MAX) [FRND Remix]</td>
-              <td>Sweater Beats</td>
-              <td>Did You Wrong (feat. MAX) [FRND Remix]</td>
-              <td>
-                <audio controls>
-                  <source src="https://p.scdn.co/mp3-preview/2a1eecc5f246f25d86cfe14d1c90ff51f96a8d86?cid=null" type="audio/mpeg">
-                  </audio>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <img class="img-rounded" width="100px" src="{{track.image_url}}" />
+          </td>
+          <td>
+            {{track.name}}
+          </td>
+          <td>
+            {{track.followers}}
+          </td>
+          <td>
+            {{track.popularity}}
+          </td>
+          <td>
+            <!-- TODO: need to get the lenth -->
+            <!-- {{track.tracks}} -->
+            8
+          </td>
+          <td>
+			  8
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-</div>
-</body>
-</html>
+  {% if next_page_token %}
+  <nav>
+    <ul class="pager">
+      <li><a href="?page_token={{next_page_token}}">More</a></li>
+    </ul>
+  </nav>
+  {% endif %}
+
+  {% endblock %}
