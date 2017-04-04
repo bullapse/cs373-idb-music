@@ -250,17 +250,17 @@ class Track(db.Model):
 # [END model]
 
 
-# [START list_albums]
+# [START list_tracks]
 def list_tracks(limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Album.query
-             .order_by(Album.name)
+    query = (Track.query
+             .order_by(Track.name)
              .limit(limit)
              .offset(cursor))
-    albums = builtin_list(map(from_sql, query.all()))
-    next_page = cursor + limit if len(albums) == limit else None
-    return (albums, next_page)
-# [END list_albums]
+    tracks = builtin_list(map(from_sql, query.all()))
+    next_page = cursor + limit if len(tracks) == limit else None
+    return (tracks, next_page)
+# [END list_tracks]
 
 
 # [START list_albums]
