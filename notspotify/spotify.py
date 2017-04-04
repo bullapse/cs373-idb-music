@@ -119,10 +119,7 @@ def get_track(id):
     obj['id'] = res['id']
     obj['duration_ms'] = res['duration_ms']
     obj['popularity'] = res['popularity']
-    obj['uri'] = res['uri']
     obj['explicit'] = res['explicit']
-    obj['external_urls'] = res['external_urls']
-    obj['href'] = res['href']
     obj['preview_url'] = res['preview_url']
     obj['spotify_uri'] = res['uri']
     return obj

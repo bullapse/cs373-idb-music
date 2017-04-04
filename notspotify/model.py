@@ -38,6 +38,8 @@ album_track_association = db.Table('album_track_association',
 )
 
 
+# ---------------------- ARTISTS -------------------------- #
+
 # [START model]
 class Artist(db.Model):
     __tablename__ = 'artist'
@@ -46,6 +48,7 @@ class Artist(db.Model):
     name = db.Column(db.String(64), nullable=False)
     image_url = db.Column(db.String(128))
     followers = db.Column(db.Integer)
+    spotify_uri = db.Column(db.String(128))
     popularity = db.Column(db.Integer, nullable=False)
     albums = db.relationship("Album", secondary=artist_album_association, backref="artist")
     tracks = db.relationship("Track", secondary=artist_track_association, backref="artist")
@@ -63,6 +66,46 @@ def list_artists(limit=10, cursor=None):
     next_page = cursor + limit if len(artists) == limit else None
     return (artists, next_page)
 # [END list_artists]
+
+
+# [START list_artists_by_track]
+def list_artists_by_track(id, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query.filter(Artist.tracks.any(id=id)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_artists_by_track]
+
+
+# [START list_artists_by_track_name]
+def list_artists_by_track_name(name, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query.filter(Artist.tracks.any(name=name)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_artists_by_track_name]
+
+
+# [START list_artists_by_album]
+def list_artists_by_album(id, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query.filter(Artist.albums.any(id=id)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_artists_by_album]
+
+
+# [START list_artists_by_album_name]
+def list_artists_by_album_name(name, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query.filter(Artist.albums.any(name=name)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_artists_by_album_name]
 
 
 # [START create_artist]
@@ -103,6 +146,8 @@ def delete_artist(id):
     db.session.commit()
 
 
+# ---------------------- ALBUMS -------------------------- #
+
 # [START model]
 class Album(db.Model):
     __tablename__ = 'album'
@@ -116,6 +161,39 @@ class Album(db.Model):
     popularity = db.Column(db.Integer, nullable=False)
     tracks = db.relationship("Track", secondary=album_track_association, backref="album")
 # [END model]
+
+
+# [START list_albums]
+def list_albums(limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Album.query
+             .order_by(Album.name)
+             .limit(limit)
+             .offset(cursor))
+    albums = builtin_list(map(from_sql, query.all()))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_albums]
+
+
+# [START list_albums_by_artist]
+def list_albums_by_artist(id, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query.filter(Artist.albums.any(id=id)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_albums_by_artist]
+
+
+# [START list_albums_by_artist_name]
+def list_albums_by_artist_name(name, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Artist.query.filter(Artist.albums.any(name=name)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_albums_by_artist_name]
 
 
 # [START create_album]
@@ -154,12 +232,15 @@ def delete_album(id):
     db.session.commit()
 
 
+# ---------------------- TRACKS -------------------------- #
+
 # [START model]
 class Track(db.Model):
     __tablename__ = 'track'
 
     id = db.Column(db.String(32), primary_key=True)
     name = db.Column(db.String(64), nullable=False)
+    spotify_uri = db.Column(db.String(128))
     artists = db.relationship("Artist", secondary=artist_track_association, backref="track")
     albums = db.relationship("Album", secondary=album_track_association, backref="track")
     explicit = db.Column(db.Boolean)
@@ -167,6 +248,59 @@ class Track(db.Model):
     popularity = db.Column(db.Integer, nullable=False)
     preview_url = db.Column(db.String(128), nullable=True)
 # [END model]
+
+
+# [START list_albums]
+def list_tracks(limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Album.query
+             .order_by(Album.name)
+             .limit(limit)
+             .offset(cursor))
+    albums = builtin_list(map(from_sql, query.all()))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_albums]
+
+
+# [START list_albums]
+def list_tracks_by_artist(id, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Track.query.filter(Track.artist.any(id=id)).all())
+    tracks = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(tracks) == limit else None
+    return (tracks, next_page)
+# [END list_albums]
+
+
+# [START list_albums]
+def list_tracks_by_artist_name(name, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Track.query.filter(Track.artist.any(name=name)).all())
+    tracks = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(tracks) == limit else None
+    return (tracks, next_page)
+# [END list_albums]
+
+
+# [START list_albums]
+def list_tracks_by_album(id, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Track.query.filter(Track.albums.any(id=id)).all())
+    tracks = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(tracks) == limit else None
+    return (tracks, next_page)
+# [END list_albums]
+
+
+# [START list_albums]
+def list_tracks_by_album_name(name, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Track.query.filter(Track.albums.any(name=name)).all())
+    tracks = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(tracks) == limit else None
+    return (tracks, next_page)
+# [END list_albums]
 
 
 # [START create_track]
@@ -296,7 +430,4 @@ def _load_database_from_playlist():
 
 if __name__ == '__main__':
     # _create_database()
-    _load_database_from_playlist()
-
-if __name__ == 'load_database':
     _load_database_from_playlist()
