@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/artists.css">
-  <link rel="stylesheet" href="../static/styles.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="../scripts/sort.js"></script>
-</head>
+{% extends 'base.html' %}
 
-<body>
+{% block background %}
   <div id="bckgrnd">
   </div>
-<div class="wrapper">
-  <nav class="navbar navbar-inverse">
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -28,60 +20,69 @@
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
           <li><a href="index.html">Home</a></li>
-          <li><a href="artists.html">Artists</a></li>
-          <li class="active"><a href="albums.html">Albums</a></li>
-          <li><a href="tracks.html">Tracks</a></li>
+          <li><a href="artists">Artist</a></li>
+          <li class="active"><a href="albums">Albums</a></li>
+          <li><a href="tracks">Tracks</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </div>
     </div>
   </nav>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
 
   <div class="container">
     <table id="table0">
       <thead>
         <tr>
-          <th onclick="sortCol(0)">Name</th>
-          <th onclick="sortCol(1)">Artist</th>
-          <th onclick="sortCol(2)">Release Date</th>
-          <th>Album Cover</th>
-          <th>Number of Tracks</th>
-          <th>Popularity</th>
+          <th></th>
+          <th onclick="sortCol(1)">Name</th>
+          <th onclick="sortCol(2)">Followers</th>
+          <th onclick="sortCol(3)">Popularity</th>
+          <th>Genre</th>
+          <th onclick="sortCol(5)"># of Albums Released</th>
         </tr>
       </thead>
       <tbody>
+        {% for album in albums %}
         <tr>
-          <td>beartrap</td>
-          <td>Blackbear</td>
-          <td>2016-02-17</td>
-          <td><img class="image-rounded" src="https://i.scdn.co/image/4f66562a98fa019c88ef8b56e721f67fb43632a8" width="100px"></img>
+          <td>
+            <img class="img-rounded" width="100px" src="{{album.image_url}}" />
           </td>
-          <td>10</td>
-          <td>63</td>
+          <td>
+            {{album.name}}
+          </td>
+          <td>
+            {{album.followers}}
+          </td>
+          <td>
+            {{album.popularity}}
+          </td>
+          <td>
+            <!-- TODO: need to get the lenth -->
+            <!-- {{album.albums}} -->
+            8
+          </td>
+          <td>
+			  8
+          </td>
         </tr>
-        <tr>
-          <td>Mountains (feat. Diamond Eyes)</td>
-          <td>Said the Sky</td>
-          <td>2016-02-17</td>
-          <td><img class="image-rounded" src="https://i.scdn.co/image/960b80f3629e54514414559e94692059097f47a1" width="100px"></img>
-          </td>
-          <td>1</td>
-          <td>32</td>
-        </tr>
-        <tr>
-          <td>Fire</td>
-          <td>3LAU</td>
-          <td>2016-10-14</td>
-          <td><img class="image-rounded" src="https://i.scdn.co/image/3bfe3babb6af8e426c9d3d8032545479097da6aa" width="100px"></img>
-          </td>
-          <td>1</td>
-          <td>47</td>
-        </tbody>
-      </table>
-    </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
+  {% if next_page_token %}
+  <nav>
+    <ul class="pager">
+      <li><a href="?page_token={{next_page_token}}">More</a></li>
+    </ul>
+  </nav>
+  {% endif %}
 
-</div>
-</body>
-
-</html>
+  {% endblock %}

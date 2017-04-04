@@ -1,12 +1,40 @@
-{% extends "index.html" %}
+{% extends 'base.html' %}
+
+{% block background %}
+  <div id="bckgrnd">
+  </div>
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">NotSpotify</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="artists">Artists</a></li>
+          <li><a href="albums">Albums</a></li>
+          <li><a href="tracks">Tracks</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{% endblock %}
 
 {% block content %}
 
-<!-- <h3>Artists</h3> -->
-<!-- <a href="/notspotify/api/v1/artist/add" class="btn btn-success btn-sm">
-  <i class="glyphicon glyphicon-plus"></i>
-  Add Artist
-</a> -->
+
 
   <div class="container">
     <table id="table0">
@@ -16,8 +44,8 @@
           <th onclick="sortCol(1)">Name</th>
           <th onclick="sortCol(2)">Followers</th>
           <th onclick="sortCol(3)">Popularity</th>
+          <th>Genre</th>
           <th onclick="sortCol(5)"># of Albums Released</th>
-          <th onclick="sortCol(5)"># of Tracks Released</th>
         </tr>
       </thead>
       <tbody>
@@ -37,11 +65,11 @@
           </td>
           <td>
             <!-- TODO: need to get the lenth -->
+            <!-- {{artist.albums}} -->
             8
           </td>
           <td>
-            <!-- TODO: need to get the lenth -->
-            8
+			  8
           </td>
         </tr>
         {% endfor %}

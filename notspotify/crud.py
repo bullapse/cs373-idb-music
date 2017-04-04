@@ -88,7 +88,7 @@ def list_albums():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    albums = get_model().list_artists(cursor=token)
+    albums, next_page_token = get_model().list_albums(cursor=token)
     return render_template("albums.html", albums=albums, next_page_token=next_page_token)
 # [END list_albums]
 
@@ -126,7 +126,7 @@ def albums_by_artist(id):
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    albums = get_model().list_albums_by_artist(id, cursor=token)
+    albums, next_page_token = get_model().list_albums_by_artist(id, cursor=token)
     return render_template("albums.html", albums=albums, next_page_token=next_page_token)
 # [END album_description_name]
 
@@ -139,7 +139,7 @@ def list_tracks():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    tracks, next_page_token = get_model().list_artists(cursor=token)
+    tracks, next_page_token = get_model().list_tracks(cursor=token)
     return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
 # [END list_tracks]
 
