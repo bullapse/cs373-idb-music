@@ -50,6 +50,7 @@ coverage.xml
 *.pot
 
 # Django stuff:
+lib
 local_settings.py
 
 # Flask stuff:
@@ -89,3 +90,7 @@ ENV/
 
 # DB stuff:
 *.db
+
+# Google Cloud
+notspotify-2f74f7b6f53c.json
+cloud_sql_proxy

@@ -2,7 +2,7 @@ FILES :=                        \
 	.travis.yml					\
 	apiary.apib					\
 	app.yaml					\
-	app.py						\
+	main.py						\
 	appengine_config.py			\
 	getSpotify.py				\
 	model.html					\
@@ -64,7 +64,7 @@ IDB1.log:
 	git log > IDB1.log
 
 IDB1.html:
-	$(PYDOC) -w ./app/model.py
+	$(PYDOC) -w ./notspotify/model.py
 
 check:
 	@not_found=0;                                 \
@@ -94,27 +94,27 @@ config:
 	git config -l
 
 format:
-	$(AUTOPEP8) -i app.py
+	$(AUTOPEP8) -i main.py
 	$(AUTOPEP8) -i getSpotify.py
 	$(AUTOPEP8) -i appengine_config.py
-	$(AUTOPEP8) -i app/model.py
-	$(AUTOPEP8) -i app/tests.py
+	$(AUTOPEP8) -i notspotify/model.py
+	$(AUTOPEP8) -i notspotify/tests.py
 
 scrub: clean
 	rm -f model.html
 	rm -f IDB1.log
 
 test_not_spotify:
-	-$(PYLINT) app.py
+	-$(PYLINT) main.py
 	-$(PYLINT) getSpotify.py
 	-$(PYLINT) appengine_config.py
-	-$(PYLINT) app/model.py
-	-$(PYLINT) app/tests.py
-	$(COVERAGE) run    --branch app/tests.py > TestNotSpotify.tmp 2>&1
+	-$(PYLINT) notspotify/model.py
+	-$(PYLINT) notspotify/tests.py
+	$(COVERAGE) run    --branch notspotify/tests.py > TestNotSpotify.tmp 2>&1
 	$(COVERAGE) report -m                      >> TestNotSpotify.tmp
 	cat TestCollatz.tmp
 
 run:
-	$(PYTHON) app.py run
+	$(PYTHON) main.py
 
 test: IDB1.html IDB1.log test_not_spotify check

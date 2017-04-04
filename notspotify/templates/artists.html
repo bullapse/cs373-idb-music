@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block background %}
+  <div id="bckgrnd">
+  </div>
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">NotSpotify</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="artists">Artists</a></li>
+          <li><a href="albums">Albums</a></li>
+          <li><a href="tracks">Tracks</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="container">
+    <table id="table0">
+      <thead>
+        <tr>
+          <th></th>
+          <th onclick="sortCol(1)">Name</th>
+          <th onclick="sortCol(2)">Followers</th>
+          <th onclick="sortCol(3)">Popularity</th>
+          <th>Genre</th>
+          <th onclick="sortCol(5)"># of Albums Released</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for artist in artists %}
+        <tr>
+          <td>
+            <img class="img-rounded" width="100px" src="{{artist.image_url}}" />
+          </td>
+          <td>
+            {{artist.name}}
+          </td>
+          <td>
+            {{artist.followers}}
+          </td>
+          <td>
+            {{artist.popularity}}
+          </td>
+          <td>
+            <!-- TODO: need to get the lenth -->
+            <!-- {{artist.albums}} -->
+            8
+          </td>
+          <td>
+			  8
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% if next_page_token %}
+  <nav>
+    <ul class="pager">
+      <li><a href="?page_token={{next_page_token}}">More</a></li>
+    </ul>
+  </nav>
+  {% endif %}
+
+  {% endblock %}
