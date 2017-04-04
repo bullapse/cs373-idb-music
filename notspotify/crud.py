@@ -15,9 +15,7 @@ def list_artists():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-
-    artists, next_page_token = get_model().list_artists(cursor=token)
-
+    artists = get_model().list_artists(cursor=token)
     return jsonify(artists)
 # [END list_artists]
 
@@ -55,7 +53,7 @@ def list_artist_description__by_track_name(name):
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    artist, next_page_token = get_model().list_artists_by_track_name(name, cursor=token)
+    artist = get_model().list_artists_by_track_name(name, cursor=token)
     return jsonify(artist)
 # [END artist_description_name]
 
@@ -66,7 +64,7 @@ def list_artist_description__by_album(id):
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    artist, next_page_token = get_model().list_artists_by_album(id, cursor=token)
+    artist = get_model().list_artists_by_album(id, cursor=token)
     return jsonify(artist)
 # [END list_artist_description_id]
 
@@ -77,7 +75,7 @@ def list_artist_description__by_album_name(name):
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    artist, next_page_token = get_model().list_artists_by_album_name(name, cursor=token)
+    artist = get_model().list_artists_by_album_name(name, cursor=token)
     return jsonify(artist)
 # [END artist_description_name]
 
@@ -91,14 +89,14 @@ def list_albums():
     if token:
         token = token.encode('utf-8')
 
-    albums, next_page_token = get_model().list_artists(cursor=token)
+    albums = get_model().list_artists(cursor=token)
 
     return jsonify(albums)
 # [END list_albums]
 
 
 # [START album_description_id]
-@crud.route('/album/<id>')
+@crud.route('/album/<id>', methods=['GET'])
 def album_description_id(id):
     album = get_model().read_album_id(id)
     return jsonify(album)
@@ -106,7 +104,7 @@ def album_description_id(id):
 
 
 # [START album_description_name]
-@crud.route('/album/name/<name>')
+@crud.route('/album/name/<name>', methods=['GET'])
 def album_description_name(name):
     album = get_model().read_album_name(name)
     return jsonify(album)
@@ -114,17 +112,23 @@ def album_description_name(name):
 
 
 # [START album_description_name]
-@crud.route('/album/artist/name/<name>')
+@crud.route('/album/artist/name/<name>', methods=['GET'])
 def albums_by_artist_name(name):
-    albums = get_model().list_albums_by_artist_name(name)
+    token = request.args.get('page_token', None)
+    if token:
+        token = token.encode('utf-8')
+    albums, next_page_toke = get_model().list_albums_by_artist_name(name, cursor=token)
     return jsonify(albums)
 # [END album_description_name]
 
 
 # [START album_description_name]
-@crud.route('/album/artist/<id>')
+@crud.route('/album/artist/<id>', methods=['GET'])
 def albums_by_artist(id):
-    albums = get_model().list_albums_by_artist(id)
+    token = request.args.get('page_token', None)
+    if token:
+        token = token.encode('utf-8')
+    albums = get_model().list_albums_by_artist(id, cursor=token)
     return jsonify(albums)
 # [END album_description_name]
 
