@@ -23,7 +23,8 @@ def list_artists():
             order = order.encode('utf-8')
     artists, next_page_token = get_model().list_artists(cursor=token, sort_by=sort, order=order)
     for artist in artists:
-        artist['numofalbums'] = get_model().num_albums_by_artist(artist['name'])
+        artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
+        artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
     return render_template("artists.html", artists=artists, next_page_token=next_page_token)
 # [END list_artists]
 
@@ -32,6 +33,11 @@ def list_artists():
 @crud.route('/artist/<id>', methods=['GET'])
 def list_artist_description(id):
     artist = get_model().read_artist(id)
+    artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
+    artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
+    artist['albums'], _ = get_model().list_albums_by_artist(id)
+    artist['tracks'], _ = get_model().list_tracks_by_artist(id)
+    print(artist['tracks'])
     return render_template("artist_description.html", artist=artist)
 # [END list_artist_description]
 
@@ -40,6 +46,8 @@ def list_artist_description(id):
 @crud.route('/artist/name/<name>', methods=['GET'])
 def artist_description_name(name):
     artist = get_model().read_artist_name(name)
+    artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
+    artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
     return render_template("artist_description.html", artist=artist)
 # [END artist_description_name]
 
@@ -96,7 +104,15 @@ def list_albums():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    albums, next_page_token = get_model().list_albums(cursor=token)
+    sort = request.args.get('sort', None)
+    order = request.args.get('order', None)
+    if sort:
+        sort = str(sort)
+        if order:
+            order = order.encode('utf-8')
+    albums, next_page_token = get_model().list_albums(cursor=token, sort_by=sort, order=order)
+    for album in albums:
+        album['number_of_artists'] = get_model().get_number_of_artist_on_album(album['id'])
     return render_template("albums.html", albums=albums, next_page_token=next_page_token)
 # [END list_albums]
 
@@ -199,16 +215,18 @@ def tracks_by_album(id):
 
 
 # [START track_description_id]
-@crud.route('/tracks/<id>')
+@crud.route('/track/<id>')
 def track_description_id(id):
-    track = get_model().read_album(id)
+    track = get_model().read_track(id)
+    track['albums'], _ = get_model().list_albums_by_track(id)
+    track['artists'], _ = get_model().list_artists_by_track(id)
     return render_template("track_description.html", track=track)
 # [END track_description_id]
 
 
 # [START track_description_name]
-@crud.route('/tracks/name/<name>')
+@crud.route('/track/name/<name>')
 def track_description_name(name):
-    track = get_model().read_album_name(name)
+    track = get_model().read_track_name(name)
     return render_template("track_description.html", track=track)
 # [END track_description_name]
