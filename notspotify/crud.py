@@ -104,8 +104,10 @@ def list_albums():
 # [START album_description_id]
 @crud.route('/album/<id>', methods=['GET'])
 def album_description_id(id):
-    album = get_model().read_album_id(id)
-    return render_template("album_description.html", album=album)
+    album = get_model().read_album(id)
+    artists = get_model().list_artists_by_album(id)
+    tracks = get_model().list_tracks_by_album(id)
+    return render_template("album_description.html", album=album, tracks=tracks, artists=artists)
 # [END album_description_id]
 
 
@@ -199,7 +201,7 @@ def tracks_by_album(id):
 # [START track_description_id]
 @crud.route('/tracks/<id>')
 def track_description_id(id):
-    track = get_model().read_album_id(id)
+    track = get_model().read_album(id)
     return render_template("track_description.html", track=track)
 # [END track_description_id]
 
