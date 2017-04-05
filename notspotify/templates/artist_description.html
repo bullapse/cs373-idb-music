@@ -40,14 +40,14 @@
     <img class="album-image" src="{{artist.image_url}}">
   </div>
   <div class="media-body">
-    <h1>{{artist.name}}</h1>
-    <h4>Popularity: <small>{{artist.popularity}}</small></h4>
-    <h4>Followers: <small>{{artist.followers}}</small></h4>
-    <h4>Number of Tracks: <small>{{artist.number_of_tracks}}</small></h4>
-    <h4>Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
+    <h1 class="text-success">{{artist.name}}</h1>
+    <h4 class="text-success">Popularity: <small>{{artist.popularity}}</small></h4>
+    <h4 class="text-success">Followers: <small>{{artist.followers}}</small></h4>
+    <h4 class="text-success">Number of Tracks: <small>{{artist.number_of_tracks}}</small></h4>
+    <h4 class="text-success">Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
   </div>
 </div>
-<h2>Albums by {{artist.name}}</h2>
+<h2 class="text-success">Albums by {{artist.name}}</h2>
 <div class="container">
   <table id="table0">
     <thead>
@@ -102,7 +102,7 @@
     <li><a href="/album/artist/{{artist.id}}">All Albums by {{artist.name}}</a></li>
   </ul>
 </nav>
-<h2>Tracks by {{artist.name}}</h2>
+<h2 class="text-success">Tracks by {{artist.name}}</h2>
 <div class="container">
    <table id="table0">
      <thead>

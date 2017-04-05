@@ -85,7 +85,11 @@
             {{album.number_of_artists}}
           </td>
           <td>
-            {{album.popularity}}
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{album.popularity}}"
+              aria-valuemin="0" aria-valuemax="100" style="width:40%">
+            </div>
+          </div>
           </td>
         </tr>
         {% endfor %}
