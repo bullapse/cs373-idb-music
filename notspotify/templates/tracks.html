@@ -60,26 +60,26 @@
       </thead>
       <tbody>
         {% for track in tracks %}
-        <tr>
-          <td>
-            {{track.name}}
-          </td>
-          <td>
-            {% if track.explicit %}
-            {{track.explicit}}
-            {% endif %}
-          </td>
-          <td>
-            {{track.runtime}}
-          </td>
-          <td>
-            {{track.popularity}}
-          </td>
-          <td>
-            <audio controls>
-            <source src={{track.preview_url}} type="audio/mpeg">
-            </audio>
-          </td>
+		      <tr class="clickable-row" data-href="/track/{{track.id}}">
+            <td>
+              {{track.name}}
+            </td>
+            <td>
+              {% if track.explicit %}
+              {{track.explicit}}
+              {% endif %}
+            </td>
+            <td>
+              {{track.runtime}}
+            </td>
+            <td>
+              {{track.popularity}}
+            </td>
+            <td>
+              <audio controls>
+              <source src={{track.preview_url}} type="audio/mpeg">
+              </audio>
+            </td>
         </tr>
         {% endfor %}
       </tbody>

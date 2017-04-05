@@ -1,38 +1,11 @@
 
 {% extends "base.html" %}
+
 {% block background %}
 <div id="bckgrnd">
 </div>
 {% endblock %}
-{% block menubar %}
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">NotSpotify</a>
-      </div>
-      <div class="collapse navbar-collapse" id="navigation">
-        <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="artists.html">Artists</a></li>
-          <li><a href="albums.html">Albums</a></li>
-          <li><a href="tracks.html">Tracks</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-{% endblock %}
 
-
-{% block background %}
-  <div id="bckgrnd">
-  </div>
-{% endblock %}
 {% block menubar %}
 <div id="wrapper">
 <nav class="navbar navbar-inverse">
@@ -43,15 +16,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">NotSpotify</a>
+        <a class="navbar-brand" href="/index.html">NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/index.html">Home</a></li>
           <li class="active"><a href="artists">Artists</a></li>
-          <li><a href="albums">Albums</a></li>
-          <li><a href="tracks">Tracks</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="/albums">Albums</a></li>
+          <li><a href="/tracks">Tracks</a></li>
+          <li><a href="/about.html">About</a></li>
         </ul>
       </div>
     </div>
@@ -74,4 +47,125 @@
     <h4>Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
   </div>
 </div>
+<h2>Albums by {{artist.name}}</h2>
+<div class="container">
+  <table id="table0">
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          Name
+          <a href="/album?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/album?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+        </th>
+        <th>
+          Release Date
+          <a href="/album?sort=release_date"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/album?sort=release_date&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+        </th>
+        <th>
+          Number of Tracks
+          <a href="/album?sort=number_of_tracks"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/album?sort=number_of_tracks&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+        </th>
+        <th>
+          Number of Artists
+          <a href="/album?sort=artists"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/album?sort=artists&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+        </th>
+        <th>
+          Popularity
+          <a href="/album?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/album?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for album in artist.albums %}
+      <tr class='clickable-row' data-href="/album/{{album.id}}">
+        <td>
+          <img class="img-rounded" width="100px" src="{{album.image_url}}" />
+        </td>
+        <td>
+          {{album.name}}
+        </td>
+        <td>
+          {{album.release_date}}
+        </td>
+        <td>
+          {{album.number_of_tracks}}
+        </td>
+        <td>
+        <!-- TODO: Query number of artists -->
+          1
+        </td>
+        <td>
+          {{album.popularity}}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<nav>
+  <ul class="pager">
+    <li><a href="/album/artist/{{artist.id}}">All Albums by {{artist.name}}</a></li>
+  </ul>
+</nav>
+<h2>Tracks by {{artist.name}}</h2>
+<div class="container">
+   <table id="table0">
+     <thead>
+       <tr>
+         <th>Name
+           <a href="tracks?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="tracks?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+         </th>
+         <th>
+           Explicit
+         </th>
+         <th>Runtime
+           <a href="tracks?sort=runtime"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="tracks?sort=runtime&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+           </th>
+         <th>Popularity
+           <a href="tracks?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="tracks?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+         </th>
+         <th>Preview</th>
+       </tr>
+     </thead>
+     <tbody>
+       {% for track in artist.tracks %}
+       <tr class="clickable-row" data-href="/track/{{track.id}}">
+         <td>
+           {{track.name}}
+         </td>
+         <td>
+           {% if track.explicit %}
+           {{track.explicit}}
+           {% endif %}
+         </td>
+         <td>
+           {{track.runtime}}
+         </td>
+         <td>
+           {{track.popularity}}
+         </td>
+         <td>
+           <audio controls>
+           <source src={{track.preview_url}} type="audio/mpeg">
+           </audio>
+         </td>
+       </tr>
+       {% endfor %}
+     </tbody>
+   </table>
+ </div>
+ <nav>
+   <ul class="pager">
+     <li><a href="/track/artist/{{artist.id}}">All Tracks by {{artist.name}}</a></li>
+   </ul>
+ </nav>
+
 {% endblock %}

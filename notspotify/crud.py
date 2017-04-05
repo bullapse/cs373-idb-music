@@ -35,7 +35,9 @@ def list_artist_description(id):
     artist = get_model().read_artist(id)
     artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
     artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
-    # artist['albums'] = get_model().albums_by_artist(id)
+    artist['albums'], _ = get_model().list_albums_by_artist(id)
+    artist['tracks'], _ = get_model().list_tracks_by_artist(id)
+    print(artist['tracks'])
     return render_template("artist_description.html", artist=artist)
 # [END list_artist_description]
 
@@ -205,16 +207,18 @@ def tracks_by_album(id):
 
 
 # [START track_description_id]
-@crud.route('/tracks/<id>')
+@crud.route('/track/<id>')
 def track_description_id(id):
-    track = get_model().read_album(id)
+    track = get_model().read_track(id)
+    track['albums'], _ = get_model().list_albums_by_track(id)
+    track['artists'], _ = get_model().list_artists_by_track(id)
     return render_template("track_description.html", track=track)
 # [END track_description_id]
 
 
 # [START track_description_name]
-@crud.route('/tracks/name/<name>')
+@crud.route('/track/name/<name>')
 def track_description_name(name):
-    track = get_model().read_album_name(name)
+    track = get_model().read_track_name(name)
     return render_template("track_description.html", track=track)
 # [END track_description_name]
