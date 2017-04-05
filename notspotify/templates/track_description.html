@@ -1,46 +1,89 @@
-{#
-# Copyright 2015 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#}
 
 {% extends "base.html" %}
 
+{% block background %}
+<div id="bckgrnd">
+</div>
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="/index.html">Home</a></li>
+          <li class="active"><a href="/artists">Artists</a></li>
+          <li><a href="/albums">Albums</a></li>
+          <li><a href="/tracks">Tracks</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{% endblock %}
+
 {% block content %}
-
-<h3>Track</h3>
-
-<!-- <div class="btn-group">
-  <a href="/books/{{album.spotify_id}}/edit" class="btn btn-primary btn-sm">
-    <i class="glyphicon glyphicon-edit"></i>
-    Edit book
-  </a>
-  <a href="/books/{{album.spotify_id}}/delete" class="btn btn-danger btn-sm">
-    <i class="glyphicon glyphicon-trash"></i>
-    Delete book
-  </a>
-</div> -->
-<!-- TODO fill out our desired information, but this give you a good idea on how to access the data  -->
+<h1>Track</h1>
 <div class="media">
   <div class="media-left">
-    <img class="track-image" src="{{track.image_url}}">
+    <img class="album-image" src="{{track.artists[0].image_url}}">
   </div>
   <div class="media-body">
-    <h4 class="track-title">
-      {{track.name}}
-      <small>{{track.popularity}}</small>
-    </h4>
+    <h1>{{track.name}}</h1>
+    <h4>Explicit: <small>{{track.explicit}}</small></h4>
+    <h4>Runtime: <small>{{track.runtime}}</small></h4>
+    <h4>Popularity: <small>{{track.popularity}}</small></h4>
   </div>
+</div>
+
+<h2>Artist for: {{track.name}}</h2>
+<div class="container">
+  <table id="table0">
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          Name
+        </th>
+        <th>
+          Followers
+        </th>
+        <th>
+          Popularity
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for artist in track.artists %}
+      <tr class="clickable-row" data-href="/artist/{{artist.id}}">
+        <td>
+          <img class="img-rounded" width="100px" src="{{artist.image_url}}" />
+        </td>
+        <td>
+          {{artist.name}}
+        </td>
+        <td>
+          {{artist.followers}}
+        </td>
+        <td>
+          {{artist.popularity}}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
 {% endblock %}

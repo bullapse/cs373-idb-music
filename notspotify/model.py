@@ -56,12 +56,27 @@ class Artist(db.Model):
 
 
 # [START list_artists]
-def list_artists(limit=10, cursor=None):
+def list_artists(limit=10, cursor=None, sort_by=None, order=None):
+    # order_by = order_by if order_by else "name"
+    def sort(x):
+        return {
+            "name": Artist.name,
+            "followers": Artist.followers,
+            "popularity": Artist.popularity,
+        }.get(x, Artist.name)
+    sort_by = sort(sort_by)
+    print(sort_by)
     cursor = int(cursor) if cursor else 0
-    query = (Artist.query
-             .order_by(Artist.name)
-             .limit(limit)
-             .offset(cursor))
+    if order:
+        query = (Artist.query
+                 .order_by(db.desc(sort_by))
+                 .limit(limit)
+                 .offset(cursor))
+    else:
+        query = (Artist.query
+                 .order_by(sort_by)
+                 .limit(limit)
+                 .offset(cursor))
     artists = builtin_list(map(from_sql, query.all()))
     next_page = cursor + limit if len(artists) == limit else None
     return (artists, next_page)
@@ -89,12 +104,10 @@ def list_artists_by_track_name(name, limit=10, cursor=None):
 
 
 # [START list_artists_by_album]
-def list_artists_by_album(id, limit=10, cursor=None):
-    cursor = int(cursor) if cursor else 0
+def list_artists_by_album(id):
     query = (Artist.query.filter(Artist.albums.any(id=id)).all())
     albums = builtin_list(map(from_sql, query))
-    next_page = cursor + limit if len(albums) == limit else None
-    return (albums, next_page)
+    return albums
 # [END list_artists_by_album]
 
 
@@ -179,7 +192,7 @@ def list_albums(limit=10, cursor=None):
 # [START list_albums_by_artist]
 def list_albums_by_artist(id, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Artist.query.filter(Artist.albums.any(id=id)).all())
+    query = (Album.query.filter(Album.artists.any(id=id)).all())
     albums = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(albums) == limit else None
     return (albums, next_page)
@@ -189,11 +202,37 @@ def list_albums_by_artist(id, limit=10, cursor=None):
 # [START list_albums_by_artist_name]
 def list_albums_by_artist_name(name, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Artist.query.filter(Artist.albums.any(name=name)).all())
+    query = (Album.query.filter(Album.artists.any(name=name)).all())
     albums = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(albums) == limit else None
     return (albums, next_page)
 # [END list_albums_by_artist_name]
+
+
+# [START list_albums_by_artist]
+def list_albums_by_track(id, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Track.query.filter(Track.albums.any(id=id)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_albums_by_artist]
+
+
+# [START list_albums_by_artist_name]
+def list_albums_by_track_name(name, limit=10, cursor=None):
+    cursor = int(cursor) if cursor else 0
+    query = (Track.query.filter(Track.albums.any(name=name)).all())
+    albums = builtin_list(map(from_sql, query))
+    next_page = cursor + limit if len(albums) == limit else None
+    return (albums, next_page)
+# [END list_albums_by_artist_name]
+
+
+# [START num_albums_by_artist]
+def num_albums_by_artist(id):
+    return Album.query.filter(Album.artist.any(id=id)).count()
+# [START num_albums_by_artist]
 
 
 # [START create_album]
@@ -251,10 +290,10 @@ class Track(db.Model):
 
 
 # [START list_tracks]
-def list_tracks(limit=10, cursor=None):
+def list_tracks(limit=10, cursor=None, order_by=Track.name):
     cursor = int(cursor) if cursor else 0
     query = (Track.query
-             .order_by(Track.name)
+             .order_by(order_by)
              .limit(limit)
              .offset(cursor))
     tracks = builtin_list(map(from_sql, query.all()))
@@ -266,7 +305,7 @@ def list_tracks(limit=10, cursor=None):
 # [START list_albums]
 def list_tracks_by_artist(id, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Track.query.filter(Track.artist.any(id=id)).all())
+    query = (Track.query.filter(Track.artists.any(id=id)).all())
     tracks = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(tracks) == limit else None
     return (tracks, next_page)
@@ -276,7 +315,7 @@ def list_tracks_by_artist(id, limit=10, cursor=None):
 # [START list_albums]
 def list_tracks_by_artist_name(name, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Track.query.filter(Track.artist.any(name=name)).all())
+    query = (Artist.query.filter(Artist.tracks.any(name=name)).all())
     tracks = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(tracks) == limit else None
     return (tracks, next_page)
@@ -286,7 +325,7 @@ def list_tracks_by_artist_name(name, limit=10, cursor=None):
 # [START list_albums]
 def list_tracks_by_album(id, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Track.query.filter(Track.albums.any(id=id)).all())
+    query = (Album.query.filter(Album.tracks.any(id=id)).all())
     tracks = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(tracks) == limit else None
     return (tracks, next_page)
@@ -317,6 +356,12 @@ def read_track(id):
     result = Track.query.get(id)
     return from_sql(result) if result else None
 # [END read_track]
+
+
+# [START num_tracks_by_artist]
+def num_tracks_by_artist(id):
+    return Track.query.filter(Track.artist.any(id=id)).count()
+# [START num_tracks_by_artist]
 
 
 # [START update_track]

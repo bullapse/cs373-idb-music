@@ -23,7 +23,7 @@
           <li><a href="artists">Artists</a></li>
           <li><a href="albums">Albums</a></li>
           <li class="active"><a href="tracks">Tracks</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="about">About</a></li>
         </ul>
       </div>
     </div>
@@ -40,37 +40,46 @@
     <table id="table0">
       <thead>
         <tr>
-          <th></th>
-          <th href="tracs?sort=name">Name</th>
-          <th onclick="sortCol(2)">Followers</th>
-          <th onclick="sortCol(3)">Popularity</th>
-          <th>Genre</th>
-          <th onclick="sortCol(5)"># of tracks Released</th>
+          <th>Name
+            <a href="tracks?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="tracks?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>
+            Explicit
+          </th>
+          <th>Runtime
+            <a href="tracks?sort=runtime"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="tracks?sort=runtime&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            </th>
+          <th>Popularity
+            <a href="tracks?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="tracks?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>Preview</th>
         </tr>
       </thead>
       <tbody>
         {% for track in tracks %}
-        <tr>
-          <td>
-            <img class="img-rounded" width="100px" src="{{track.image_url}}" />
-          </td>
-          <td>
-            {{track.name}}
-          </td>
-          <td>
-            {{track.followers}}
-          </td>
-          <td>
-            {{track.popularity}}
-          </td>
-          <td>
-            <!-- TODO: need to get the lenth -->
-            <!-- {{track.tracks}} -->
-            8
-          </td>
-          <td>
-			  8
-          </td>
+		      <tr class="clickable-row" data-href="/track/{{track.id}}">
+            <td>
+              {{track.name}}
+            </td>
+            <td>
+              {% if track.explicit %}
+              {{track.explicit}}
+              {% endif %}
+            </td>
+            <td>
+              {{track.runtime}}
+            </td>
+            <td>
+              {{track.popularity}}
+            </td>
+            <td>
+              <audio controls>
+              <source src={{track.preview_url}} type="audio/mpeg">
+              </audio>
+            </td>
         </tr>
         {% endfor %}
       </tbody>

@@ -59,6 +59,10 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     def index_main():
         return render_template('index.html')
 
+    @app.route("/about.html")
+    def about_page():
+        return render_template('about.html')
+
     @app.route("/login")
     def login():
         # url = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID + '&response_type=code&redirect_uri=https%3A%2F%2Fnotspotify.me%2Fspotfiycallback&scope=' + SCOPE

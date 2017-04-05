@@ -41,16 +41,36 @@
       <thead>
         <tr>
           <th></th>
-          <th onclick="sortCol(1)">Name</th>
-          <th onclick="sortCol(2)">Followers</th>
-          <th onclick="sortCol(3)">Popularity</th>
-          <th>Genre</th>
-          <th onclick="sortCol(5)"># of Albums Released</th>
+          <th>
+            Name
+            <a href="albums?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="albums?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>
+            Release Date
+            <a href="albums?sort=release_date"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="albums?sort=release_date&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>
+            Number of Tracks
+            <a href="albums?sort=number_of_tracks"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="albums?sort=number_of_tracks&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>
+            Number of Artists
+            <a href="albums?sort=artists"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="albums?sort=artists&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>
+            Popularity
+            <a href="albums?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="albums?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
         </tr>
       </thead>
       <tbody>
         {% for album in albums %}
-        <tr>
+        <tr class='clickable-row' data-href="/album/{{album.id}}">
           <td>
             <img class="img-rounded" width="100px" src="{{album.image_url}}" />
           </td>
@@ -58,18 +78,17 @@
             {{album.name}}
           </td>
           <td>
-            {{album.followers}}
+            {{album.release_date}}
+          </td>
+          <td>
+            {{album.number_of_tracks}}
+          </td>
+          <td>
+          <!-- TODO: Query number of artists -->
+            1
           </td>
           <td>
             {{album.popularity}}
-          </td>
-          <td>
-            <!-- TODO: need to get the lenth -->
-            <!-- {{album.albums}} -->
-            8
-          </td>
-          <td>
-			  8
           </td>
         </tr>
         {% endfor %}
