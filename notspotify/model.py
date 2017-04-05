@@ -65,7 +65,6 @@ def list_artists(limit=10, cursor=None, sort_by=None, order=None):
             "popularity": Artist.popularity,
         }.get(x, Artist.name)
     sort_by = sort(sort_by)
-    print(sort_by)
     cursor = int(cursor) if cursor else 0
     if order:
         query = (Artist.query
@@ -177,12 +176,26 @@ class Album(db.Model):
 
 
 # [START list_albums]
-def list_albums(limit=10, cursor=None):
+def list_albums(limit=10, cursor=None, sort_by=None, order=None):
+    def sort(x):
+        return {
+            "name": Album.name,
+            "release_date": Album.release_date,
+            "number_of_tracks": Album.number_of_tracks,
+            "popularity": Album.popularity,
+        }.get(x, Album.name)
+    sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
-    query = (Album.query
-             .order_by(Album.name)
-             .limit(limit)
-             .offset(cursor))
+    if order:
+        query = (Album.query
+                 .order_by(db.desc(sort_by))
+                 .limit(limit)
+                 .offset(cursor))
+    else:
+        query = (Album.query
+                 .order_by(sort_by)
+                 .limit(limit)
+                 .offset(cursor))
     albums = builtin_list(map(from_sql, query.all()))
     next_page = cursor + limit if len(albums) == limit else None
     return (albums, next_page)
@@ -231,7 +244,13 @@ def list_albums_by_track_name(name, limit=10, cursor=None):
 
 # [START num_albums_by_artist]
 def num_albums_by_artist(id):
-    return Album.query.filter(Album.artist.any(id=id)).count()
+    return Album.query.filter(Album.artists.any(id=id)).count()
+# [START num_albums_by_artist]
+
+
+# [START num_albums_by_artist]
+def get_number_of_artist_on_album(id):
+    return Artist.query.filter(Artist.albums.any(id=id)).count()
 # [START num_albums_by_artist]
 
 

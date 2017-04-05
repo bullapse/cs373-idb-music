@@ -104,7 +104,15 @@ def list_albums():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    albums, next_page_token = get_model().list_albums(cursor=token)
+    sort = request.args.get('sort', None)
+    order = request.args.get('order', None)
+    if sort:
+        sort = str(sort)
+        if order:
+            order = order.encode('utf-8')
+    albums, next_page_token = get_model().list_albums(cursor=token, sort_by=sort, order=order)
+    for album in albums:
+        album['number_of_artists'] = get_model().get_number_of_artist_on_album(album['id'])
     return render_template("albums.html", albums=albums, next_page_token=next_page_token)
 # [END list_albums]
 
