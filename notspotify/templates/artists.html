@@ -41,11 +41,22 @@
       <thead>
         <tr>
           <th></th>
-          <th onclick="sortCol(1)">Name</th>
-          <th onclick="sortCol(2)">Followers</th>
-          <th onclick="sortCol(3)">Popularity</th>
-          <th>Genre</th>
-          <th onclick="sortCol(5)"># of Albums Released</th>
+          <th>
+            Name
+            <a href="artists?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="artists?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>
+            Followers
+            <a href="artists?sort=followers"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="artists?sort=followers&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th>
+            Popularity
+            <a href="artists?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="artists?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          </th>
+          <th># of Albums</th>
         </tr>
       </thead>
       <tbody>
@@ -64,13 +75,9 @@
             {{artist.popularity}}
           </td>
           <td>
-            <!-- TODO: need to get the lenth -->
-            <!-- {{artist.albums}} -->
-            8
+            {{artist.numofalbums}}
           </td>
-          <td>
-			  8
-          </td>
+
         </tr>
         {% endfor %}
       </tbody>
