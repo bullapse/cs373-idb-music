@@ -1,26 +1,14 @@
-{#
-# Copyright 2015 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#}
 
 {% extends "base.html" %}
+
 {% block background %}
 <div id="bckgrnd">
 </div>
 {% endblock %}
+
 {% block menubar %}
-  <nav class="navbar navbar-inverse">
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -28,46 +16,140 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">NotSpotify</a>
+        <a class="navbar-brand" href="/index.html">NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="artists.html">Artists</a></li>
-          <li><a href="albums.html">Albums</a></li>
-          <li><a href="tracks.html">Tracks</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="/index.html">Home</a></li>
+          <li class="active"><a href="/artists">Artists</a></li>
+          <li><a href="/albums">Albums</a></li>
+          <li><a href="/tracks">Tracks</a></li>
+          <li><a href="/about.html">About</a></li>
         </ul>
       </div>
     </div>
   </nav>
+</div>
+
 {% endblock %}
 
 {% block content %}
 
-<h3>Artist</h3>
-
-<!-- <div class="btn-group">
-  <a href="/books/{{album.spotify_id}}/edit" class="btn btn-primary btn-sm">
-    <i class="glyphicon glyphicon-edit"></i>
-    Edit Artist
-  </a>
-  <a href="/books/{{album.spotify_id}}/delete" class="btn btn-danger btn-sm">
-    <i class="glyphicon glyphicon-trash"></i>
-    Delete book
-  </a>
-</div> -->
-<!-- TODO fill out our desired information, but this give you a good idea on how to access the data  -->
 <div class="media">
   <div class="media-left">
-    <img class="artist-image" src="{{artist.image_url}}">
+    <img class="album-image" src="{{artist.image_url}}">
   </div>
   <div class="media-body">
-    <h4 class="book-title">
-      {{artist.name}}
-      <small>{{artist.followers}}</small>
-    </h4>
+    <h1>{{artist.name}}</h1>
+    <h4>Popularity: <small>{{artist.popularity}}</small></h4>
+    <h4>Followers: <small>{{artist.followers}}</small></h4>
+    <h4>Number of Tracks: <small>{{artist.number_of_tracks}}</small></h4>
+    <h4>Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
   </div>
 </div>
+<h2>Albums by {{artist.name}}</h2>
+<div class="container">
+  <table id="table0">
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          Name
+        </th>
+        <th>
+          Release Date
+        </th>
+        <th>
+          Number of Tracks
+        </th>
+        <th>
+          Number of Artists
+        </th>
+        <th>
+          Popularity
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for album in artist.albums %}
+      <tr class='clickable-row' data-href="/album/{{album.id}}">
+        <td>
+          <img class="img-rounded" width="100px" src="{{album.image_url}}" />
+        </td>
+        <td>
+          {{album.name}}
+        </td>
+        <td>
+          {{album.release_date}}
+        </td>
+        <td>
+          {{album.number_of_tracks}}
+        </td>
+        <td>
+        <!-- TODO: Query number of artists -->
+          1
+        </td>
+        <td>
+          {{album.popularity}}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<nav>
+  <ul class="pager">
+    <li><a href="/album/artist/{{artist.id}}">All Albums by {{artist.name}}</a></li>
+  </ul>
+</nav>
+<h2>Tracks by {{artist.name}}</h2>
+<div class="container">
+   <table id="table0">
+     <thead>
+       <tr>
+         <th>Name
+         </th>
+         <th>
+           Explicit
+         </th>
+         <th>Runtime
+           </th>
+         <th>Popularity
+         </th>
+         <th>Preview</th>
+       </tr>
+     </thead>
+     <tbody>
+       {% for track in artist.tracks %}
+       <tr class="clickable-row" data-href="/track/{{track.id}}">
+         <td>
+           {{track.name}}
+         </td>
+         <td>
+           {% if track.explicit %}
+           {{track.explicit}}
+           {% endif %}
+         </td>
+         <td>
+           {{track.runtime}}
+         </td>
+         <td>
+           {{track.popularity}}
+         </td>
+         <td>
+           <audio controls>
+           <source src={{track.preview_url}} type="audio/mpeg">
+           </audio>
+         </td>
+       </tr>
+       {% endfor %}
+     </tbody>
+   </table>
+ </div>
+ <nav>
+   <ul class="pager">
+     <li><a href="/track/artist/{{artist.id}}">All Tracks by {{artist.name}}</a></li>
+   </ul>
+ </nav>
 
 {% endblock %}
