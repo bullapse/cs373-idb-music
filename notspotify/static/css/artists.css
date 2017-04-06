@@ -35,3 +35,27 @@ tr:hover {
     background-color: #262626;
     color: #a7f37f;
 }
+.media {
+    background-color: #c0c0c0;
+}
+.media-left {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+.media-left img {
+    width: 100%;
+    height: auto;
+}
+.media-body {
+    height: 100%;
+}
+#details {
+    background-color: #c0c0c0;
+}
+h1 {
+    border-left: 6px darkgreen;
+    background-color: #82b919;
+    color: white;
+    text-indent: 6px;
+}

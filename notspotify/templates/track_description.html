@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block menubar %}
-<div id="wrapper">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -21,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
           <li><a href="/index.html">Home</a></li>
-          <li class="active"><a href="/artists">Artists</a></li>
+          <li><a href="/artists">Artists</a></li>
           <li><a href="/albums">Albums</a></li>
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/about.html">About</a></li>
@@ -29,26 +28,44 @@
       </div>
     </div>
   </nav>
-</div>
-
 {% endblock %}
 
 {% block content %}
-<h1>Track</h1>
+<div class="container">
+<h1 id="headerBorder">Track</h1>
 <div class="media">
   <div class="media-left">
     <img class="album-image" src="{{track.artists[0].image_url}}">
   </div>
   <div class="media-body">
     <h1>{{track.name}}</h1>
-    <h4>Explicit: <small>{{track.explicit}}</small></h4>
-    <h4>Runtime: <small>{{track.runtime}}</small></h4>
-    <h4>Popularity: <small>{{track.popularity}}</small></h4>
+    <div class="details">
+      <div><strong>Explicit:</strong> {{track.explicit}}</div>
+      <div><strong>Runtime:</strong> {{track.runtime}}</div>
+      <div><strong>Popularity:</strong></div>
+      <div class="progress">
+        <div id="pg" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{track.popularity}} aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          <script>
+            $('#pg').attr('style',"width:"+ {{track.popularity}} +'%');
+          </script>
+
+          {{track.popularity}}
+        </div>
+      </div>
+      <div>
+        <audio controls>
+          <source src={{track.preview_url}} type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
   </div>
 </div>
+<div>
 
-<h2>Artist for: {{track.name}}</h2>
-<div class="container">
+</div>
+
+<h1>Artist for: {{track.name}}</h1>
+<div>
   <table id="table0">
     <thead>
       <tr>
@@ -85,5 +102,5 @@
     </tbody>
   </table>
 </div>
-
+</div>
 {% endblock %}

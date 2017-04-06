@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block menubar %}
-<div id="wrapper">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -28,7 +27,6 @@
       </div>
     </div>
   </nav>
-</div>
 
 {% endblock %}
 
@@ -47,9 +45,9 @@
           <th>
             Explicit
           </th>
-          <th>Runtime
-            <a href="tracks?sort=runtime"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="tracks?sort=runtime&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          <th>Runtime(ms)
+            <a href="tracks?sort=runtime_ms"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="tracks?sort=runtime_ms&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
             </th>
           <th>Popularity
             <a href="tracks?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
