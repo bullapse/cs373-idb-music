@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block scripts %}
+<link href='//fonts.googleapis.com/css?family=Vampiro One' rel='stylesheet'>
   <script>
   $(document).ready(function(){
     $('#slides').cycle({
@@ -50,7 +51,9 @@
   <div class="container-fluid">
     <div class="row">
         <div class="splash">
-          <div id="splashblock">Discover Music. Again.</div>
+          <div id="splashblock">
+            <p id="splashtext"><a id="splashlink" href="/tracks">Discover Music.</a></p>
+            <p id="splashtext"><a id="splashlink" href="/tracks">Again.</a></p></div>
         </div>
     </div>
   </div>
