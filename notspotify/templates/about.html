@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-us" ng-app='nsApp'>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="../static/css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+  <script src="../static/scripts/app.js"></script>
 </head>
 
 <body class=full>
@@ -36,167 +39,189 @@
   <div class="container" style="text-align:center">
     <h1>About Notspotify</h1>
     Notspotify was developed so that you could learn more about the music that you care about. Discover new artists. Obsess over your favorites. <br><br><br>
-      <div class="row">
-        <h2 style="text-align:left">Developers</h2>
-          <div class="col-md-3">
-            <h3>Spencer</h3>
-            <img src="../static/spencer_bio.jpg" style="width:200px;height:200px;"><br>
-            University of Texas at Austin Computer Science student. Interested in music and developement in IoT
-            <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
-              <thead>
-                <th>Commits</th>
-                <th>Issues</th>
-                <th>Tests</th>
-                <th>Resp.</th>
-              </thead>
-                <tr>
-                  <td>3</td>
-                  <td>3</td>
-                  <td>0</td>
-                  <td>Cloud, Back-End, API</td>
-                </tr>
-            </table>
-          </div>
-          <div class="col-md-3">
-            <h3>Sam</h3>
-            <img src="../static/sam_bio.jpg" style="width:200px;height:200px;"><br>
-            UTCS 17. Interested in music and music. Chance Chance Chance.
-            <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
-              <thead>
-                <th>Commits</th>
-                <th>Issues</th>
-                <th>Tests</th>
-                <th>Resp.</th>
-              </thead>
-                <tr>
-                  <td>15</td>
-                  <td>2</td>
-                  <td>9</td>
-                  <td>Front-End, Back-End, DB Models, Unit Tests</td>
-                </tr>
-            </table>
-          </div>
-          <div class="col-md-3">
-            <h3>Cameron</h3>
-            <img src="../static/cam_bio.jpg" style="width:200px;height:200px;"><br>
-            UT Computer Science. I love Kanye.
-            <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
-              <thead>
-                <th>Commits</th>
-                <th>Issues</th>
-                <th>Tests</th>
-                <th>Resp.</th>
-              </thead>
-                <tr>
-                  <td>0</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td>Front-End</td>
-                </tr>
-            </table>
-          </div>
-          <div class="col-md-3">
-            <h3>Hung</h3>
-            <img src="../static/hung_bio.jpg" style="width:200px;height:200px;"><br>
-            UTCS. I love Kanye... like Kanye loves Kanye
-            <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
-              <thead>
-                <th>Commits</th>
-                <th>Issues</th>
-                <th>Tests</th>
-                <th>Resp.</th>
-              </thead>
-                <tr>
-                  <td>6</td>
-                  <td>2</td>
-                  <td>0</td>
-                  <td>Front-End</td>
-                </tr>
-            </table>
-          </div>
+    <div class="row">
+      <h2 style="text-align:left">Developers</h2>
+      <div class="col-md-3">
+        <h3>Spencer</h3>
+        <img src="../static/spencer_bio.jpg" style="width:200px;height:200px;"><br>
+        University of Texas at Austin Computer Science student. Interested in music and developement in IoT
+        <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Commits</th>
+            <th>Issues</th>
+            <th>Tests</th>
+            <th>Resp.</th>
+          </thead>
+          <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>0</td>
+            <td>Cloud, Back-End, API</td>
+          </tr>
+        </table>
       </div>
-      <div class="row" style="text-align:left">
-        <h2>Stats</h2>
-          <div container>
-            <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
-            <thead>
-              <th>Commits</th>
-              <th>Issues</th>
-              <th>Unit Tests</th>
-            </thead>
-              <tr>
-                <td>17</td>
-                <td>26</td>
-                <td>9</td>
-              </tr>
-            </table>
-          </div>
-          <br>
-          <div container>
-            <table id="link-table" class="table-condensed table-bordered table-striped table-responsive">
-            <thead>
-              <th>Links</th>
-            </thead>
-              <tr><td><a href="http://docs.cs373idbmovies.apiary.io/#">Apiary API</a></td></tr>
-              <tr><td><a href="https://github.com/bullapse/cs373-idb-music/issues">GitHub Issue Tracker</a></td></tr>
-              <tr><td><a href="https://github.com/bullapse/cs373-idb-music">GitHub Repo</a></td></tr>
-              <tr><td><a href="https://github.com/bullapse/cs373-idb-music/wiki">GitHub Wiki</a></td></tr>
-            </table>
-          </div>
+      <div class="col-md-3">
+        <h3>Sam</h3>
+        <img src="../static/sam_bio.jpg" style="width:200px;height:200px;"><br>
+        UTCS 17. Interested in music and music. Chance Chance Chance.
+        <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Commits</th>
+            <th>Issues</th>
+            <th>Tests</th>
+            <th>Resp.</th>
+          </thead>
+          <tr>
+            <td>15</td>
+            <td>2</td>
+            <td>9</td>
+            <td>Front-End, Back-End, DB Models, Unit Tests</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <h3>Cameron</h3>
+        <img src="../static/cam_bio.jpg" style="width:200px;height:200px;"><br>
+        UT Computer Science. I love Kanye.
+        <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Commits</th>
+            <th>Issues</th>
+            <th>Tests</th>
+            <th>Resp.</th>
+          </thead>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>Front-End</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <h3>Hung</h3>
+        <img src="../static/hung_bio.jpg" style="width:200px;height:200px;"><br>
+        UTCS. I love Kanye... like Kanye loves Kanye
+        <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Commits</th>
+            <th>Issues</th>
+            <th>Tests</th>
+            <th>Resp.</th>
+          </thead>
+          <tr>
+            <td>6</td>
+            <td>2</td>
+            <td>0</td>
+            <td>Front-End</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row" style="text-align:left">
+      <h2>Stats</h2>
+      <div container>
+        <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Commits</th>
+            <th>Issues</th>
+            <th>Unit Tests</th>
+          </thead>
+          <tr>
+            <td>17</td>
+            <td>26</td>
+            <td>9</td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <div container>
+        <table id="link-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Links</th>
+          </thead>
+          <tr><td><a href="http://docs.cs373idbmovies.apiary.io/#">Apiary API</a></td></tr>
+          <tr><td><a href="https://github.com/bullapse/cs373-idb-music/issues">GitHub Issue Tracker</a></td></tr>
+          <tr><td><a href="https://github.com/bullapse/cs373-idb-music">GitHub Repo</a></td></tr>
+          <tr><td><a href="https://github.com/bullapse/cs373-idb-music/wiki">GitHub Wiki</a></td></tr>
+        </table>
+      </div>
 
+    </div>
+    <div class="row" style="text-align:left">
+      <h2>Data</h2>
+      <div container>
+        <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Data Source</th>
+            <th>Description</th>
+          </thead>
+          <tr>
+            <td><a href="https://api.spotify.com">Spotify API</a></td>
+            <td>Made GET requests to Spotify's REST API to scrape data on Artists, Albums and Tracks from their database.</td>
+          </tr>
+        </table>
       </div>
-      <div class="row" style="text-align:left">
-        <h2>Data</h2>
-        <div container>
-          <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
-            <thead>
-              <th>Data Source</th>
-              <th>Description</th>
-            </thead>
-              <tr>
-                <td><a href="https://api.spotify.com">Spotify API</a></td>
-                <td>Made GET requests to Spotify's REST API to scrape data on Artists, Albums and Tracks from their database.</td>
-              </tr>
-            </table>
+    </div>
+    <div class="row" style="text-align:left">
+      <h2 style="text-align:left">Tools</h2>
+      <div container>
+        <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
+          <thead>
+            <th>Use</th>
+            <th>Tool</th>
+          </thead>
+          <tr>
+            <td>Front-End</td>
+            <td>
+              • Bootstrap<br>
+              • HTML<br>
+              • CSS<br>
+              • Javascript<br>
+              • jQuery<br>
+            </td>
+          </tr>
+          <tr>
+            <td>Back-End</td>
+            <td>
+              • SQLAlchemy<br>
+              • Flask<br>
+              • Python<br>
+              • Google Cloud App Engine<br>
+              • Namecheap<br>
+            </td>
+          </tr>
+          <tr>
+            <td>Embedding-Media Services</td>
+            <td>
+              • Spotify API<br>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div ng-controller='testsCtrl'>
+      <h2 style="text-align:center">Run Tests</h2>
+      <button  ng-click="runAllTests()" type="button" class="btn btn-info btn-lg antisocial" data-toggle="modal" data-target="#myModal">Run</button>
+      <!-- <button type="button" class="btn btn-success" ngclick="runAllTests()">Success</button> -->
+      <div id="myModal" class="modal fade" role="dialog" style="color:black;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Tests</h4>
+            </div>
+            <div class="modal-body">
+              <p ng-show="!results">Running unit tests...</p>
+              <p ng-show="results">{{'{{results}}'}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row" style="text-align:left">
-        <h2 style="text-align:left">Tools</h2>
-        <div container>
-          <table id="stat-table" class="table-condensed table-bordered table-striped table-responsive">
-            <thead>
-              <th>Use</th>
-              <th>Tool</th>
-            </thead>
-              <tr>
-                <td>Front-End</td>
-                <td>
-                  • Bootstrap<br>
-                  • HTML<br>
-                  • CSS<br>
-                  • Javascript<br>
-                  • jQuery<br>
-                </td>
-              </tr>
-              <tr>
-                <td>Back-End</td>
-                <td>
-                  • SQLAlchemy<br>
-                  • Flask<br>
-                  • Python<br>
-                  • Google Cloud App Engine<br>
-                  • Namecheap<br>
-                </td>
-              </tr>
-              <tr>
-                <td>Embedding-Media Services</td>
-                <td>
-                  • Spotify API<br>
-                </td>
-              </tr>
-            </table>
-        </div>
-      </div>
+    </div>
 
 
   </div>
