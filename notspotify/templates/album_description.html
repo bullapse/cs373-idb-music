@@ -30,20 +30,27 @@
 
 {% block content %}
 
-<h3>Album</h3>
-
-<div class="media">
-  <div class="media-left">
-    <img class="album-image" src="{{album.image_url}}">
-  </div>
-  <div class="media-body">
-    <h1>{{album.name}}</h1>
-    <h4>Popularity: <small>{{album.popularity}}</small></h4>
-    <h4>Release Date: <small>{{album.release_date}}</small></h4>
-    <h4>Number of Tracks: <small>{{album.number_of_tracks}}</small></h4>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-responsive" src="{{album.image_url}}">
+    </div>
+    <div class="col-md-6">
+    <h1 class="text-success">{{album.name}}</h1>
+    <h4 class="text-success">Popularity:</h4>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" 
+        aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
+      </div>
+    </div>
+    <h4 class="text-success">Release Date: <small>{{album.release_date}}</small></h4>
+    <h4 class="text-success">Number of Tracks: <small>{{album.number_of_tracks}}</small></h4>
+    </div>
   </div>
 </div>
-<h4>Artists</h4>
+
+
+<h2 class="text-success">Artists</h4>
 <div class="container">
   <table id="table0">
     <thead>
@@ -74,7 +81,11 @@
           {{artist.followers}}
         </td>
         <td>
-          {{artist.popularity}}
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" 
+            aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
+          </div>
+        </div>
         </td>
         <td>
           {{artist.numofalbums}}
