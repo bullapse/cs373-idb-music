@@ -34,18 +34,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="media">
-  <div class="media-left">
-    <img class="album-image" src="{{track.artists[0].image_url}}">
-  </div>
-  <div class="media-body">
-    <h1 class="text-success">{{track.name}}</h1>
-    <h4 class="text-success">Explicit: <small>{{track.explicit}}</small></h4>
-    <h4 class="text-success">Runtime: <small>{{track.runtime}}</small></h4>
-    <h4 class="text-success">Popularity:</h4>
-    <div class="progress">
-      <div class="progress-bar progress-bar-success" role="progressbar" 
-        aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-responsive" src="{{track.artists[0].image_url}}">
+    </div>
+    <div class="col-md-6">
+      <h1 class="text-success">{{track.name}}</h1>
+      <h4 class="text-success">Explicit: <small>{{track.explicit}}</small></h4>
+      <h4 class="text-success">Runtime: <small>{{track.runtime}}</small></h4>
+      <h4 class="text-success">Popularity:</h4>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" 
+          aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
+        </div>
       </div>
     </div>
   </div>

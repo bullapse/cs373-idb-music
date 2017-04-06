@@ -35,21 +35,23 @@
 
 {% block content %}
 
-<div class="media">
-  <div class="media-left">
-    <img class="album-image" src="{{artist.image_url}}">
-  </div>
-  <div class="media-body">
-    <h1 class="text-success">{{artist.name}}</h1>
-    <h4 class="text-success">Popularity:</h4>
-    <div class="progress">
-      <div class="progress-bar progress-bar-success" role="progressbar" 
-        aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-responsive" src="{{artist.image_url}}">
     </div>
-    <h4 class="text-success">Followers: <small>{{artist.followers}}</small></h4>
-    <h4 class="text-success">Number of Tracks: <small>{{artist.number_of_tracks}}</small></h4>
-    <h4 class="text-success">Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
+    <div class="col-md-6">
+      <h1 class="text-success">{{artist.name}}</h1>
+      <h4 class="text-success">Popularity:</h4>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" 
+          aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
+        </div>
+      </div>
+      <h4 class="text-success">Followers: <small>{{artist.followers}}</small></h4>
+      <h4 class="text-success">Number of Tracks: <small>{{artist.number_of_tracks}}</small></h4>
+      <h4 class="text-success">Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
+    </div>
   </div>
 </div>
 <h2 class="text-success">Albums by {{artist.name}}</h2>
