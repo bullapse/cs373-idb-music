@@ -41,7 +41,9 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     # Register the Bookshelf CRUD blueprint.
     from .crud import crud
     app.register_blueprint(crud)
-
+    from .api import api
+    app.register_blueprint(api)
+    
     # Add a default root route.
     @app.route("/")
     def index():
