@@ -36,7 +36,12 @@
   </div>
   <div class="media-body">
     <h1 class="text-success">{{album.name}}</h1>
-    <h4 class="text-success">Popularity: <small>{{album.popularity}}</small></h4>
+    <h4 class="text-success">Popularity:</h4>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" 
+        aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
+      </div>
+    </div>
     <h4 class="text-success">Release Date: <small>{{album.release_date}}</small></h4>
     <h4 class="text-success">Number of Tracks: <small>{{album.number_of_tracks}}</small></h4>
   </div>
@@ -72,7 +77,11 @@
           {{artist.followers}}
         </td>
         <td>
-          {{artist.popularity}}
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" 
+            aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
+          </div>
+        </div>
         </td>
         <td>
           {{artist.numofalbums}}

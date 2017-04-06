@@ -73,7 +73,11 @@
               {{track.runtime}}
             </td>
             <td>
-              {{track.popularity}}
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" 
+                aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
+              </div>
+            </div>
             </td>
             <td>
               <audio controls>

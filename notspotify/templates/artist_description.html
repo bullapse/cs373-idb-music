@@ -41,7 +41,12 @@
   </div>
   <div class="media-body">
     <h1 class="text-success">{{artist.name}}</h1>
-    <h4 class="text-success">Popularity: <small>{{artist.popularity}}</small></h4>
+    <h4 class="text-success">Popularity:</h4>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" 
+        aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
+      </div>
+    </div>
     <h4 class="text-success">Followers: <small>{{artist.followers}}</small></h4>
     <h4 class="text-success">Number of Tracks: <small>{{artist.number_of_tracks}}</small></h4>
     <h4 class="text-success">Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
@@ -90,7 +95,11 @@
           1
         </td>
         <td>
-          {{album.popularity}}
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" 
+            aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
+          </div>
+        </div>
         </td>
       </tr>
       {% endfor %}
@@ -134,7 +143,11 @@
            {{track.runtime}}
          </td>
          <td>
-           {{track.popularity}}
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" 
+            aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
+          </div>
+        </div>
          </td>
          <td>
            <audio controls>
