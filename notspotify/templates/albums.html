@@ -15,15 +15,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">NotSpotify</a>
+        <a class="navbar-brand" href="/index.html">NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="artists">Artist</a></li>
-          <li class="active"><a href="albums">Albums</a></li>
-          <li><a href="tracks">Tracks</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/artists">Artist</a></li>
+          <li class="active"><a href="/albums">Albums</a></li>
+          <li><a href="/tracks">Tracks</a></li>
+          <li><a href="/about.html">About</a></li>
         </ul>
       </div>
     </div>
@@ -43,28 +43,26 @@
           <th></th>
           <th>
             Name
-            <a href="albums?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="albums?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            <a href="/albums?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="/albums?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
           </th>
           <th>
             Release Date
-            <a href="albums?sort=release_date"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="albums?sort=release_date&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            <a href="/albums?sort=release_date"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="/albums?sort=release_date&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
           </th>
           <th>
             Number of Tracks
-            <a href="albums?sort=number_of_tracks"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="albums?sort=number_of_tracks&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            <a href="/albums?sort=number_of_tracks"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="/albums?sort=number_of_tracks&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
           </th>
           <th>
             Number of Artists
-            <a href="albums?sort=artists"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="albums?sort=artists&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
           </th>
           <th>
             Popularity
-            <a href="albums?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="albums?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            <a href="/albums?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="/albums?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
           </th>
         </tr>
       </thead>
@@ -84,8 +82,7 @@
             {{album.number_of_tracks}}
           </td>
           <td>
-          <!-- TODO: Query number of artists -->
-            1
+            {{album.number_of_artists}}
           </td>
           <td>
             {{album.popularity}}
