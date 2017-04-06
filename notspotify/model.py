@@ -138,7 +138,8 @@ def read_artist(id):
 
 # [START read_artist_name]
 def read_artist_name(name):
-    return Artist.query.filter_by_(name=name).first()
+    result = Artist.query.filter_by(name=name).first()
+    return from_sql(result) if result else None
 
 # [END read_artist_name]
 
@@ -147,7 +148,7 @@ def read_artist_name(name):
 def update_artist(data, id):
     artist = Artist.query.get(id)
     for k, v in data.items():
-        setattr(book, k, v)
+        setattr(artist, k, v)
     db.session.commit()
     return from_sql(artist)
 # [END update_artist]
@@ -168,6 +169,7 @@ class Album(db.Model):
     name = db.Column(db.String(64), nullable=False)
     image_url = db.Column(db.String(128))
     release_date = db.Column(db.Date, nullable=False)
+    spotify_uri = db.Column(db.String(128))
     number_of_tracks = db.Column(db.Integer, nullable=False)
     artists = db.relationship("Artist", secondary=artist_album_association, backref="album")
     popularity = db.Column(db.Integer, nullable=False)
@@ -302,6 +304,7 @@ class Track(db.Model):
     artists = db.relationship("Artist", secondary=artist_track_association, backref="track")
     albums = db.relationship("Album", secondary=album_track_association, backref="track")
     explicit = db.Column(db.Boolean)
+    spotify_uri = db.Column(db.String(128))
     runtime = db.Column(db.Integer, nullable=False)
     popularity = db.Column(db.Integer, nullable=False)
     preview_url = db.Column(db.String(128), nullable=True)
