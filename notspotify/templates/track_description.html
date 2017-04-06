@@ -41,7 +41,10 @@
     <h1>{{track.name}}</h1>
     <div class="details">
       <div><strong>Explicit:</strong> {{track.explicit}}</div>
-      <div><strong>Runtime:</strong> {{track.runtime}}</div>
+      <div><strong>Runtime:</strong> <div id=#runtime data-runtime={{track.runtime}}>
+        {{track.runtime}}
+        </div>
+      </div>
       <div><strong>Popularity:</strong></div>
       <div class="progress">
         <div id="pg" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{track.popularity}} aria-valuemin="0" aria-valuemax="100" style="width: 0%">
