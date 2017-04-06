@@ -129,7 +129,6 @@ class MyTest(flask_testing.TestCase):
         self.assertTrue(check_is_sorted(page[0], 'popularity'))
 
     def test_add_album1(self):
-
         model.Album.query.filter_by(id = 'id').delete()
 
         beforeCount = model.Album.query.count()
@@ -213,6 +212,22 @@ class MyTest(flask_testing.TestCase):
         self.assertEqual(len(page[0]), 10)
         self.assertEqual(page[1], 20)
 
+    def test_rest_album_sort_name(self):
+        page = model.list_albums(sort_by='name')
+        self.assertTrue(check_is_sorted(page[0], 'name'))
+
+    def test_rest_album_sort_release_date(self):
+        page = model.list_albums(sort_by='release_date')
+        self.assertTrue(check_is_sorted(page[0], 'release_date'))
+
+    def test_rest_album_sort_number_of_tracks(self):
+        page = model.list_albums(sort_by='number_of_tracks')
+        self.assertTrue(check_is_sorted(page[0], 'number_of_tracks'))
+
+    def test_rest_album_sort_number_of_popularity(self):
+        page = model.list_albums(sort_by='popularity')
+        self.assertTrue(check_is_sorted(page[0], 'popularity'))
+
     def test_add_track1(self):
         model.Track.query.filter_by(id = 'id').delete()
 
@@ -291,14 +306,25 @@ class MyTest(flask_testing.TestCase):
     def test_rest_track_paging1(self):
         page = model.list_tracks()
 
-        self.assertEqual(len(page[0]), 10)
-        self.assertEqual(page[1], 10)
-
-    def test_rest_track_paging2(self):
-        page = model.list_tracks(cursor=10)
-
-        self.assertEqual(len(page[0]), 10)
+        self.assertEqual(len(page[0]), 20)
         self.assertEqual(page[1], 20)
 
+    def test_rest_track_paging2(self):
+        page = model.list_tracks(cursor=20)
+
+        self.assertEqual(len(page[0]), 20)
+        self.assertEqual(page[1], 40)
+
+    def test_rest_track_sort_name(self):
+        page = model.list_tracks(sort_by='name')
+        self.assertTrue(check_is_sorted(page[0], 'name'))
+
+    def test_rest_track_sort_runtime(self):
+        page = model.list_tracks(sort_by='runtime')
+        self.assertTrue(check_is_sorted(page[0], 'runtime'))
+
+    def test_rest_track_sort_number_of_popularity(self):
+        page = model.list_tracks(sort_by='popularity')
+        self.assertTrue(check_is_sorted(page[0], 'popularity'))
 if __name__ == '__main__':
     unittest.main()
