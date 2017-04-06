@@ -309,12 +309,25 @@ class Track(db.Model):
 
 
 # [START list_tracks]
-def list_tracks(limit=10, cursor=None, order_by=Track.name):
+def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
+    def sort(x):
+        return {
+            "name": Track.name,
+            "runtime": Track.runtime,
+            "popularity": Track.popularity,
+        }.get(x, Track.name)
+    sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
-    query = (Track.query
-             .order_by(order_by)
-             .limit(limit)
-             .offset(cursor))
+    if order:
+        query = (Track.query
+                 .order_by(db.desc(sort_by))
+                 .limit(limit)
+                 .offset(cursor))
+    else:
+        query = (Track.query
+                 .order_by(sort_by)
+                 .limit(limit)
+                 .offset(cursor))
     tracks = builtin_list(map(from_sql, query.all()))
     next_page = cursor + limit if len(tracks) == limit else None
     return (tracks, next_page)

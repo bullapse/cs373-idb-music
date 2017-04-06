@@ -165,8 +165,14 @@ def list_tracks():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
-    tracks, next_page_token = get_model().list_tracks(cursor=token)
-    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
+    sort = request.args.get('sort', None)
+    order = request.args.get('order', None)
+    if sort:
+        sort = str(sort)
+        if order:
+            order = order.encode('utf-8')
+    tracks, next_page_token = get_model().list_tracks(cursor=token, sort_by=sort, order=order)
+    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token, sort_by=sort, order=order)
 # [END list_tracks]
 
 
