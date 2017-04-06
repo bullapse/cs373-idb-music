@@ -34,18 +34,6 @@ def list_artists_template():
 # [END list_artists_template]
 
 
-# [START list_artist_api]
-@crud.route('/api/artists', methods=['GET'])
-def list_artist_api():
-    token, sort, order = get_args(request.args)
-    artists, next_page_token = get_model().list_artists(cursor=token, sort_by=sort, order=order)
-    for artist in artists:
-        artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
-        artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
-    return jsonify([artists, next_page_token])
-# [END list_artist_api]
-
-
 # [START list_artist_description_template]
 @crud.route('/artist/<id>', methods=['GET'])
 def list_artist_description_template(id):
@@ -59,18 +47,6 @@ def list_artist_description_template(id):
 # [END list_artist_description_template]
 
 
-# [START list_artist_description_api]
-@crud.route('/api/artist/<id>', methods=['GET'])
-def list_artist_description_api(id):
-    artist = get_model().read_artist(id)
-    artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
-    artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
-    artist['albums'], _ = get_model().list_albums_by_artist(id)
-    artist['tracks'], _ = get_model().list_tracks_by_artist(id)
-    return jsonify(artist)
-# [END list_artist_description_api]
-
-
 # [START artist_description_name]
 @crud.route('/artist/name/<name>', methods=['GET'])
 def artist_description_name(name):
@@ -78,16 +54,6 @@ def artist_description_name(name):
     artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
     artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
     return render_template("artist_description.html", artist=artist)
-# [END artist_description_name]
-
-
-# [START artist_description_name]
-@crud.route('/api/artist/name/<name>', methods=['GET'])
-def artist_description_name_api(name):
-    artist = get_model().read_artist_name(name)
-    artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
-    artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
-    return jsonify(artist)
 # [END artist_description_name]
 
 
@@ -100,30 +66,12 @@ def list_artist_description__by_track_template(id):
 # [END list_artist_description__by_track_template]
 
 
-# [START list_artist_description__by_track_api]
-@crud.route('/api/artist/track/<id>', methods=['GET'])
-def list_artist_description__by_track_api(id):
-    token, sort, order = get_args(request.args)
-    artists, next_page_token = get_model().list_artists_by_track(id, cursor=token)
-    return jsonify([artists, next_page_token])
-# [END list_artist_description__by_track_api]
-
-
 # [START list_artist_description__by_track_name]
 @crud.route('/artist/track/name/<name>', methods=['GET'])
 def list_artist_description__by_track_name_template(name):
     token, sort, order = get_args(request.args)
     artists = get_model().list_artists_by_track_name(name, cursor=token)
     return render_template("artists.html", artists=artists, next_page_token=next_page_token)
-# [END list_artist_description__by_track_name]
-
-
-# [START list_artist_description__by_track_name]
-@crud.route('/api/artist/track/name/<name>', methods=['GET'])
-def list_artist_description__by_track_name_api(name):
-    token, sort, order = get_args(request.args)
-    artists, next_page_token = get_model().list_artists_by_track_name(name, cursor=token)
-    jsonify([artists, next_page_token])
 # [END list_artist_description__by_track_name]
 
 
@@ -136,30 +84,12 @@ def list_artist_description__by_album_template(id):
 # [END list_artist_description__by_album_template]
 
 
-# [START list_artist_description__by_album_api]
-@crud.route('/api/artist/album/<id>', methods=['GET'])
-def list_artist_description__by_album_api(id):
-    token, sort, order = get_args(request.args)
-    artists = get_model().list_artists_by_album(id, cursor=token)
-    return jsonify(artists)
-# [END list_artist_description__by_album_api]
-
-
 # [START list_artist_description__by_album_name]
 @crud.route('/artist/album/name/<name>', methods=['GET'])
 def list_artist_description__by_album_name_template(name):
     token, sort, order = get_args(request.args)
     artists, next_page_token = get_model().list_artists_by_album_name(name, cursor=token)
     return render_template("artists.html", artists=artists, next_page_token=next_page_token)
-# [END list_artist_description__by_album_name]
-
-
-# [START list_artist_description__by_album_name]
-@crud.route('/api/artist/album/name/<name>', methods=['GET'])
-def list_artist_description__by_album_name_api(name):
-    token, sort, order = get_args(request.args)
-    artists, next_page_token = get_model().list_artists_by_album_name(name, cursor=token)
-    return jsonify(artists)
 # [END list_artist_description__by_album_name]
 
 # ---------------------- ALBUMS -------------------------- #
@@ -176,17 +106,6 @@ def list_albums_template():
 # [END list_albums_template]
 
 
-# [START list_albums_api]
-@crud.route('/api/albums', methods=['GET'])
-def list_albums_api():
-    token, sort, order = get_args(request.args)
-    albums, next_page_token = get_model().list_albums(cursor=token, sort_by=sort, order=order)
-    for album in albums:
-        album['number_of_artists'] = get_model().get_number_of_artist_on_album(album['id'])
-    return jsonify([albums, next_page_token])
-# [END list_albums_api]
-
-
 # [START album_description_id_template]
 @crud.route('/album/<id>', methods=['GET'])
 def album_description_id_template(id):
@@ -197,32 +116,12 @@ def album_description_id_template(id):
 # [END album_description_id_template]
 
 
-# [START album_description_id_api]
-@crud.route('/api/album/<id>', methods=['GET'])
-def album_description_id_api(id):
-    album = get_model().read_album(id)
-    artists = get_model().list_artists_by_album(id)
-    tracks = get_model().list_tracks_by_album(id)
-    album['artists'] = artists
-    album['tracks'] = tracks
-    return jsonify(artists)
-# [END album_description_id_api]
-
-
 # [START album_description_name_template]
 @crud.route('/album/name/<name>', methods=['GET'])
 def album_description_name_template(name):
     album = get_model().read_album_name(name)
     return render_template("album_description.html", album=album)
 # [END album_description_name_template]
-
-
-# [START album_description_name_api]
-@crud.route('/api/album/name/<name>', methods=['GET'])
-def album_description_name_api(name):
-    album = get_model().read_album_name(name)
-    return jsonify(album)
-# [END album_description_name_api]
 
 
 # [START albums_by_artist_name_template]
@@ -234,15 +133,6 @@ def albums_by_artist_name_template(name):
 # [END albums_by_artist_name_template]
 
 
-# [START albums_by_artist_name_api]
-@crud.route('/api/album/artist/name/<name>', methods=['GET'])
-def albums_by_artist_name_api(name):
-    token, sort, order = get_args(request.args)
-    albums, next_page_token = get_model().list_albums_by_artist_name(name, cursor=token)
-    return jsonify([albums, next_page_token])
-# [END albums_by_artist_name_api]
-
-
 # [START albums_by_artist_template]
 @crud.route('/album/artist/<id>', methods=['GET'])
 def albums_by_artist_template(id):
@@ -250,15 +140,6 @@ def albums_by_artist_template(id):
     albums, next_page_token = get_model().list_albums_by_artist(id, cursor=token)
     return render_template("albums.html", albums=albums, next_page_token=next_page_token)
 # [END albums_by_artist_template]
-
-
-# [START albums_by_artist_api]
-@crud.route('/api/album/artist/<id>', methods=['GET'])
-def albums_by_artist_api(id):
-    token, sort, order = get_args(request.args)
-    albums, next_page_token = get_model().list_albums_by_artist(id, cursor=token)
-    return jsonify([albums, next_page_token])
-# [END albums_by_artist_api]
 
 # ---------------------- TRACKS -------------------------- #
 
@@ -272,15 +153,6 @@ def list_tracks_template():
 # [END list_tracks_template]
 
 
-# [START list_tracks_api]
-@crud.route('/api/tracks', methods=['GET'])
-def list_tracks_api():
-    token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks(cursor=token, sort_by=sort, order=order)
-    return jsonify([tracks, next_page_token])
-# [END list_tracks_api]
-
-
 # [START tracks_by_artist_name_template]
 @crud.route('/track/artist/name/<name>')
 def tracks_by_artist_name_template(name):
@@ -288,15 +160,6 @@ def tracks_by_artist_name_template(name):
     tracks, next_page_token = get_model().list_tracks_by_artist_name(name)
     return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
 # [END tracks_by_artist_name_template]
-
-
-# [START tracks_by_artist_name_api]
-@crud.route('/api/track/artist/name/<name>')
-def tracks_by_artist_name_api(name):
-    token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_artist_name(name)
-    return jsonify([tracks, next_page_token])
-# [END tracks_by_artist_name_api]
 
 
 # [START tracks_by_artist_template]
@@ -308,15 +171,6 @@ def tracks_by_artist_template(id):
 # [END tracks_by_artist_template]
 
 
-# [START tracks_by_artist_api]
-@crud.route('/api/track/artist/<id>')
-def tracks_by_artist_api(id):
-    token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_artist(id)
-    return jsonify([tracks, next_page_token])
-# [END tracks_by_artist_api]
-
-
 # [START tracks_by_album_name_template]
 @crud.route('/track/album/name/<name>')
 def tracks_by_album_name_template(name):
@@ -326,15 +180,6 @@ def tracks_by_album_name_template(name):
 # [END tracks_by_album_name_template]
 
 
-# [START tracks_by_album_name_api]
-@crud.route('/api/track/album/name/<name>')
-def tracks_by_album_name_api(name):
-    token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_album_name(name)
-    return jsonify([tracks, next_page_token])
-# [END tracks_by_album_name_api]
-
-
 # [START tracks_by_album_template]
 @crud.route('/track/album/<id>')
 def tracks_by_album_template(id):
@@ -342,15 +187,6 @@ def tracks_by_album_template(id):
     tracks, next_page_token = get_model().list_tracks_by_album(id)
     return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
 # [END tracks_by_album_template]
-
-
-# [START tracks_by_album_api]
-@crud.route('/api/track/album/<id>')
-def tracks_by_album_api(id):
-    token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_album(id)
-    return jsonify([tracks, next_page_token])
-# [END tracks_by_album_api]
 
 
 # [START track_description_id_template]
