@@ -60,8 +60,8 @@ def list_artist_description__by_track_api(id):
 # [START list_artist_description__by_album_api]
 @api.route('/api/' + API_VERSION + '/artist/album/<id>', methods=['GET'])
 def list_artist_description__by_album_api(id):
-    token, sort, order = get_args(request.args)
-    artists = get_model().list_artists_by_album(id, cursor=token)
+    artists = get_model().list_artists_by_album(id)
+    print(artists)
     return jsonify(artists)
 # [END list_artist_description__by_album_api]
 
@@ -75,6 +75,8 @@ def list_albums_api():
     albums, next_page_token = get_model().list_albums(cursor=token, sort_by=sort, order=order)
     for album in albums:
         album['number_of_artists'] = get_model().get_number_of_artist_on_album(album['id'])
+        album['artists'] = get_model().list_artists_by_album(album['id'])
+        album['tracks'] = get_model().list_tracks_by_album(album['id'])
     return jsonify([albums, next_page_token])
 # [END list_albums_api]
 
@@ -87,7 +89,7 @@ def album_description_id_api(id):
     tracks = get_model().list_tracks_by_album(id)
     album['artists'] = artists
     album['tracks'] = tracks
-    return jsonify(artists)
+    return jsonify(album)
 # [END album_description_id_api]
 
 
@@ -96,6 +98,11 @@ def album_description_id_api(id):
 def albums_by_artist_api(id):
     token, sort, order = get_args(request.args)
     albums, next_page_token = get_model().list_albums_by_artist(id, cursor=token)
+    for album in albums:
+        artists = get_model().list_artists_by_album(album['id'])
+        tracks, _ = get_model().list_tracks_by_album(album['id'])
+        album['artists'] = artists
+        album['tracks'] = tracks
     return jsonify([albums, next_page_token])
 # [END albums_by_artist_api]
 

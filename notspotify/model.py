@@ -227,7 +227,7 @@ def list_albums_by_artist_name(name, limit=10, cursor=None):
 # [START list_albums_by_artist]
 def list_albums_by_track(id, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Track.query.filter(Track.albums.any(id=id)).all())
+    query = (Album.query.filter(Album.tracks.any(id=id)).all())
     albums = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(albums) == limit else None
     return (albums, next_page)
@@ -237,7 +237,7 @@ def list_albums_by_track(id, limit=10, cursor=None):
 # [START list_albums_by_artist_name]
 def list_albums_by_track_name(name, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Track.query.filter(Track.albums.any(name=name)).all())
+    query = (Album.query.filter(Album.tracks.any(name=name)).all())
     albums = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(albums) == limit else None
     return (albums, next_page)
@@ -360,7 +360,7 @@ def list_tracks_by_artist_name(name, limit=10, cursor=None):
 # [START list_albums]
 def list_tracks_by_album(id, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Album.query.filter(Album.tracks.any(id=id)).all())
+    query = (Track.query.filter(Track.albums.any(id=id)).all())
     tracks = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(tracks) == limit else None
     return (tracks, next_page)
