@@ -1,19 +1,4 @@
 {% extends 'base.html' %}
-{% block scripts %}
-<script>
-$(document).ready(function(){
-  $('.progressbar').each(function(){
-    var bar = $(this).children('div');
-    var text = $(this).children('div').data('show');
-    progress(bar, text);
-  });
-});
-function progress(element, text) {
-  element.attr('style', "width:" + text + "%");
-}
-
-</script>
-{% endblock %}
 
 {% block background %}
   <div id="bckgrnd">
@@ -86,7 +71,7 @@ function progress(element, text) {
               {{track.runtime}}
             </td>
             <td class="progressbar">
-                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{track.popularity}} aria-valuemin="0" aria-valuemax="100" style="width: 0%" data-show={{track.popularity}}>
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{track.popularity}} aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
 
                   {{track.popularity}}
                 </div>

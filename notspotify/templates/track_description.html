@@ -47,10 +47,7 @@
       </div>
       <div><strong>Popularity:</strong></div>
       <div class="progress">
-        <div id="pg" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{track.popularity}} aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-          <script>
-            $('#pg').attr('style',"width:"+ {{track.popularity}} +'%');
-          </script>
+        <div id="pg" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{track.popularity}} aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
 
           {{track.popularity}}
         </div>
@@ -97,8 +94,10 @@
         <td>
           {{artist.followers}}
         </td>
-        <td>
-          {{artist.popularity}}
+        <td class="progressbar">
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{artist.popularity}} aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
+            {{artist.popularity}}
+          </div>
         </td>
       </tr>
       {% endfor %}
