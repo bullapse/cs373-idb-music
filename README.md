@@ -1,6 +1,4 @@
-# Welcome to the cs373-idb-music wiki!
-
-## NotSpotify
+# NotSpotify
 
 Group members: Spencer Bull, Thai-Son Nguyen, Hung Bao, Cameron Moeller
 
