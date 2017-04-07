@@ -1,3 +1,36 @@
+commit 9a49220bf15982be0c00ded086d10cdc96331e45
+Merge: e73286b f92d8c5
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 20:28:20 2017 -0500
+
+    Merge pull request #77 from bullapse/sam_dev
+    
+    add logo
+
+commit f92d8c554539620acfe2709f3099636869260561
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 20:27:48 2017 -0500
+
+    add logo
+
+commit e73286bccc76a10090a578f2acd464b0dbc11786
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 20:11:35 2017 -0500
+
+    Update README.md
+
+commit f2114dce50528809843dba53ce0293fe279ffb0a
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 20:11:14 2017 -0500
+
+    Update README.md
+
+commit b3c5faef08cfb7f0eb086c3011d02e2775498eb2
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 20:08:30 2017 -0500
+
+    update log
+
 commit 13535ef11be0b8ed1ae05103a3936deed710cdab
 Author: Spencer Bull <spencerbull2554@gmail.com>
 Date:   Thu Apr 6 20:07:18 2017 -0500
