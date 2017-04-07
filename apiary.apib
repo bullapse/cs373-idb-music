@@ -1,35 +1,120 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://notspotify.me/api/v1
 
 # cs373-idb-movies
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Polls the notspotify database to return desired values originally taken from spotify API
 
-## Artist [/artist]
+## Artists [/artists]
 
 ### List All Artist [GET]
 
 + Response 200 (application/json)
 
         [
+          [
             {
-                "id" : "1234553"
-                "name" : "Said the Sky",
-                "spotify_id" : "4LZ4De2MoO3lP6QaNCfvcu",
-                "images" : [
-                    {
-                        "height" : 816,
-                        "url" : "https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903",
-                        "width" : 1000
-                    }
-                ],
-                "popularity" : 59,
-                "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF",
-                "followers" : {
-                    "href" : null,
-                    "total" : 306565
-                },
+              "followers": 891220,
+              "id": "4D75GcNG95ebPtNvoNVXhz",
+              "image_url": "https://i.scdn.co/image/bec25756309b1f7af565252f78709d69a8f11974",
+              "name": "Afrojack",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 72,
+              "spotify_uri": null
+            },
+            {
+              "followers": 758183,
+              "id": "7vk5e3vY1uw9plTHJAMwjN",
+              "image_url": "https://i.scdn.co/image/68fd7abf9381115b3ac4e56cd8871b2ffe59f025",
+              "name": "Alan Walker",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 80,
+              "spotify_uri": null
+            },
+            {
+              "followers": 358,
+              "id": "0qLQkmES1i8yc5SYefKgAH",
+              "image_url": null,
+              "name": "Alastor",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 43,
+              "spotify_uri": null
+            },
+            {
+              "followers": 9520,
+              "id": "2vGaSKEDFsVPBgcnGxqlBN",
+              "image_url": "https://i.scdn.co/image/9fc4b3f85500d5eb3d32a8ddb4747da23b1c165f",
+              "name": "Alex Newell",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 56,
+              "spotify_uri": null
+            },
+            {
+              "followers": 273941,
+              "id": "2oX42qP5ineK3hrhBECLmj",
+              "image_url": "https://i.scdn.co/image/eb6cdb708eaab96c8c1b106747edad7e5cfc1f19",
+              "name": "Andy Grammer",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 72,
+              "spotify_uri": null
+            },
+            {
+              "followers": 1770976,
+              "id": "0SfsnGyD8FpIN4U4WCkBZ5",
+              "image_url": "https://i.scdn.co/image/ab17d7d79eceeeb05c95f34981641209aaf94b69",
+              "name": "Armin van Buuren",
+              "number_of_albums": 2,
+              "number_of_tracks": 2,
+              "popularity": 72,
+              "spotify_uri": null
+            },
+            {
+              "followers": 60654,
+              "id": "25mFVpuABa9GkGcj9eOPce",
+              "image_url": "https://i.scdn.co/image/d1a147ec0115b24483840ea3d81ec5f902d2b5c5",
+              "name": "Armin van Buuren ASOT Radio",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 28,
+              "spotify_uri": null
+            },
+            {
+              "followers": 59728,
+              "id": "4xnMDfgEmXZEEDdITKcGuE",
+              "image_url": "https://i.scdn.co/image/cc78408b42a9055ed82682139080f19407e62a3f",
+              "name": "Audien",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 64,
+              "spotify_uri": null
+            },
+            {
+              "followers": 5543683,
+              "id": "1vCWHaC5f2uS3yhpwWbIA6",
+              "image_url": "https://i.scdn.co/image/3a9d3815a61d321da6a6715c69b4941549121548",
+              "name": "Avicii",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 77,
+              "spotify_uri": null
+            },
+            {
+              "followers": 945062,
+              "id": "5ndkK3dpZLKtBklKjxNQwT",
+              "image_url": "https://i.scdn.co/image/7dfe81c8e7cb24be8baca435cb5c9b72829d5a56",
+              "name": "B.o.B",
+              "number_of_albums": 1,
+              "number_of_tracks": 1,
+              "popularity": 74,
+              "spotify_uri": null
             }
+          ],
+          10
         ]
 ## Artist ID [/artist/{id}]
 
@@ -41,328 +126,727 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 + Response 200 (application/json)
 
         {
-            "id" : "1234553"
-            "name" : "Said the Sky",
-            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-            "images" : [
-                {
-                    "height" : 816,
-                    "url" : "https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903",
-                    "width" : 1000
-                }
-            ],
-            "popularity" : 59,
-            "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF",
-            "followers" : {
-                "href" : null,
-                "total" : 306565
-            },
+          "albums": [
+            {
+              "id": "6QJ9u3wSJdQA2K8gMFSiKQ",
+              "image_url": "https://i.scdn.co/image/5000618d29f7ddfef4929ca61e6f479b6eb2383c",
+              "name": "Do Or Die (Remix)",
+              "number_of_tracks": 1,
+              "popularity": 25,
+              "release_date": "Wed, 01 Jan 2014 00:00:00 GMT"
+            }
+          ],
+          "followers": 891220,
+          "id": "4D75GcNG95ebPtNvoNVXhz",
+          "image_url": "https://i.scdn.co/image/bec25756309b1f7af565252f78709d69a8f11974",
+          "name": "Afrojack",
+          "number_of_albums": 1,
+          "number_of_tracks": 1,
+          "popularity": 72,
+          "spotify_uri": null,
+          "tracks": [
+            {
+              "explicit": false,
+              "id": "3I75XRqyK9ptnJdVEQfL4V",
+              "name": "Do Or Die - Afrojack vs. THIRTY SECONDS TO MARS Remix",
+              "popularity": 36,
+              "preview_url": "https://p.scdn.co/mp3-preview/3538ba1c8b734edc7141cf016c2f093d1a8a58c8?cid=null",
+              "runtime": 278174,
+              "spotify_uri": null
+            }
+          ]
         }
 
-## Artist Name [/artist/{name}]
 
-### Get Artist By Name [GET]
+
+## Get Artists by Track ID [/artist/track/{id}{?page_token}]
+
+### Get Artist By Track ID [GET]
 
 + Parameters
-    + name - A path variable that is required for a valid URL
-
-+ Response 200 (application/json)
-
-        {
-            "id" : "1234553"
-            "name" : "Said the Sky",
-            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-            "images" : [
-                {
-                    "height" : 816,
-                    "url" : "https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903",
-                    "width" : 1000
-                }
-            ],
-            "popularity" : 59,
-            "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF",
-            "followers" : {
-                "href" : null,
-                "total" : 306565
-            },
-        }
-
-## Album [/album]
-
-### List All Albums [GET]
+    + page_token - cursor for database to start at
 
 + Response 200 (application/json)
 
         [
+          [
             {
-                "id" : "1234553"
-                "name" : "C",
-                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-                "artist" : [
-                    {
-                        "external_urls" : {
-                              "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
-                        },
-                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
-                        "id" : "2BTZIqw0ntH9MvilQ3ewNY",
-                        "name" : "Cyndi Lauper",
-                        "type" : "artist",
-                        "uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
-                    }
-                ],
-                "copyrights" : [ {
-                    "text" : "(P) 2000 Sony Music Entertainment Inc.",
-                    "type" : "P"
-                } ],
-                "external_ids" : {
-                    "upc" : "5099749994324"
-                },
-                "external_urls" : {
-                    "spotify" : "https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj"
-                },
-                "genres" : [],
-                "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
-                "images" : [ {
-                    "height" : 640,
-                    "url" : "https://i.scdn.co/image/07c323340e03e25a8e5dd5b9a8ec72b69c50089d",
-                    "width" : 640
-                }, {
-                    "height" : 300,
-                    "url" : "https://i.scdn.co/image/8b662d81966a0ec40dc10563807696a8479cd48b",
-                    "width" : 300
-                }, {
-                    "height" : 64,
-                    "url" : "https://i.scdn.co/image/54b3222c8aaa77890d1ac37b3aaaa1fc9ba630ae",
-                    "width" : 64
-                } ],
-                "popularity" : 39,
-                "release_date" : "1983",
-                "release_date_precision" : "year",
-                "tracks" : {
-                    "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj/tracks?offset=0&limit=50",
-                    "items" : [ {
-                        "external_urls" : {
-                            "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
-                        },
-                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
-                        "spotifyid" : "2BTZIqw0ntH9MvilQ3ewNY",
-                        "artist_name" : "Cyndi Lauper",
-                        "spotify_uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
-                        }],
-                        "duration_ms" : 305560,
-                        "explicit" : false,
-                        "external_urls" : {
-                            "spotify" : "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V"
-                        },
-                        "href" : "https://api.spotify.com/v1/tracks/3f9zqUnrnIq0LANhmnaF0V",
-                        "id" : "3f9zqUnrnIq0LANhmnaF0V",
-                        "name" : "Money Changes Everything",
-                        "preview_url" : "https://p.scdn.co/mp3-preview/01bb2a6c9a89c05a4300aea427241b1719a26b06",
-                        "track_number" : 1,
-                        "type" : "track",
-                        "uri" : "spotify:track:3f9zqUnrnIq0LANhmnaF0V"
-                    },
-                    ...
-                    ],
-                    "total" : 13,
-                    "spotify_uri" : "spotify:album:0sNOF9WDwhWunNAHPD3Baj"
-
-                }
+              "followers": 682731,
+              "id": "3t5xRXzsuZmMDkQzgOX35S",
+              "image_url": "https://i.scdn.co/image/1fa230bbcf16dd5161ce7fac7f9056f5bb39953a",
+              "name": "Robin Schulz",
+              "popularity": 80,
+              "spotify_uri": null
             }
+          ],
+          null
         ]
 
+## Albums [/albums{?page_token,sort,order}]
+
+### List All Albums [GET]
+
++ Parameters
+    + page_token - cursor for database on where to start, otherwise return the first 10
+    + sort - fields to sort by {name, release_date, number_of_tracks, popularity}
+    + order - desc if you want the sorted result in desc order, otherwise ascending
+
++ Response 200 (application/json)
+
+        [
+          [
+            {
+              "artists": [
+                {
+                  "followers": 60758,
+                  "id": "25mFVpuABa9GkGcj9eOPce",
+                  "image_url": "https://i.scdn.co/image/d1a147ec0115b24483840ea3d81ec5f902d2b5c5",
+                  "name": "Armin van Buuren ASOT Radio",
+                  "popularity": 28,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "3CRyTUToJeE1pf1zzWJPuv",
+              "image_url": "https://i.scdn.co/image/2247a03fbb1642c184c99f12085a4668098c3a38",
+              "name": "A State Of Trance Episode 646",
+              "number_of_artists": 1,
+              "number_of_tracks": 29,
+              "popularity": 16,
+              "release_date": "Thu, 02 Jan 2014 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "12DRtcWD1s1Msg2kmXg7mS",
+                    "name": "Sydneysider [ASOT 646] - Original Mix",
+                    "popularity": 10,
+                    "preview_url": "https://p.scdn.co/mp3-preview/540618f915bbfe166b3f830e1b8b87ef10c922ce?cid=null",
+                    "runtime": 218515,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 1709702,
+                  "id": "2o5jDhtHVPhrJdv3cEQ99Z",
+                  "image_url": "https://i.scdn.co/image/d0e72b0b27fcb36fd7f1ccb77728ef772429cdc0",
+                  "name": "Tiësto",
+                  "popularity": 78,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "1116PKIKlArm87HVaPtonW",
+              "image_url": "https://i.scdn.co/image/f505c34d7e26c2e029a8b0e19fee76a501cc167f",
+              "name": "A Town Called Paradise (Deluxe)",
+              "number_of_artists": 1,
+              "number_of_tracks": 18,
+              "popularity": 55,
+              "release_date": "Fri, 13 Jun 2014 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "5dsNFudtqjActV0oQCF8lh",
+                    "name": "Footprints",
+                    "popularity": 45,
+                    "preview_url": "https://p.scdn.co/mp3-preview/a648cbb6c07ac8d141f2e886b8861fe4bb829d16?cid=null",
+                    "runtime": 257053,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 8294,
+                  "id": "0LmXoyW6K4zJ48lCRq7w3h",
+                  "image_url": "https://i.scdn.co/image/a7d1b9bef8f4a09542db557d1fbefdd3cbe658d5",
+                  "name": "Built By Titan",
+                  "popularity": 42,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "6mUSMeapYx9YnHBZ4P4cQv",
+              "image_url": "https://i.scdn.co/image/1ce63fa30b3047d38c8628c1c1ca41180251b088",
+              "name": "Air (feat. Jason Eskridge)",
+              "number_of_artists": 1,
+              "number_of_tracks": 1,
+              "popularity": 0,
+              "release_date": "Fri, 13 Feb 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "2HORMpJ4WkaL0CgAqci8mU",
+                    "name": "Air (feat. Jason Eskridge)",
+                    "popularity": 0,
+                    "preview_url": null,
+                    "runtime": 291731,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 8294,
+                  "id": "0LmXoyW6K4zJ48lCRq7w3h",
+                  "image_url": "https://i.scdn.co/image/a7d1b9bef8f4a09542db557d1fbefdd3cbe658d5",
+                  "name": "Built By Titan",
+                  "popularity": 42,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "7fGu9C0cdUuHajJbVzbaTI",
+              "image_url": "https://i.scdn.co/image/8712ef690d291c7b5bf1b6b87070981bb500ac97",
+              "name": "Alpha",
+              "number_of_artists": 1,
+              "number_of_tracks": 7,
+              "popularity": 40,
+              "release_date": "Mon, 12 Jan 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "3nVnLslJIUTASFqVY4qLbi",
+                    "name": "The Darkness (Dot J Remix) [feat. Svrcina]",
+                    "popularity": 26,
+                    "preview_url": "https://p.scdn.co/mp3-preview/a68beee36899dd966fac69f8d004165322e6f9eb?cid=null",
+                    "runtime": 276381,
+                    "spotify_uri": null
+                  },
+                  {
+                    "explicit": false,
+                    "id": "581gLYhF5OxQzgfIMGlAvu",
+                    "name": "Collide (feat. Jonathan Thulin)",
+                    "popularity": 41,
+                    "preview_url": "https://p.scdn.co/mp3-preview/be3e559eace7ed3a708d0572de357697f0fa5b68?cid=null",
+                    "runtime": 235775,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 1772888,
+                  "id": "0SfsnGyD8FpIN4U4WCkBZ5",
+                  "image_url": "https://i.scdn.co/image/ab17d7d79eceeeb05c95f34981641209aaf94b69",
+                  "name": "Armin van Buuren",
+                  "popularity": 72,
+                  "spotify_uri": null
+                },
+                {
+                  "followers": 210020,
+                  "id": "33W1pnW9zScZtYTnAoWnOT",
+                  "image_url": "https://i.scdn.co/image/261cf047c334ad684d0c8e6b8ba0e32409679c70",
+                  "name": "Mr. Probz",
+                  "popularity": 69,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "2oO97tYOS5LmK0klvLSvFw",
+              "image_url": "https://i.scdn.co/image/dd550e9b817eed7f58cda89f17c62726a5147cdb",
+              "name": "Another You",
+              "number_of_artists": 2,
+              "number_of_tracks": 1,
+              "popularity": 50,
+              "release_date": "Tue, 21 Apr 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "1u6LOWtdWA2wwa3CryIBsS",
+                    "name": "Another You",
+                    "popularity": 62,
+                    "preview_url": "https://p.scdn.co/mp3-preview/889732a1a7a16ddec7524ba5e9f778fe0a5fb124?cid=null",
+                    "runtime": 192306,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 1772888,
+                  "id": "0SfsnGyD8FpIN4U4WCkBZ5",
+                  "image_url": "https://i.scdn.co/image/ab17d7d79eceeeb05c95f34981641209aaf94b69",
+                  "name": "Armin van Buuren",
+                  "popularity": 72,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "5wS0YJuUwahA7Szv1q52r9",
+              "image_url": "https://i.scdn.co/image/0ac368c6f541efc518a3493ac17944f5a40043dc",
+              "name": "Another You (CID Remix)",
+              "number_of_artists": 1,
+              "number_of_tracks": 2,
+              "popularity": 29,
+              "release_date": "Sat, 15 Aug 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "7aIJ4snE39xO8wxqC8jNgu",
+                    "name": "Another You - CID Remix",
+                    "popularity": 27,
+                    "preview_url": "https://p.scdn.co/mp3-preview/849a5319a74ed735702cb4105fd532db56d48c1c?cid=null",
+                    "runtime": 275833,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 947017,
+                  "id": "5ndkK3dpZLKtBklKjxNQwT",
+                  "image_url": "https://i.scdn.co/image/7dfe81c8e7cb24be8baca435cb5c9b72829d5a56",
+                  "name": "B.o.B",
+                  "popularity": 74,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "7hbh06ZRATcQtp6TU5vEtd",
+              "image_url": "https://i.scdn.co/image/de104ad142da7549d4152178cc3cf6dcde0b5e1d",
+              "name": "Back and Forth (Exige Remix)",
+              "number_of_artists": 1,
+              "number_of_tracks": 1,
+              "popularity": 15,
+              "release_date": "Fri, 18 Sep 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "76KVv67Bfn8XZzNPKDp1U5",
+                    "name": "Back and Forth - Exige Remix",
+                    "popularity": 26,
+                    "preview_url": "https://p.scdn.co/mp3-preview/9f7a371c16951156c38674dad7cfa5335ee9ad4c?cid=null",
+                    "runtime": 238333,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 7105,
+                  "id": "1Idp9q1i8l6kfJsTMPOqr7",
+                  "image_url": "https://i.scdn.co/image/d6000917a8524636be880b4a6f7e88f7008f5b18",
+                  "name": "Dbstf",
+                  "popularity": 55,
+                  "spotify_uri": null
+                },
+                {
+                  "followers": 198970,
+                  "id": "37awA8DFCAnCCL7aqYbDnD",
+                  "image_url": "https://i.scdn.co/image/6ff5ddd6c4acf922eef31356d5cd76a6a9e463b1",
+                  "name": "Blasterjaxx",
+                  "popularity": 63,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "4QBkLyYoKBRacPZy34Y3DR",
+              "image_url": "https://i.scdn.co/image/281bad3075dc23cd8b0ac7d48fc4cc2c6607c0d0",
+              "name": "Beautiful World (Radio Edit)",
+              "number_of_artists": 2,
+              "number_of_tracks": 1,
+              "popularity": 38,
+              "release_date": "Fri, 16 Jan 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "3zwakDP44DQ77ZDUKU3l2A",
+                    "name": "Beautiful World - Radio Edit",
+                    "popularity": 49,
+                    "preview_url": "https://p.scdn.co/mp3-preview/aeef555bc426e9d2d423166105b9d8e5ff5ed195?cid=null",
+                    "runtime": 214615,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 5326,
+                  "id": "2qPxiZiD34NtmokWN6RoP2",
+                  "image_url": "https://i.scdn.co/image/58bebdb8feec348f62c23d4e405422723a3f41fa",
+                  "name": "King Arthur",
+                  "popularity": 52,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "4mbQhUCF9bXCziVfefzcN0",
+              "image_url": "https://i.scdn.co/image/13df3c84a9c2bfb565924fdbfa5b9739db8ca612",
+              "name": "Belong to the Rhythm",
+              "number_of_artists": 1,
+              "number_of_tracks": 2,
+              "popularity": 41,
+              "release_date": "Mon, 18 May 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "3xshlFLWImuTZhirvE6ttA",
+                    "name": "Belong to the Rhythm - Original Mix",
+                    "popularity": 46,
+                    "preview_url": "https://p.scdn.co/mp3-preview/c5c67c252f2c917d32c1fa45d0927bf3b9c40624?cid=null",
+                    "runtime": 207360,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            },
+            {
+              "artists": [
+                {
+                  "followers": 27327,
+                  "id": "1kgxTtyF91VaqLD3J6Krd5",
+                  "image_url": "https://i.scdn.co/image/156542695c8b1af9608f4686caa2714bd8ead860",
+                  "name": "Hellberg",
+                  "popularity": 55,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "2mKfn5INBVcscPf7ZfAbf9",
+              "image_url": "https://i.scdn.co/image/f96c849fa8a8217c07ad599bc14a66e00ef14942",
+              "name": "Better",
+              "number_of_artists": 1,
+              "number_of_tracks": 2,
+              "popularity": 38,
+              "release_date": "Mon, 16 Nov 2015 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                [
+                  {
+                    "explicit": false,
+                    "id": "1S79uxrGtp1GQht8RWP2Mo",
+                    "name": "Better - Radio Edit",
+                    "popularity": 39,
+                    "preview_url": "https://p.scdn.co/mp3-preview/5dc8402910ae53b6e7dde5a0ebfbd039f9b67b27?cid=null",
+                    "runtime": 202250,
+                    "spotify_uri": null
+                  }
+                ],
+                null
+              ]
+            }
+          ],
+          10
+        ]
 
 ## Album ID [/album/{id}]
 
 ### Get Album By ID [GET]
 
 + Parameters
-    + id - A path variable that is required for a valid URL
+    + id - spotify album id
 
 + Response 200 (application/json)
 
+        {
+          "artists": [
             {
-                "id" : "1234553"
-                "name" : "C",
-                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-                "artist" : [
-                    {
-                        "external_urls" : {
-                              "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
-                        },
-                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
-                        "id" : "2BTZIqw0ntH9MvilQ3ewNY",
-                        "name" : "Cyndi Lauper",
-                        "type" : "artist",
-                        "uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
-                    }
-                ],
-                "copyrights" : [ {
-                    "text" : "(P) 2000 Sony Music Entertainment Inc.",
-                    "type" : "P"
-                } ],
-                "external_ids" : {
-                    "upc" : "5099749994324"
-                },
-                "external_urls" : {
-                    "spotify" : "https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj"
-                },
-                "genres" : [],
-                "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
-                "images" : [ {
-                    "height" : 640,
-                    "url" : "https://i.scdn.co/image/07c323340e03e25a8e5dd5b9a8ec72b69c50089d",
-                    "width" : 640
-                }, {
-                    "height" : 300,
-                    "url" : "https://i.scdn.co/image/8b662d81966a0ec40dc10563807696a8479cd48b",
-                    "width" : 300
-                }, {
-                    "height" : 64,
-                    "url" : "https://i.scdn.co/image/54b3222c8aaa77890d1ac37b3aaaa1fc9ba630ae",
-                    "width" : 64
-                } ],
-                "popularity" : 39,
-                "release_date" : "1983",
-                "release_date_precision" : "year",
-                "tracks" : {
-                    "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj/tracks?offset=0&limit=50",
-                    "items" : [ {
-                        "external_urls" : {
-                            "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
-                        },
-                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
-                        "spotifyid" : "2BTZIqw0ntH9MvilQ3ewNY",
-                        "artist_name" : "Cyndi Lauper",
-                        "spotify_uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
-                        }],
-                        "duration_ms" : 305560,
-                        "explicit" : false,
-                        "external_urls" : {
-                            "spotify" : "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V"
-                        },
-                        "href" : "https://api.spotify.com/v1/tracks/3f9zqUnrnIq0LANhmnaF0V",
-                        "id" : "3f9zqUnrnIq0LANhmnaF0V",
-                        "name" : "Money Changes Everything",
-                        "preview_url" : "https://p.scdn.co/mp3-preview/01bb2a6c9a89c05a4300aea427241b1719a26b06",
-                        "track_number" : 1,
-                        "type" : "track",
-                        "uri" : "spotify:track:3f9zqUnrnIq0LANhmnaF0V"
-                    },
-                    ...
-                    ],
-                    "total" : 13,
-                    "spotify_uri" : "spotify:album:0sNOF9WDwhWunNAHPD3Baj"
-
-                }
+              "followers": 60758,
+              "id": "25mFVpuABa9GkGcj9eOPce",
+              "image_url": "https://i.scdn.co/image/d1a147ec0115b24483840ea3d81ec5f902d2b5c5",
+              "name": "Armin van Buuren ASOT Radio",
+              "popularity": 28,
+              "spotify_uri": null
             }
+          ],
+          "id": "3CRyTUToJeE1pf1zzWJPuv",
+          "image_url": "https://i.scdn.co/image/2247a03fbb1642c184c99f12085a4668098c3a38",
+          "name": "A State Of Trance Episode 646",
+          "number_of_tracks": 29,
+          "popularity": 16,
+          "release_date": "Thu, 02 Jan 2014 00:00:00 GMT",
+          "spotify_uri": null,
+          "tracks": [
+            [
+              {
+                "explicit": false,
+                "id": "12DRtcWD1s1Msg2kmXg7mS",
+                "name": "Sydneysider [ASOT 646] - Original Mix",
+                "popularity": 10,
+                "preview_url": "https://p.scdn.co/mp3-preview/540618f915bbfe166b3f830e1b8b87ef10c922ce?cid=null",
+                "runtime": 218515,
+                "spotify_uri": null
+              }
+            ],
+            null
+          ]
+        }
 
-## Album Name [/album/{name}]
+## Album by Arist ID [/album/artist/{id}]
 
-### Get Album By Name [GET]
+### Get Album By Artist ID [GET]
 
 + Parameters
-    + name - A path variable that is required for a valid URL
-
-+ Response 200 (application/json)
-
-             {
-                "id" : "1234553"
-                "name" : "C",
-                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-                "artist" : [
-                    {
-                        "external_urls" : {
-                              "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
-                        },
-                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
-                        "id" : "2BTZIqw0ntH9MvilQ3ewNY",
-                        "name" : "Cyndi Lauper",
-                        "type" : "artist",
-                        "uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
-                    }
-                ],
-                "copyrights" : [ {
-                    "text" : "(P) 2000 Sony Music Entertainment Inc.",
-                    "type" : "P"
-                } ],
-                "external_ids" : {
-                    "upc" : "5099749994324"
-                },
-                "external_urls" : {
-                    "spotify" : "https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj"
-                },
-                "genres" : [],
-                "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
-                "images" : [ {
-                    "height" : 640,
-                    "url" : "https://i.scdn.co/image/07c323340e03e25a8e5dd5b9a8ec72b69c50089d",
-                    "width" : 640
-                }, {
-                    "height" : 300,
-                    "url" : "https://i.scdn.co/image/8b662d81966a0ec40dc10563807696a8479cd48b",
-                    "width" : 300
-                }, {
-                    "height" : 64,
-                    "url" : "https://i.scdn.co/image/54b3222c8aaa77890d1ac37b3aaaa1fc9ba630ae",
-                    "width" : 64
-                } ],
-                "popularity" : 39,
-                "release_date" : "1983",
-                "release_date_precision" : "year",
-                "tracks" : {
-                    "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj/tracks?offset=0&limit=50",
-                    "items" : [ {
-                        "external_urls" : {
-                            "spotify" : "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
-                        },
-                        "href" : "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
-                        "spotifyid" : "2BTZIqw0ntH9MvilQ3ewNY",
-                        "artist_name" : "Cyndi Lauper",
-                        "spotify_uri" : "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
-                        }],
-                        "duration_ms" : 305560,
-                        "explicit" : false,
-                        "external_urls" : {
-                            "spotify" : "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V"
-                        },
-                        "href" : "https://api.spotify.com/v1/tracks/3f9zqUnrnIq0LANhmnaF0V",
-                        "id" : "3f9zqUnrnIq0LANhmnaF0V",
-                        "name" : "Money Changes Everything",
-                        "preview_url" : "https://p.scdn.co/mp3-preview/01bb2a6c9a89c05a4300aea427241b1719a26b06",
-                        "track_number" : 1,
-                        "type" : "track",
-                        "uri" : "spotify:track:3f9zqUnrnIq0LANhmnaF0V"
-                    },
-                    ...
-                    ],
-                    "total" : 13,
-                    "spotify_uri" : "spotify:album:0sNOF9WDwhWunNAHPD3Baj"
-
-                }
-            }
-
-## Track [/track]
-
-### List All Tracks [GET]
+    + id - artist spotify id
 
 + Response 200 (application/json)
 
         [
+          [
             {
-                "id" : "1234553"
-                "name" : "Rock",
-                "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-                "duration_ms" : 222200,
-                "explicit" : false,
-                "external_urls" : {
-                    "spotify" : "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp"
-                },
-                "href" : "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
-                "popularity" : 73,
-                "preview_url" : "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
-                "uri" : "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp"
+              "artists": [
+                {
+                  "followers": 1709702,
+                  "id": "2o5jDhtHVPhrJdv3cEQ99Z",
+                  "image_url": "https://i.scdn.co/image/d0e72b0b27fcb36fd7f1ccb77728ef772429cdc0",
+                  "name": "Tiësto",
+                  "popularity": 78,
+                  "spotify_uri": null
+                }
+              ],
+              "id": "1116PKIKlArm87HVaPtonW",
+              "image_url": "https://i.scdn.co/image/f505c34d7e26c2e029a8b0e19fee76a501cc167f",
+              "name": "A Town Called Paradise (Deluxe)",
+              "number_of_tracks": 18,
+              "popularity": 55,
+              "release_date": "Fri, 13 Jun 2014 00:00:00 GMT",
+              "spotify_uri": null,
+              "tracks": [
+                {
+                  "explicit": false,
+                  "id": "5dsNFudtqjActV0oQCF8lh",
+                  "name": "Footprints",
+                  "popularity": 45,
+                  "preview_url": "https://p.scdn.co/mp3-preview/a648cbb6c07ac8d141f2e886b8861fe4bb829d16?cid=null",
+                  "runtime": 257053,
+                  "spotify_uri": null
+                }
+              ]
             }
+          ],
+          null
+        ]
+
+## Track [/tracks{?page_token,sort,order}]
+
+### List All Tracks [GET]
+
++ Parameters
+    + page_token - cursor for database on where to start, otherwise return the first 10
+    + sort - fields to sort by {name, release_date, number_of_tracks, popularity}
+    + order - desc if you want the sorted result in desc order, otherwise ascending
+
++ Response 200 (application/json)
+
+        [
+          [
+            {
+              "explicit": false,
+              "id": "6OKaib6HaebKVCL5VOoIGR",
+              "name": "4 Life (feat. Graham Candy)",
+              "popularity": 60,
+              "preview_url": "https://p.scdn.co/mp3-preview/f683d80203d25c1e72f716bb698ffcd969c4274a?cid=null",
+              "runtime": 195474,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "2HORMpJ4WkaL0CgAqci8mU",
+              "name": "Air (feat. Jason Eskridge)",
+              "popularity": 0,
+              "preview_url": null,
+              "runtime": 291731,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "1u6LOWtdWA2wwa3CryIBsS",
+              "name": "Another You",
+              "popularity": 62,
+              "preview_url": "https://p.scdn.co/mp3-preview/889732a1a7a16ddec7524ba5e9f778fe0a5fb124?cid=null",
+              "runtime": 192306,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "7aIJ4snE39xO8wxqC8jNgu",
+              "name": "Another You - CID Remix",
+              "popularity": 27,
+              "preview_url": "https://p.scdn.co/mp3-preview/849a5319a74ed735702cb4105fd532db56d48c1c?cid=null",
+              "runtime": 275833,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "76KVv67Bfn8XZzNPKDp1U5",
+              "name": "Back and Forth - Exige Remix",
+              "popularity": 26,
+              "preview_url": "https://p.scdn.co/mp3-preview/9f7a371c16951156c38674dad7cfa5335ee9ad4c?cid=null",
+              "runtime": 238333,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "3zwakDP44DQ77ZDUKU3l2A",
+              "name": "Beautiful World - Radio Edit",
+              "popularity": 49,
+              "preview_url": "https://p.scdn.co/mp3-preview/aeef555bc426e9d2d423166105b9d8e5ff5ed195?cid=null",
+              "runtime": 214615,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "3xshlFLWImuTZhirvE6ttA",
+              "name": "Belong to the Rhythm - Original Mix",
+              "popularity": 46,
+              "preview_url": "https://p.scdn.co/mp3-preview/c5c67c252f2c917d32c1fa45d0927bf3b9c40624?cid=null",
+              "runtime": 207360,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "1S79uxrGtp1GQht8RWP2Mo",
+              "name": "Better - Radio Edit",
+              "popularity": 39,
+              "preview_url": "https://p.scdn.co/mp3-preview/5dc8402910ae53b6e7dde5a0ebfbd039f9b67b27?cid=null",
+              "runtime": 202250,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "3diRi8wHfHDKOqMPDLjLdL",
+              "name": "C-3P0's Plight",
+              "popularity": 38,
+              "preview_url": "https://p.scdn.co/mp3-preview/1468dc86af5fb27f08d5f8bd03b609fa91c912ec?cid=null",
+              "runtime": 192760,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "1JYqoqlqzUAAYJeOVlhKIC",
+              "name": "Care (Ft. Madi)",
+              "popularity": 57,
+              "preview_url": "https://p.scdn.co/mp3-preview/eebc760e369eb09f2f76e09069ad26925f2a7e12?cid=null",
+              "runtime": 189107,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "7IR7qbHSIu8LhID7TrbBiN",
+              "name": "Collect My Love (feat. Alex Newell) - Mat Zo Remix",
+              "popularity": 30,
+              "preview_url": "https://p.scdn.co/mp3-preview/889ac94b3fd360af093800c6d68a800fecdc4172?cid=null",
+              "runtime": 359104,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "581gLYhF5OxQzgfIMGlAvu",
+              "name": "Collide (feat. Jonathan Thulin)",
+              "popularity": 41,
+              "preview_url": "https://p.scdn.co/mp3-preview/be3e559eace7ed3a708d0572de357697f0fa5b68?cid=null",
+              "runtime": 235775,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "3sTqw8NEZdUV9CYhCOh0tH",
+              "name": "Connecting Like Stars",
+              "popularity": 11,
+              "preview_url": "https://p.scdn.co/mp3-preview/1a9a28440a3d2486aba348435a7f72c0d9ba494d?cid=null",
+              "runtime": 311250,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "0oDpBQNBCa3VCR3bmn7953",
+              "name": "Cool Me Down",
+              "popularity": 62,
+              "preview_url": "https://p.scdn.co/mp3-preview/8c09dffbbf873270000fdc7e01cd952ffb496d42?cid=null",
+              "runtime": 179211,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "6mnjcTmK8TewHfyOp3fC9C",
+              "name": "Die Young",
+              "popularity": 72,
+              "preview_url": "https://p.scdn.co/mp3-preview/d97043cf8c44a1d41f46fd6534726cf383f4f896?cid=null",
+              "runtime": 211920,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "3I75XRqyK9ptnJdVEQfL4V",
+              "name": "Do Or Die - Afrojack vs. THIRTY SECONDS TO MARS Remix",
+              "popularity": 36,
+              "preview_url": "https://p.scdn.co/mp3-preview/3538ba1c8b734edc7141cf016c2f093d1a8a58c8?cid=null",
+              "runtime": 278174,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "6lOsjTvgGL08uRf2nKrSed",
+              "name": "Dreaming - The Chainsmokers Remix",
+              "popularity": 59,
+              "preview_url": "https://p.scdn.co/mp3-preview/96be31334611b11c3a385bb1701b34f5861aa885?cid=null",
+              "runtime": 297906,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "12S9qoznDH1GkSGzJePUwa",
+              "name": "Dreams - Lost Kings Remix",
+              "popularity": 52,
+              "preview_url": "https://p.scdn.co/mp3-preview/65ac6b7f230e885d9855b7f52fa81837da9855fd?cid=null",
+              "runtime": 206013,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "45HW47vnLti5C9VCzl8jMt",
+              "name": "Endless Summer",
+              "popularity": 28,
+              "preview_url": "https://p.scdn.co/mp3-preview/69b5f0a41f7bf6597b399b54d4d6f4e1f09d6190?cid=null",
+              "runtime": 255033,
+              "spotify_uri": null
+            },
+            {
+              "explicit": false,
+              "id": "1brwdYwjltrJo7WHpIvbYt",
+              "name": "Faded",
+              "popularity": 66,
+              "preview_url": null,
+              "runtime": 212626,
+              "spotify_uri": null
+            }
+          ],
+          20
         ]
 
 ## Track ID [/track/{id}]
@@ -375,40 +859,80 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 + Response 200 (application/json)
 
         {
-            "id" : "1234553",
-            "name" : "Rock",
-            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-            "duration_ms" : 222200,
-            "explicit" : false,
-            "external_urls" : {
-                "spotify" : "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp"
-            },
-            "href" : "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
-            "popularity" : 73,
-            "preview_url" : "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
-            "uri" : "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp"
+          "albums": [
+            {
+              "id": "1116PKIKlArm87HVaPtonW",
+              "image_url": "https://i.scdn.co/image/f505c34d7e26c2e029a8b0e19fee76a501cc167f",
+              "name": "A Town Called Paradise (Deluxe)",
+              "number_of_tracks": 18,
+              "popularity": 55,
+              "release_date": "Fri, 13 Jun 2014 00:00:00 GMT",
+              "spotify_uri": null
+            }
+          ],
+          "artists": [
+            {
+              "followers": 1709702,
+              "id": "2o5jDhtHVPhrJdv3cEQ99Z",
+              "image_url": "https://i.scdn.co/image/d0e72b0b27fcb36fd7f1ccb77728ef772429cdc0",
+              "name": "Tiësto",
+              "popularity": 78,
+              "spotify_uri": null
+            }
+          ],
+          "explicit": false,
+          "id": "5dsNFudtqjActV0oQCF8lh",
+          "name": "Footprints",
+          "popularity": 45,
+          "preview_url": "https://p.scdn.co/mp3-preview/a648cbb6c07ac8d141f2e886b8861fe4bb829d16?cid=null",
+          "runtime": 257053,
+          "spotify_uri": null
         }
 
-## Track Name [/track/{name}]
+## Track By Artist ID [/track/artist/{id}]
 
-### Get Track By Name [GET]
+### Get Tracks By Artist ID [GET]
 
 + Parameters
-    + name - Name of the track
+    + id - spotify artist id
 
 + Response 200 (application/json)
 
-        {
-            "id" : "1234553",
-            "name" : "Rock",
-            "spotifyId" : "4LZ4De2MoO3lP6QaNCfvcu",
-            "duration_ms" : 222200,
-            "explicit" : false,
-            "external_urls" : {
-                "spotify" : "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp"
-            },
-            "href" : "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
-            "popularity" : 73,
-            "preview_url" : "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
-            "uri" : "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp"
-        }
+        [
+          [
+            {
+              "explicit": false,
+              "id": "3I75XRqyK9ptnJdVEQfL4V",
+              "name": "Do Or Die - Afrojack vs. THIRTY SECONDS TO MARS Remix",
+              "popularity": 36,
+              "preview_url": "https://p.scdn.co/mp3-preview/3538ba1c8b734edc7141cf016c2f093d1a8a58c8?cid=null",
+              "runtime": 278174,
+              "spotify_uri": null
+            }
+          ],
+          null
+        ]
+
+## Track By Album ID [/track/album/{id}]
+
+### Get Track By Album ID [GET]
+
++ Parameters
+    + id - spotify album id
+
++ Response 200 (application/json)
+
+        [
+          [
+            {
+              "explicit": false,
+              "id": "3I75XRqyK9ptnJdVEQfL4V",
+              "name": "Do Or Die - Afrojack vs. THIRTY SECONDS TO MARS Remix",
+              "popularity": 36,
+              "preview_url": "https://p.scdn.co/mp3-preview/3538ba1c8b734edc7141cf016c2f093d1a8a58c8?cid=null",
+              "runtime": 278174,
+              "spotify_uri": null
+            }
+          ],
+          null
+        ]
