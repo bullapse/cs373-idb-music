@@ -8,18 +8,9 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>model</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/sbull/github/bullapse/cs373-idb-music/app/model.py">/home/sbull/github/bullapse/cs373-idb-music/app/model.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/sbull/github/bullapse/cs373-idb-music/notspotify/model.py">/home/sbull/github/bullapse/cs373-idb-music/notspotify/model.py</a></font></td></tr></table>
     <p></p>
 <p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#aa55cc">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
-    
-<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -27,7 +18,7 @@
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial">sqlalchemy.ext.declarative.api.Base(<a href="builtins.html#object">builtins.object</a>)
+<dt><font face="helvetica, arial">flask_sqlalchemy.Model(<a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a>)
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="model.html#Album">Album</a>
@@ -40,14 +31,18 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Album">class <strong>Album</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="Album">class <strong>Album</strong></a>(flask_sqlalchemy.Model)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>The&nbsp;most&nbsp;base&nbsp;type<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>Base&nbsp;class&nbsp;for&nbsp;SQLAlchemy&nbsp;declarative&nbsp;base&nbsp;model.<br>
+&nbsp;<br>
+To&nbsp;define&nbsp;models,&nbsp;subclass&nbsp;:attr:`db.Model&nbsp;&lt;SQLAlchemy.Model&gt;`,&nbsp;not&nbsp;this&nbsp;class.<br>
+To&nbsp;customize&nbsp;``db.Model``,&nbsp;subclass&nbsp;this&nbsp;and&nbsp;pass&nbsp;it&nbsp;as&nbsp;``model_class``&nbsp;to&nbsp;:func:`SQLAlchemy`.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="model.html#Album">Album</a></dd>
-<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd>flask_sqlalchemy.Model</dd>
+<dd><a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a></dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
 </dl>
 <hr>
@@ -63,7 +58,7 @@ for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.<
 
 <hr>
 Data descriptors defined here:<br>
-<dl><dt><strong>artist_id</strong></dt>
+<dl><dt><strong>artists</strong></dt>
 </dl>
 <dl><dt><strong>id</strong></dt>
 </dl>
@@ -77,40 +72,56 @@ Data descriptors defined here:<br>
 </dl>
 <dl><dt><strong>release_date</strong></dt>
 </dl>
-<dl><dt><strong>spotify_id</strong></dt>
+<dl><dt><strong>spotify_uri</strong></dt>
+</dl>
+<dl><dt><strong>tracks</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fbcf0435e80; Album&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ff9bbe36358; Album&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('album', MetaData(bind=None), Column('id',...r(), table=&lt;album&gt;, nullable=False), schema=None)</dl>
 
-<dl><dt><strong>__tablename__</strong> = 'album'</dl>
+<hr>
+Methods inherited from flask_sqlalchemy.Model:<br>
+<dl><dt><strong>query</strong></dt>
+</dl>
 
 <hr>
-Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+Data and other attributes inherited from flask_sqlalchemy.Model:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query_class</strong> = &lt;class 'flask_sqlalchemy.BaseQuery'&gt;<dd><tt>SQLAlchemy&nbsp;:class:`~sqlalchemy.orm.query.Query`&nbsp;subclass&nbsp;with&nbsp;convenience&nbsp;methods&nbsp;for&nbsp;querying&nbsp;in&nbsp;a&nbsp;web&nbsp;application.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;default&nbsp;:attr:`~Model.query`&nbsp;object&nbsp;used&nbsp;for&nbsp;models,&nbsp;and&nbsp;exposed&nbsp;as&nbsp;:attr:`~SQLAlchemy.Query`.<br>
+Override&nbsp;the&nbsp;query&nbsp;class&nbsp;for&nbsp;an&nbsp;individual&nbsp;model&nbsp;by&nbsp;subclassing&nbsp;this&nbsp;and&nbsp;setting&nbsp;:attr:`~Model.query_class`.</tt></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a>:<br>
 <dl><dt><strong>__dict__</strong></dt>
 <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__tablename__</strong></dt>
 </dl>
 <dl><dt><strong>__weakref__</strong></dt>
 <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
 </dl>
-<hr>
-Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
-<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
-
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Artist">class <strong>Artist</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="Artist">class <strong>Artist</strong></a>(flask_sqlalchemy.Model)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>The&nbsp;most&nbsp;base&nbsp;type<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>Base&nbsp;class&nbsp;for&nbsp;SQLAlchemy&nbsp;declarative&nbsp;base&nbsp;model.<br>
+&nbsp;<br>
+To&nbsp;define&nbsp;models,&nbsp;subclass&nbsp;:attr:`db.Model&nbsp;&lt;SQLAlchemy.Model&gt;`,&nbsp;not&nbsp;this&nbsp;class.<br>
+To&nbsp;customize&nbsp;``db.Model``,&nbsp;subclass&nbsp;this&nbsp;and&nbsp;pass&nbsp;it&nbsp;as&nbsp;``model_class``&nbsp;to&nbsp;:func:`SQLAlchemy`.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="model.html#Artist">Artist</a></dd>
-<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd>flask_sqlalchemy.Model</dd>
+<dd><a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a></dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
 </dl>
 <hr>
@@ -126,9 +137,11 @@ for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.<
 
 <hr>
 Data descriptors defined here:<br>
-<dl><dt><strong>followers</strong></dt>
+<dl><dt><strong>album</strong></dt>
 </dl>
-<dl><dt><strong>genre</strong></dt>
+<dl><dt><strong>albums</strong></dt>
+</dl>
+<dl><dt><strong>followers</strong></dt>
 </dl>
 <dl><dt><strong>id</strong></dt>
 </dl>
@@ -138,40 +151,58 @@ Data descriptors defined here:<br>
 </dl>
 <dl><dt><strong>popularity</strong></dt>
 </dl>
-<dl><dt><strong>spotify_id</strong></dt>
+<dl><dt><strong>spotify_uri</strong></dt>
+</dl>
+<dl><dt><strong>track</strong></dt>
+</dl>
+<dl><dt><strong>tracks</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fbcf0435908; Artist&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ff9bbe89dd8; Artist&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('artist', MetaData(bind=None), Column('id'... String(length=32), table=&lt;artist&gt;), schema=None)</dl>
-
-<dl><dt><strong>__tablename__</strong> = 'artist'</dl>
+<dl><dt><strong>__table__</strong> = Table('artist', MetaData(bind=None), Column('id'...(), table=&lt;artist&gt;, nullable=False), schema=None)</dl>
 
 <hr>
-Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+Methods inherited from flask_sqlalchemy.Model:<br>
+<dl><dt><strong>query</strong></dt>
+</dl>
+
+<hr>
+Data and other attributes inherited from flask_sqlalchemy.Model:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query_class</strong> = &lt;class 'flask_sqlalchemy.BaseQuery'&gt;<dd><tt>SQLAlchemy&nbsp;:class:`~sqlalchemy.orm.query.Query`&nbsp;subclass&nbsp;with&nbsp;convenience&nbsp;methods&nbsp;for&nbsp;querying&nbsp;in&nbsp;a&nbsp;web&nbsp;application.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;default&nbsp;:attr:`~Model.query`&nbsp;object&nbsp;used&nbsp;for&nbsp;models,&nbsp;and&nbsp;exposed&nbsp;as&nbsp;:attr:`~SQLAlchemy.Query`.<br>
+Override&nbsp;the&nbsp;query&nbsp;class&nbsp;for&nbsp;an&nbsp;individual&nbsp;model&nbsp;by&nbsp;subclassing&nbsp;this&nbsp;and&nbsp;setting&nbsp;:attr:`~Model.query_class`.</tt></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a>:<br>
 <dl><dt><strong>__dict__</strong></dt>
 <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__tablename__</strong></dt>
 </dl>
 <dl><dt><strong>__weakref__</strong></dt>
 <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
 </dl>
-<hr>
-Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
-<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
-
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Track">class <strong>Track</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="Track">class <strong>Track</strong></a>(flask_sqlalchemy.Model)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>The&nbsp;most&nbsp;base&nbsp;type<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>Base&nbsp;class&nbsp;for&nbsp;SQLAlchemy&nbsp;declarative&nbsp;base&nbsp;model.<br>
+&nbsp;<br>
+To&nbsp;define&nbsp;models,&nbsp;subclass&nbsp;:attr:`db.Model&nbsp;&lt;SQLAlchemy.Model&gt;`,&nbsp;not&nbsp;this&nbsp;class.<br>
+To&nbsp;customize&nbsp;``db.Model``,&nbsp;subclass&nbsp;this&nbsp;and&nbsp;pass&nbsp;it&nbsp;as&nbsp;``model_class``&nbsp;to&nbsp;:func:`SQLAlchemy`.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="model.html#Track">Track</a></dd>
-<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd>flask_sqlalchemy.Model</dd>
+<dd><a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a></dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
 </dl>
 <hr>
@@ -187,9 +218,13 @@ for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.<
 
 <hr>
 Data descriptors defined here:<br>
-<dl><dt><strong>album_id</strong></dt>
+<dl><dt><strong>album</strong></dt>
 </dl>
-<dl><dt><strong>artist_id</strong></dt>
+<dl><dt><strong>albums</strong></dt>
+</dl>
+<dl><dt><strong>artist</strong></dt>
+</dl>
+<dl><dt><strong>artists</strong></dt>
 </dl>
 <dl><dt><strong>explicit</strong></dt>
 </dl>
@@ -203,34 +238,87 @@ Data descriptors defined here:<br>
 </dl>
 <dl><dt><strong>runtime</strong></dt>
 </dl>
-<dl><dt><strong>spotify_id</strong></dt>
+<dl><dt><strong>spotify_uri</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fbcf03e45c0; Track&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ff9bbe36898; Track&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('track', MetaData(bind=None), Column('id',...28), table=&lt;track&gt;, nullable=False), schema=None)</dl>
-
-<dl><dt><strong>__tablename__</strong> = 'track'</dl>
+<dl><dt><strong>__table__</strong> = Table('track', MetaData(bind=None), Column('id',... String(length=128), table=&lt;track&gt;), schema=None)</dl>
 
 <hr>
-Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+Methods inherited from flask_sqlalchemy.Model:<br>
+<dl><dt><strong>query</strong></dt>
+</dl>
+
+<hr>
+Data and other attributes inherited from flask_sqlalchemy.Model:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query_class</strong> = &lt;class 'flask_sqlalchemy.BaseQuery'&gt;<dd><tt>SQLAlchemy&nbsp;:class:`~sqlalchemy.orm.query.Query`&nbsp;subclass&nbsp;with&nbsp;convenience&nbsp;methods&nbsp;for&nbsp;querying&nbsp;in&nbsp;a&nbsp;web&nbsp;application.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;default&nbsp;:attr:`~Model.query`&nbsp;object&nbsp;used&nbsp;for&nbsp;models,&nbsp;and&nbsp;exposed&nbsp;as&nbsp;:attr:`~SQLAlchemy.Query`.<br>
+Override&nbsp;the&nbsp;query&nbsp;class&nbsp;for&nbsp;an&nbsp;individual&nbsp;model&nbsp;by&nbsp;subclassing&nbsp;this&nbsp;and&nbsp;setting&nbsp;:attr:`~Model.query_class`.</tt></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a>:<br>
 <dl><dt><strong>__dict__</strong></dt>
 <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__tablename__</strong></dt>
 </dl>
 <dl><dt><strong>__weakref__</strong></dt>
 <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
 </dl>
-<hr>
-Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
-<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
-
 </td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-create_album"><strong>create_album</strong></a>(data)</dt><dd><tt>#&nbsp;[START&nbsp;create_album]</tt></dd></dl>
+ <dl><dt><a name="-create_artist"><strong>create_artist</strong></a>(data)</dt><dd><tt>#&nbsp;[START&nbsp;create_artist]</tt></dd></dl>
+ <dl><dt><a name="-create_track"><strong>create_track</strong></a>(data)</dt><dd><tt>#&nbsp;[START&nbsp;create_track]</tt></dd></dl>
+ <dl><dt><a name="-delete_album"><strong>delete_album</strong></a>(id)</dt></dl>
+ <dl><dt><a name="-delete_artist"><strong>delete_artist</strong></a>(id)</dt></dl>
+ <dl><dt><a name="-delete_track"><strong>delete_track</strong></a>(id)</dt></dl>
+ <dl><dt><a name="-from_sql"><strong>from_sql</strong></a>(row)</dt><dd><tt>Translates&nbsp;a&nbsp;SQLAlchemy&nbsp;model&nbsp;instance&nbsp;into&nbsp;a&nbsp;dictionary</tt></dd></dl>
+ <dl><dt><a name="-get_number_of_artist_on_album"><strong>get_number_of_artist_on_album</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;num_albums_by_artist]</tt></dd></dl>
+ <dl><dt><a name="-init_app"><strong>init_app</strong></a>(app)</dt></dl>
+ <dl><dt><a name="-list_albums"><strong>list_albums</strong></a>(limit=10, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
+ <dl><dt><a name="-list_albums_by_artist"><strong>list_albums_by_artist</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist]</tt></dd></dl>
+ <dl><dt><a name="-list_albums_by_artist_name"><strong>list_albums_by_artist_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist_name]</tt></dd></dl>
+ <dl><dt><a name="-list_albums_by_track"><strong>list_albums_by_track</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist]</tt></dd></dl>
+ <dl><dt><a name="-list_albums_by_track_name"><strong>list_albums_by_track_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist_name]</tt></dd></dl>
+ <dl><dt><a name="-list_artists"><strong>list_artists</strong></a>(limit=10, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists]</tt></dd></dl>
+ <dl><dt><a name="-list_artists_by_album"><strong>list_artists_by_album</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_album]</tt></dd></dl>
+ <dl><dt><a name="-list_artists_by_album_name"><strong>list_artists_by_album_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_album_name]</tt></dd></dl>
+ <dl><dt><a name="-list_artists_by_track"><strong>list_artists_by_track</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_track]</tt></dd></dl>
+ <dl><dt><a name="-list_artists_by_track_name"><strong>list_artists_by_track_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_track_name]</tt></dd></dl>
+ <dl><dt><a name="-list_tracks"><strong>list_tracks</strong></a>(limit=20, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_tracks]</tt></dd></dl>
+ <dl><dt><a name="-list_tracks_by_album"><strong>list_tracks_by_album</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
+ <dl><dt><a name="-list_tracks_by_album_name"><strong>list_tracks_by_album_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
+ <dl><dt><a name="-list_tracks_by_artist"><strong>list_tracks_by_artist</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
+ <dl><dt><a name="-list_tracks_by_artist_name"><strong>list_tracks_by_artist_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
+ <dl><dt><a name="-num_albums_by_artist"><strong>num_albums_by_artist</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;num_albums_by_artist]</tt></dd></dl>
+ <dl><dt><a name="-num_tracks_by_artist"><strong>num_tracks_by_artist</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;num_tracks_by_artist]</tt></dd></dl>
+ <dl><dt><a name="-read_album"><strong>read_album</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;read_album]</tt></dd></dl>
+ <dl><dt><a name="-read_artist"><strong>read_artist</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;read_artist_id]</tt></dd></dl>
+ <dl><dt><a name="-read_artist_name"><strong>read_artist_name</strong></a>(name)</dt><dd><tt>#&nbsp;[START&nbsp;read_artist_name]</tt></dd></dl>
+ <dl><dt><a name="-read_track"><strong>read_track</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;read_track]</tt></dd></dl>
+ <dl><dt><a name="-update_album"><strong>update_album</strong></a>(data, id)</dt><dd><tt>#&nbsp;[START&nbsp;update_album]</tt></dd></dl>
+ <dl><dt><a name="-update_artist"><strong>update_artist</strong></a>(data, id)</dt><dd><tt>#&nbsp;[START&nbsp;update_artist]</tt></dd></dl>
+ <dl><dt><a name="-update_track"><strong>update_track</strong></a>(data, id)</dt><dd><tt>#&nbsp;[START&nbsp;update_track]</tt></dd></dl>
+</td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
 <td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>engine</strong> = Engine(sqlite:///cs373_idb.db)</td></tr></table>
+<td width="100%"><strong>album_track_association</strong> = Table('album_track_association', MetaData(bind=N...), table=&lt;album_track_association&gt;), schema=None)<br>
+<strong>artist_album_association</strong> = Table('artist_album_association', MetaData(bind=..., table=&lt;artist_album_association&gt;), schema=None)<br>
+<strong>artist_track_association</strong> = Table('artist_track_association', MetaData(bind=..., table=&lt;artist_track_association&gt;), schema=None)<br>
+<strong>db</strong> = &lt;SQLAlchemy engine=None&gt;</td></tr></table>
 </body></html>
