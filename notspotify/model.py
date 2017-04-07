@@ -304,7 +304,6 @@ class Track(db.Model):
     artists = db.relationship("Artist", secondary=artist_track_association, backref="track")
     albums = db.relationship("Album", secondary=album_track_association, backref="track")
     explicit = db.Column(db.Boolean)
-    spotify_uri = db.Column(db.String(128))
     runtime = db.Column(db.Integer, nullable=False)
     popularity = db.Column(db.Integer, nullable=False)
     preview_url = db.Column(db.String(128), nullable=True)
