@@ -4,10 +4,10 @@ FILES :=                        \
 	app.yaml					\
 	main.py						\
 	appengine_config.py			\
-	getSpotify.py				\
+	spotify.py					\
 	model.html					\
 	requirements.txt			\
-	ULM.pdf						\
+	UML.pdf						\
 	vendor.py
 
 
