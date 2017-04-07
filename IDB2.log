@@ -1,3 +1,21 @@
+commit 13535ef11be0b8ed1ae05103a3936deed710cdab
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 20:07:18 2017 -0500
+
+    update pydoc html
+
+commit 870662371a71638c8dbb2378876c0ce98546ea66
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 20:05:45 2017 -0500
+
+    update apiary
+
+commit 4377bd3f7d283f82e38bbdc5fa9fef6d555772ce
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 20:01:46 2017 -0500
+
+    added log
+
 commit 41c61d193d2e5449dd037f31feacde2a5521e615
 Author: Spencer Bull <spencerbull2554@gmail.com>
 Date:   Thu Apr 6 19:59:41 2017 -0500
