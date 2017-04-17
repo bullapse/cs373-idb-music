@@ -148,8 +148,8 @@ def albums_by_artist_template(id):
 @crud.route('/tracks', methods=['GET'])
 def list_tracks_template():
     token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks(cursor=token, sort_by=sort, order=order)
-    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token, sort_by=sort, order=order)
+    tracks, next_page_token, pages = get_model().list_tracks(cursor=token, sort_by=sort, order=order)
+    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token, sort_by=sort, order=order, pages=pages)
 # [END list_tracks_template]
 
 
