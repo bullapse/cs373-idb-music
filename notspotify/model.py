@@ -70,15 +70,16 @@ def list_artists(limit=10, cursor=None, sort_by=None, order=None):
         query = (Artist.query
                  .order_by(db.desc(sort_by))
                  .limit(limit)
-                 .offset(cursor))
+                 .offset(cursor * limit))
     else:
         query = (Artist.query
                  .order_by(sort_by)
                  .limit(limit)
-                 .offset(cursor))
+                 .offset(cursor * limit))
     artists = builtin_list(map(from_sql, query.all()))
-    next_page = cursor + limit if len(artists) == limit else None
-    return (artists, next_page)
+    pages = [int((n / limit)) for n in list(range(0, Track.query.count(), limit))]
+    current_page = cursor
+    return (artists, current_page, pages)
 # [END list_artists]
 
 
@@ -192,15 +193,16 @@ def list_albums(limit=10, cursor=None, sort_by=None, order=None):
         query = (Album.query
                  .order_by(db.desc(sort_by))
                  .limit(limit)
-                 .offset(cursor))
+                 .offset(cursor * limit))
     else:
         query = (Album.query
                  .order_by(sort_by)
                  .limit(limit)
-                 .offset(cursor))
+                 .offset(cursor * limit))
     albums = builtin_list(map(from_sql, query.all()))
-    next_page = cursor + limit if len(albums) == limit else None
-    return (albums, next_page)
+    pages = [int((n / limit)) for n in list(range(0, Track.query.count(), limit))]
+    current_page = cursor
+    return (albums, current_page, pages)
 # [END list_albums]
 
 
