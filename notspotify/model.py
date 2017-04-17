@@ -333,8 +333,9 @@ def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
     tracks = builtin_list(map(from_sql, query.all()))
     pages = list(range(0, Track.query.count(), 20))
     pages = [int((n / 20)) + 1 for n in pages]
-    next_page = cursor + limit if len(tracks) == limit else None
-    return (tracks, next_page, pages)
+    prev_page = cursor
+    next_page = cursor + 2
+    return (tracks, prev_page, next_page, pages)
 # [END list_tracks]
 
 
