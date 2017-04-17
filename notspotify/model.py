@@ -319,7 +319,7 @@ def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
             "popularity": Track.popularity,
         }.get(x, Track.name)
     sort_by = sort(sort_by)
-    cursor = int(cursor) - 1 if cursor else 0
+    cursor = int(cursor) if cursor else 0
     if order:
         query = (Track.query
                  .order_by(db.desc(sort_by))
@@ -331,11 +331,9 @@ def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
                  .limit(limit)
                  .offset(cursor * limit))
     tracks = builtin_list(map(from_sql, query.all()))
-    pages = list(range(0, Track.query.count(), 20))
-    pages = [int((n / 20)) + 1 for n in pages]
-    prev_page = cursor
-    next_page = cursor + 2
-    return (tracks, prev_page, next_page, pages)
+    pages = [int((n / limit)) for n in list(range(0, Track.query.count(), limit))]
+    current_page = cursor
+    return (tracks, current_page, pages)
 # [END list_tracks]
 
 
