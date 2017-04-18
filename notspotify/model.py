@@ -56,7 +56,7 @@ class Artist(db.Model):
 
 
 # [START list_artists]
-def list_artists(limit=10, cursor=None, sort_by=None, order=None):
+def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
     # order_by = order_by if order_by else "name"
     def sort(x):
         return {
@@ -66,16 +66,35 @@ def list_artists(limit=10, cursor=None, sort_by=None, order=None):
         }.get(x, Artist.name)
     sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
+    if term:
+        conditions = []
+        term = str(term).split(' ')
+        for q in term:
+            conditions.append(Album.name.ilike('%{}%'.format(q)))
     if order:
-        query = (Artist.query
-                 .order_by(db.desc(sort_by))
-                 .limit(limit)
-                 .offset(cursor))
+        if term:
+            query = (Artist.query
+                     .filter(db.or_(*conditions))
+                     .order_by(db.desc(sort_by))
+                     .limit(limit)
+                     .offset(cursor))
+        else:
+            query = (Artist.query
+                     .order_by(db.desc(sort_by))
+                     .limit(limit)
+                     .offset(cursor))
     else:
-        query = (Artist.query
-                 .order_by(sort_by)
-                 .limit(limit)
-                 .offset(cursor))
+        if term:
+            query = (Artist.query
+                     .filter(db.or_(*conditions))
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
+        else:
+            query = (Artist.query
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
     artists = builtin_list(map(from_sql, query.all()))
     count = Track.query.count()
     return (artists, cursor, count, limit)
@@ -178,7 +197,7 @@ class Album(db.Model):
 
 
 # [START list_albums]
-def list_albums(limit=10, cursor=None, sort_by=None, order=None):
+def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
     def sort(x):
         return {
             "name": Album.name,
@@ -188,16 +207,36 @@ def list_albums(limit=10, cursor=None, sort_by=None, order=None):
         }.get(x, Album.name)
     sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
+
+    if term:
+        conditions = []
+        term = str(term).split(' ')
+        for q in term:
+            conditions.append(Album.name.ilike('%{}%'.format(q)))
     if order:
-        query = (Album.query
-                 .order_by(db.desc(sort_by))
-                 .limit(limit)
-                 .offset(cursor))
+        if term:
+            query = (Album.query
+                     .filter(db.or_(*conditions))
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
+        else:
+            query = (Album.query
+                     .order_by(db.desc(sort_by))
+                     .limit(limit)
+                     .offset(cursor))
     else:
-        query = (Album.query
-                 .order_by(sort_by)
-                 .limit(limit)
-                 .offset(cursor))
+        if term:
+            query = (Album.query
+                     .filter(db.or_(*conditions))
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
+        else:
+            query = (Album.query
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
     albums = builtin_list(map(from_sql, query.all()))
     count = Track.query.count()
     return (albums, cursor, count, limit)
@@ -311,7 +350,7 @@ class Track(db.Model):
 
 
 # [START list_tracks]
-def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
+def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
     def sort(x):
         return {
             "name": Track.name,
@@ -320,16 +359,35 @@ def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
         }.get(x, Track.name)
     sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
+    if term:
+        conditions = []
+        term = str(term).split(' ')
+        for q in term:
+            conditions.append(Album.name.ilike('%{}%'.format(q)))
     if order:
-        query = (Track.query
-                 .order_by(db.desc(sort_by))
-                 .limit(limit)
-                 .offset(cursor))
+        if term:
+            query = (Track.query
+                     .filter(db.or_(*conditions))
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
+        else:
+            query = (Track.query
+                     .order_by(db.desc(sort_by))
+                     .limit(limit)
+                     .offset(cursor))
     else:
-        query = (Track.query
-                 .order_by(sort_by)
-                 .limit(limit)
-                 .offset(cursor))
+        if term:
+            query = (Track.query
+                     .filter(db.or_(*conditions))
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
+        else:
+            query = (Track.query
+                     .order_by(sort_by)
+                     .limit(limit)
+                     .offset(cursor))
     tracks = builtin_list(map(from_sql, query.all()))
     count = Track.query.count()
     return (tracks, cursor, count, limit)
