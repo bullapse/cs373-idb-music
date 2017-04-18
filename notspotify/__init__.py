@@ -13,6 +13,8 @@
 # limitations under the License.
 
 import logging
+import subprocess
+import os
 
 from flask import current_app, Flask, url_for, render_template
 
@@ -39,7 +41,9 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     # Register the Bookshelf CRUD blueprint.
     from .crud import crud
     app.register_blueprint(crud)
-
+    from .api import api
+    app.register_blueprint(api)
+    
     # Add a default root route.
     @app.route("/")
     def index():
@@ -78,6 +82,19 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         res = requests.post(url, data=body, auth=requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET))
         ACCESS_TOKEN = res.json()['access_token']
         return ACCESS_TOKEN # TODO REMOVE
+
+    @app.route("/test")
+    def test():
+
+        script_dir = os.path.dirname('cs373-idb-music')
+        rel_path = "tests.py"
+        try:
+            process = subprocess.check_output(["python", os.path.join(script_dir, rel_path)],
+            stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            process = e.output
+
+        return process.decode("utf-8")
 
     # @app.route("/spotifycallback", methods=['GET'])
     # def spotifycallback():

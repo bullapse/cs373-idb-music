@@ -39,19 +39,19 @@
       <thead>
         <tr>
           <th>Name
-            <a href="tracks?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="tracks?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            <a href="/tracks?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="/tracks?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
           </th>
           <th>
             Explicit
           </th>
-          <th>Runtime(ms)
-            <a href="tracks?sort=runtime_ms"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="tracks?sort=runtime_ms&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          <th>Runtime
+            <a href="/tracks?sort=runtime"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="/tracks?sort=runtime&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
             </th>
           <th>Popularity
-            <a href="tracks?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-            <a href="tracks?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            <a href="/tracks?sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+            <a href="/tracks?sort=popularity&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
           </th>
           <th>Preview</th>
         </tr>
@@ -70,15 +70,16 @@
             <td>
               {{track.runtime}}
             </td>
-            <td class="progressbar">
-                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{track.popularity}} aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
-
-                  {{track.popularity}}
-                </div>
+            <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" 
+                aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
+              </div>
+            </div>
             </td>
             <td>
               <audio controls>
-              <source src={{track.preview_url}} type="audio/mpeg">
+              	<source src={{track.preview_url}} type="audio/mpeg">
               </audio>
             </td>
         </tr>

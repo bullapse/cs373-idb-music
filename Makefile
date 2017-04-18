@@ -4,10 +4,10 @@ FILES :=                        \
 	app.yaml					\
 	main.py						\
 	appengine_config.py			\
-	getSpotify.py				\
+	spotify.py					\
 	model.html					\
 	requirements.txt			\
-	ULM.pdf						\
+	UML.pdf						\
 	vendor.py
 
 
@@ -61,7 +61,7 @@ get_track:
 	$(PYTHON) -c 'import getSpotify; print(getSpotify.get_track())'
 
 IDB1.log:
-	git log > IDB1.log
+	git log > IDB2.log
 
 IDB1.html:
 	$(PYDOC) -w ./notspotify/model.py

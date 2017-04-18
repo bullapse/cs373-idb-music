@@ -72,7 +72,11 @@
             {{artist.followers}}
           </td>
           <td>
-            {{artist.popularity}}
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" 
+              aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
+            </div>
+          </div>
           </td>
           <td>
             {{artist.number_of_albums}}

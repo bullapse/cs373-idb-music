@@ -5,6 +5,7 @@
 #
 # Note: The `lib` directory is added to `sys.path` by `appengine_config.py`.
 Flask==0.12
+Flask-Testing==0.6.2
 requests==2.13.0
 requests-toolbelt==0.7.1
 Flask-SQLAlchemy==2.2

@@ -138,7 +138,8 @@ def read_artist(id):
 
 # [START read_artist_name]
 def read_artist_name(name):
-    return Artist.query.filter_by_(name=name).first()
+    result = Artist.query.filter_by(name=name).first()
+    return from_sql(result) if result else None
 
 # [END read_artist_name]
 
@@ -147,7 +148,7 @@ def read_artist_name(name):
 def update_artist(data, id):
     artist = Artist.query.get(id)
     for k, v in data.items():
-        setattr(book, k, v)
+        setattr(artist, k, v)
     db.session.commit()
     return from_sql(artist)
 # [END update_artist]
@@ -168,6 +169,7 @@ class Album(db.Model):
     name = db.Column(db.String(64), nullable=False)
     image_url = db.Column(db.String(128))
     release_date = db.Column(db.Date, nullable=False)
+    spotify_uri = db.Column(db.String(128))
     number_of_tracks = db.Column(db.Integer, nullable=False)
     artists = db.relationship("Artist", secondary=artist_album_association, backref="album")
     popularity = db.Column(db.Integer, nullable=False)
@@ -225,7 +227,7 @@ def list_albums_by_artist_name(name, limit=10, cursor=None):
 # [START list_albums_by_artist]
 def list_albums_by_track(id, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Track.query.filter(Track.albums.any(id=id)).all())
+    query = (Album.query.filter(Album.tracks.any(id=id)).all())
     albums = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(albums) == limit else None
     return (albums, next_page)
@@ -235,7 +237,7 @@ def list_albums_by_track(id, limit=10, cursor=None):
 # [START list_albums_by_artist_name]
 def list_albums_by_track_name(name, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Track.query.filter(Track.albums.any(name=name)).all())
+    query = (Album.query.filter(Album.tracks.any(name=name)).all())
     albums = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(albums) == limit else None
     return (albums, next_page)
@@ -309,12 +311,25 @@ class Track(db.Model):
 
 
 # [START list_tracks]
-def list_tracks(limit=10, cursor=None, order_by=Track.name):
+def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
+    def sort(x):
+        return {
+            "name": Track.name,
+            "runtime": Track.runtime,
+            "popularity": Track.popularity,
+        }.get(x, Track.name)
+    sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
-    query = (Track.query
-             .order_by(order_by)
-             .limit(limit)
-             .offset(cursor))
+    if order:
+        query = (Track.query
+                 .order_by(db.desc(sort_by))
+                 .limit(limit)
+                 .offset(cursor))
+    else:
+        query = (Track.query
+                 .order_by(sort_by)
+                 .limit(limit)
+                 .offset(cursor))
     tracks = builtin_list(map(from_sql, query.all()))
     next_page = cursor + limit if len(tracks) == limit else None
     return (tracks, next_page)
@@ -344,7 +359,7 @@ def list_tracks_by_artist_name(name, limit=10, cursor=None):
 # [START list_albums]
 def list_tracks_by_album(id, limit=10, cursor=None):
     cursor = int(cursor) if cursor else 0
-    query = (Album.query.filter(Album.tracks.any(id=id)).all())
+    query = (Track.query.filter(Track.albums.any(id=id)).all())
     tracks = builtin_list(map(from_sql, query))
     next_page = cursor + limit if len(tracks) == limit else None
     return (tracks, next_page)

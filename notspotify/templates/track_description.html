@@ -62,10 +62,8 @@
 </div>
 <div>
 
-</div>
-
-<h1>Artist for: {{track.name}}</h1>
-<div>
+<h2 class="text-success">Artist for: {{track.name}}</h2>
+<div class="container">
   <table id="table0">
     <thead>
       <tr>
@@ -94,10 +92,12 @@
         <td>
           {{artist.followers}}
         </td>
-        <td class="progressbar">
-          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={{artist.popularity}} aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
-            {{artist.popularity}}
+        <td>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" 
+            aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
           </div>
+        </div>
         </td>
       </tr>
       {% endfor %}
