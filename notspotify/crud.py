@@ -26,11 +26,11 @@ def get_args(args):
 @crud.route('/artists', methods=['GET'])
 def list_artists_template():
     token, sort, order = get_args(request.args)
-    artists, current_page, pages = get_model().list_artists(cursor=token, sort_by=sort, order=order)
+    artists, cursor, pages, limit = get_model().list_artists(cursor=token, sort_by=sort, order=order)
     for artist in artists:
         artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
         artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
-    return render_template("artists.html", artists=artists, current_page=current_page, sort_by=sort, order=order, pages=pages)
+    return render_template("artists.html", artists=artists, cursor=cursor, sort_by=sort, order=order, pages=pages, limit=limit)
 # [END list_artists_template]
 
 
@@ -99,10 +99,10 @@ def list_artist_description__by_album_name_template(name):
 @crud.route('/albums', methods=['GET'])
 def list_albums_template():
     token, sort, order = get_args(request.args)
-    albums, current_page, pages = get_model().list_albums(cursor=token, sort_by=sort, order=order)
+    albums, cursor, pages, limit = get_model().list_albums(cursor=token, sort_by=sort, order=order)
     for album in albums:
         album['number_of_artists'] = get_model().get_number_of_artist_on_album(album['id'])
-    return render_template("albums.html", albums=albums, current_page=current_page, sort_by=sort, order=order, pages=pages)
+    return render_template("albums.html", albums=albums, cursor=cursor, sort_by=sort, order=order, pages=pages, limit=limit)
 # [END list_albums_template]
 
 
@@ -148,8 +148,8 @@ def albums_by_artist_template(id):
 @crud.route('/tracks', methods=['GET'])
 def list_tracks_template():
     token, sort, order = get_args(request.args)
-    tracks, current_page, pages = get_model().list_tracks(cursor=token, sort_by=sort, order=order)
-    return render_template("tracks.html", tracks=tracks, current_page=current_page, sort_by=sort, order=order, pages=pages)
+    tracks, cursor, pages, limit = get_model().list_tracks(cursor=token, sort_by=sort, order=order)
+    return render_template("tracks.html", tracks=tracks, cursor=cursor, sort_by=sort, order=order, pages=pages, limit=limit)
 # [END list_tracks_template]
 
 

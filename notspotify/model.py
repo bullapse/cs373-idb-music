@@ -70,16 +70,15 @@ def list_artists(limit=10, cursor=None, sort_by=None, order=None):
         query = (Artist.query
                  .order_by(db.desc(sort_by))
                  .limit(limit)
-                 .offset(cursor * limit))
+                 .offset(cursor))
     else:
         query = (Artist.query
                  .order_by(sort_by)
                  .limit(limit)
-                 .offset(cursor * limit))
+                 .offset(cursor))
     artists = builtin_list(map(from_sql, query.all()))
-    pages = [int((n / limit)) for n in list(range(0, Track.query.count(), limit))]
-    current_page = cursor
-    return (artists, current_page, pages)
+    pages = list(range(0, Track.query.count(), limit))
+    return (artists, cursor, pages, limit)
 # [END list_artists]
 
 
@@ -193,16 +192,15 @@ def list_albums(limit=10, cursor=None, sort_by=None, order=None):
         query = (Album.query
                  .order_by(db.desc(sort_by))
                  .limit(limit)
-                 .offset(cursor * limit))
+                 .offset(cursor))
     else:
         query = (Album.query
                  .order_by(sort_by)
                  .limit(limit)
-                 .offset(cursor * limit))
+                 .offset(cursor))
     albums = builtin_list(map(from_sql, query.all()))
-    pages = [int((n / limit)) for n in list(range(0, Track.query.count(), limit))]
-    current_page = cursor
-    return (albums, current_page, pages)
+    pages = list(range(0, Track.query.count(), limit))
+    return (albums, cursor, pages, limit)
 # [END list_albums]
 
 
@@ -326,16 +324,15 @@ def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
         query = (Track.query
                  .order_by(db.desc(sort_by))
                  .limit(limit)
-                 .offset(cursor * limit))
+                 .offset(cursor))
     else:
         query = (Track.query
                  .order_by(sort_by)
                  .limit(limit)
-                 .offset(cursor * limit))
+                 .offset(cursor))
     tracks = builtin_list(map(from_sql, query.all()))
-    pages = [int((n / limit)) for n in list(range(0, Track.query.count(), limit))]
-    current_page = cursor
-    return (tracks, current_page, pages)
+    pages = list(range(0, Track.query.count(), limit))
+    return (tracks, cursor, pages, limit)
 # [END list_tracks]
 
 
