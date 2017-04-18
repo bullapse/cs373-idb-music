@@ -107,14 +107,16 @@ class MyTest(flask_testing.TestCase):
     def test_rest_artist_paging1(self):
         page = model.list_artists()
 
+        self.assertEqual(page[1], 0)
+        self.assertEqual(page[3], 10)
         self.assertEqual(len(page[0]), 10)
-        self.assertEqual(page[1], 10)
 
     def test_rest_artist_paging2(self):
         page = model.list_artists(cursor=10)
 
+        self.assertEqual(page[1], 10)
+        self.assertEqual(page[3], 10)
         self.assertEqual(len(page[0]), 10)
-        self.assertEqual(page[1], 20)
 
     def test_rest_artist_sort_name(self):
         page = model.list_artists(sort_by='name')
@@ -203,14 +205,16 @@ class MyTest(flask_testing.TestCase):
     def test_rest_album_paging1(self):
         page = model.list_albums()
 
+        self.assertEqual(page[1], 0)
+        self.assertEqual(page[3], 10)
         self.assertEqual(len(page[0]), 10)
-        self.assertEqual(page[1], 10)
 
     def test_rest_album_paging2(self):
         page = model.list_albums(cursor=10)
 
+        self.assertEqual(page[1], 10)
+        self.assertEqual(page[3], 10)
         self.assertEqual(len(page[0]), 10)
-        self.assertEqual(page[1], 20)
 
     def test_rest_album_sort_name(self):
         page = model.list_albums(sort_by='name')
@@ -306,14 +310,16 @@ class MyTest(flask_testing.TestCase):
     def test_rest_track_paging1(self):
         page = model.list_tracks()
 
+        self.assertEqual(page[1], 0)
+        self.assertEqual(page[3], 20)
         self.assertEqual(len(page[0]), 20)
-        self.assertEqual(page[1], 20)
 
     def test_rest_track_paging2(self):
         page = model.list_tracks(cursor=20)
 
+        self.assertEqual(page[1], 20)
+        self.assertEqual(page[3], 20)
         self.assertEqual(len(page[0]), 20)
-        self.assertEqual(page[1], 40)
 
     def test_rest_track_sort_name(self):
         page = model.list_tracks(sort_by='name')

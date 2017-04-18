@@ -73,7 +73,7 @@
           </td>
           <td>
           <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" 
+            <div class="progress-bar progress-bar-success" role="progressbar"
               aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
             </div>
           </div>
@@ -91,12 +91,6 @@
     </table>
   </div>
 
-  {% if next_page_token %}
-  <nav>
-    <ul class="pager">
-      <li><a href="?page_token={{next_page_token}}">More</a></li>
-    </ul>
-  </nav>
-  {% endif %}
+  {% include "pagination.html" %}
 
   {% endblock %}

@@ -1,0 +1,30 @@
+{% set sort_param = '&sort=' + sort_by if sort_by%}
+{% set order_param = '&order=' + order if order%}
+{% set prev_cursor = cursor - limit %}
+{% set next_cursor = cursor + limit %}
+
+<nav class="text-center">
+  <ul class="pagination">
+    {% if prev_cursor >= 0 %}
+    <li class="page-item">
+      <a class="page-link" href="?page_token={{prev_cursor}}{{sort_param}}{{order_param}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    {% endif %}
+    {% for page in range(0, count, limit) %}
+    {% if page > cursor - (3 * limit) and page < cursor + (3 * limit) %}
+    <li><a href="?page_token={{page}}{{sort_param}}{{order_param}}">{{(page // limit) + 1}}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if next_cursor <= count %}
+    <li class="page-item">
+      <a class="page-link" href="?page_token={{next_cursor}}{{sort_param}}{{order_param}}" aria-label="Previous">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
