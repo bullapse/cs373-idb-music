@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block scripts %}
+<link href='//fonts.googleapis.com/css?family=Vampiro One' rel='stylesheet'>
   <script>
   $(document).ready(function(){
     $('#slides').cycle({
@@ -20,6 +21,10 @@
     <img src="../static/concert2.jpg" class="bg"/>
     <img src="../static/concert3.jpg" class="bg"/>
     <img src="../static/concert4.jpg" class="bg"/>
+    <img src="../static/concert5.jpg" class="bg"/>
+    <img src="../static/concert6.jpg" class="bg"/>
+    <img src="../static/concert7.jpg" class="bg"/>
+    <img src="../static/concert8.jpg" class="bg"/>
   </div>
   {% endblock %}
   {% block menubar %}
@@ -51,4 +56,21 @@
     </div>
     
   </body>
+  {% endblock %}
+
+  {% block content %}
+  <div class="container-fluid">
+    <div class="row">
+        <div class="splash">
+          <div id="splashblock">
+            <p id="splashtext"><a id="splashlink" href="/tracks">Discover Music.</a></p>
+            <form id="splashSearch">
+              <input type="text" name="search" placeholder="Search...">
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
   {% endblock %}
