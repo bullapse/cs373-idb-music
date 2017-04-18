@@ -77,8 +77,8 @@ def list_artists(limit=10, cursor=None, sort_by=None, order=None):
                  .limit(limit)
                  .offset(cursor))
     artists = builtin_list(map(from_sql, query.all()))
-    pages = list(range(0, Track.query.count(), limit))
-    return (artists, cursor, pages, limit)
+    count = Track.query.count()
+    return (artists, cursor, count, limit)
 # [END list_artists]
 
 
@@ -199,8 +199,8 @@ def list_albums(limit=10, cursor=None, sort_by=None, order=None):
                  .limit(limit)
                  .offset(cursor))
     albums = builtin_list(map(from_sql, query.all()))
-    pages = list(range(0, Track.query.count(), limit))
-    return (albums, cursor, pages, limit)
+    count = Track.query.count()
+    return (albums, cursor, count, limit)
 # [END list_albums]
 
 
@@ -331,8 +331,8 @@ def list_tracks(limit=20, cursor=None, sort_by=None, order=None):
                  .limit(limit)
                  .offset(cursor))
     tracks = builtin_list(map(from_sql, query.all()))
-    pages = list(range(0, Track.query.count(), limit))
-    return (tracks, cursor, pages, limit)
+    count = Track.query.count()
+    return (tracks, cursor, count, limit)
 # [END list_tracks]
 
 
