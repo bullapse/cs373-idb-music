@@ -118,7 +118,7 @@
          <th>
            Explicit
          </th>
-         <th>Runtime
+         <th>Length
            </th>
          <th>Popularity
          </th>
@@ -137,7 +137,7 @@
            {% endif %}
          </td>
          <td>
-           {{track.runtime}}
+           {{track.runtime//60000}}:{{"{:0>2d}".format((track.runtime%60000)//1000)}}
          </td>
          <td>
         <div class="progress">

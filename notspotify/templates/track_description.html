@@ -40,9 +40,13 @@
   <div class="media-body">
     <h1>{{track.name}}</h1>
     <div class="details">
-      <div><strong>Explicit:</strong> {{track.explicit}}</div>
-      <div><strong>Runtime:</strong> <div id=#runtime data-runtime={{track.runtime}}>
-        {{track.runtime}}
+      <div> 
+          {% if track.explicit %}
+                <img src="../static/explicit.jpg" height="40px">
+          {% endif %}
+      </div>
+      <div><strong>Length:</strong> <div id=#runtime data-runtime={{track.runtime}}>
+        {{track.runtime//60000}}:{{"{:0>2d}".format((track.runtime%60000)//1000)}}
         </div>
       </div>
       <div><strong>Popularity:</strong></div>
