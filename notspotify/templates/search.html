@@ -1,0 +1,191 @@
+
+{% extends "base.html" %}
+
+{% block background %}
+<div id="bckgrnd">
+</div>
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="/index.html">Home</a></li>
+          <li class="active"><a href="/artists">Artists</a></li>
+          <li><a href="/albums">Albums</a></li>
+          <li><a href="/tracks">Tracks</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="text-success">Artists</h4>
+  <table id="table0">
+     <thead>
+       <tr>
+         <th></th>
+         <th>
+           Name
+    		   <a href="/search?artist_sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+    		   <a href="/search?artist_sort=name&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+         </th>
+         <th>
+           Followers
+           <a href="/search?artist_sort=followers"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?artist_sort=followers&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+         </th>
+         <th>
+           Popularity
+           <a href="/search?artist_sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?artist_sort=popularity&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+         </th>
+         <th># of Albums</th>
+         <th># of Tracks</th>
+       </tr>
+     </thead>
+     <tbody>
+       {% for artist in artists %}
+       <tr class="clickable-row" data-href="/artist/{{artist.id}}">
+         <td>
+           <img class="img-rounded" width="100px" src="{{artist.image_url}}" />
+         </td>
+         <td>
+           {{artist.name}}
+         </td>
+         <td>
+           {{artist.followers}}
+         </td>
+         <td>
+         <div class="progress">
+           <div class="progress-bar progress-bar-success" role="progressbar"
+             aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
+           </div>
+         </div>
+         </td>
+         <td>
+           {{artist.numofalbums}}
+         </td>
+         <td>
+           {{artist.number_of_tracks}}
+         </td>
+       </tr>
+       {% endfor %}
+     </tbody>
+   </table>
+   <!-- TODO include pageniation -->
+   <h2 class="text-success">Albums</h4>
+  <table id="table0">
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          Name
+		  <a href="/search?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+		  <a href="artists?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+        </th>
+        <th>
+          Release Date
+        </th>
+        <th>
+          Number of Tracks
+        </th>
+        <th>
+          Number of Artists
+        </th>
+        <th>
+          Popularity
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for album in albums %}
+      <tr class='clickable-row' data-href="/album/{{album.id}}">
+        <td>
+          <img class="img-rounded" width="100px" src="{{album.image_url}}" />
+        </td>
+        <td>
+          {{album.name}}
+        </td>
+        <td>
+          {{album.release_date}}
+        </td>
+        <td>
+          {{album.number_of_tracks}}
+        </td>
+        <td>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
+          </div>
+        </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- TODO include pageniation -->
+  <h2 class="text-success">Tracks</h4>
+   <table id="table0">
+     <thead>
+       <tr>
+         <th>Name
+         </th>
+         <th>
+           Explicit
+         </th>
+         <th>Runtime
+           </th>
+         <th>Popularity
+         </th>
+         <th>Preview</th>
+       </tr>
+     </thead>
+     <tbody>
+       {% for track in tracks %}
+       <tr class="clickable-row" data-href="/track/{{track.id}}">
+         <td>
+           {{track.name}}
+         </td>
+         <td>
+           {% if track.explicit %}
+           {{track.explicit}}
+           {% endif %}
+         </td>
+         <td>
+           {{track.runtime}}
+         </td>
+         <td>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
+          </div>
+        </div>
+         </td>
+         <td>
+           <audio controls>
+           <source src={{track.preview_url}} type="audio/mpeg">
+           </audio>
+         </td>
+       </tr>
+       {% endfor %}
+     </tbody>
+   </table>
+   <!-- TODO include pageniation -->
+</div>
+{% endblock %}
