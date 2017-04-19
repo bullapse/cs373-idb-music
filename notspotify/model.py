@@ -67,6 +67,7 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
     sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
     if term:
+        search = True
         conditions = []
         term = str(term).split(' ')
         for q in term:
@@ -78,6 +79,8 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(db.desc(sort_by))
                      .limit(limit)
                      .offset(cursor))
+            count = (Artist.query
+                     .filter(db.or_(*conditions)).count())
         else:
             query = (Artist.query
                      .order_by(db.desc(sort_by))
@@ -90,13 +93,16 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            count = (Artist.query
+                     .filter(db.or_(*conditions)).count())
         else:
             query = (Artist.query
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
     artists = builtin_list(map(from_sql, query.all()))
-    count = Track.query.count()
+    if not search:
+        count = Artist.query.count()
     return (artists, cursor, count, limit)
 # [END list_artists]
 
@@ -210,6 +216,7 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
     cursor = int(cursor) if cursor else 0
 
     if term:
+        search = True
         conditions = []
         term = str(term).split(' ')
         for q in term:
@@ -221,6 +228,8 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            count = (Album.query
+                     .filter(db.or_(*conditions)).count())
         else:
             query = (Album.query
                      .order_by(db.desc(sort_by))
@@ -233,13 +242,16 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            count = (Album.query
+                     .filter(db.or_(*conditions)).count())
         else:
             query = (Album.query
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
     albums = builtin_list(map(from_sql, query.all()))
-    count = Track.query.count()
+    if not search:
+        count = Album.query.count()
     return (albums, cursor, count, limit)
 # [END list_albums]
 
@@ -366,6 +378,7 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
     sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
     if term:
+        search = True
         conditions = []
         term = str(term).split(' ')
         for q in term:
@@ -377,6 +390,8 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            count = (Track.query
+                     .filter(db.or_(*conditions)).count())
         else:
             query = (Track.query
                      .order_by(db.desc(sort_by))
@@ -389,13 +404,16 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            count = (Track.query
+                     .filter(db.or_(*conditions)).count())
         else:
             query = (Track.query
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+    if not search:
+        count = Track.query.count()
     tracks = builtin_list(map(from_sql, query.all()))
-    count = Track.query.count()
     return (tracks, cursor, count, limit)
 # [END list_tracks]
 

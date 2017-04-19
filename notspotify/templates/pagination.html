@@ -15,7 +15,7 @@
     {% endif %}
     {% for page in range(0, count, limit) %}
     {% if page > cursor - (3 * limit) and page < cursor + (3 * limit) %}
-    <li><a href="?page_token={{page}}{{sort_param}}{{order_param}}">{{(page // limit) + 1}}</a></li>
+    <li><a href="?page_token={{page}}&sort={{sort_param}}&order={{order_param}}">{{(page // limit) + 1}}</a></li>
     {% endif %}
     {% endfor %}
     {% if next_cursor <= count %}

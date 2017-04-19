@@ -71,8 +71,8 @@ def search_template():
     albums, album_cursor, album_count, album_limit = get_model().list_albums(term=term, cursor=album_token, sort_by=album_sort, order=album_order)
     tracks, track_cursor, track_count, track_limit = get_model().list_tracks(term=term, cursor=track_token, sort_by=track_sort, order=track_order)
     return render_template("search.html", term=term, artists=artists, artist_cursor=artist_cursor, artist_sort_by=artist_sort, artist_order=artist_order, artist_count=artist_count, artist_limit=artist_limit,
-                                          albums=albums, albums_cursor=album_cursor, albums_sort_by=album_sort, albums_order=artist_order, albums_count=album_count, albums_limit=album_limit,
-                                          tracks=tracks, tracks_cursor=track_cursor, tracks_sort_by=track_sort, tracks_order=track_order, tracks_count=track_count, tracks_limit=track_limit)
+                                          albums=albums, album_cursor=album_cursor, album_sort_by=album_sort, album_order=artist_order, album_count=album_count, album_limit=album_limit,
+                                          tracks=tracks, track_cursor=track_cursor, track_sort_by=track_sort, track_order=track_order, track_count=track_count, track_limit=track_limit)
 
 
 # ---------------------- ARTISTS -------------------------- #
