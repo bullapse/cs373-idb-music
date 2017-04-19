@@ -13,6 +13,23 @@
   <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.cycle.lite.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='scripts/clickable-row.js') }}"></script>
   {% block scripts %}
+  <script>
+  $(function(){
+    $('a[href="#search"]').on('click', function(event){
+      event.preventDefault();
+      $('#search').addClass('open');
+      $('#splashblock').addClass('ghost');
+      $('#search > form > input[type="search"]').focus();
+    });
+
+    $('#search, #search button.close').on('click keyup', function(event){
+      if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+        $(this).removeClass('open');
+        $('#splashblock').removeClass('ghost');
+      }
+    });
+  });
+  </script>
   {% endblock %}
 </head>
 <body>
@@ -22,7 +39,14 @@
   {% block menubar %}
   {% endblock %}
 </div>
-{% block content %}{% endblock %}
+{% block content %}
+  <div id="search">
+    <button type="button" class="close">x</button>
+    <form method="get" action="/search">
+      <input type="search" name="term" placeholder="Type search term(s) here">
+    </form>
+  </div>
+{% endblock %}
 
 </body>
 
