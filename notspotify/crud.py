@@ -23,8 +23,8 @@ def get_args(args):
 
 def get_search_args(args):
     term = request.args.get('term', None)
-    if term:
-        term = term.encode('utf-8')
+    # if term:
+        # term = term.encode('utf-8')
     artist_token = args.get('artist_page_token', None)
     artist_sort = args.get('artist_sort', None)
     artist_order = args.get('artist_order', None)

@@ -70,7 +70,7 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
         conditions = []
         term = str(term).split(' ')
         for q in term:
-            conditions.append(Album.name.ilike('%{}%'.format(q)))
+            conditions.append(Artist.name.contains(q))
     if order:
         if term:
             query = (Artist.query
@@ -85,6 +85,7 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .offset(cursor))
     else:
         if term:
+            print(term)
             query = (Artist.query
                      .filter(db.or_(*conditions))
                      .order_by(sort_by)
@@ -212,7 +213,7 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
         conditions = []
         term = str(term).split(' ')
         for q in term:
-            conditions.append(Album.name.ilike('%{}%'.format(q)))
+            conditions.append(Album.name.contains(q))
     if order:
         if term:
             query = (Album.query
@@ -363,7 +364,7 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
         conditions = []
         term = str(term).split(' ')
         for q in term:
-            conditions.append(Album.name.ilike('%{}%'.format(q)))
+            conditions.append(Track.name.contains(q))
     if order:
         if term:
             query = (Track.query
