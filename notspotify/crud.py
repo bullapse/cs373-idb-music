@@ -21,6 +21,60 @@ def get_args(args):
     return token, sort, order
 
 
+def get_search_args(args):
+    term = request.args.get('term', None)
+    # if term:
+        # term = term.encode('utf-8')
+    artist_token = args.get('artist_page_token', None)
+    artist_sort = args.get('artist_sort', None)
+    artist_order = args.get('artist_order', None)
+
+    album_token = args.get('album_page_token', None)
+    album_sort = args.get('album_sort', None)
+    album_order = args.get('album_order', None)
+
+    track_token = args.get('track_page_token', None)
+    track_sort = args.get('track_sort', None)
+    track_order = args.get('track_order', None)
+
+    if artist_token:
+        artist_token = artist_token.encode('utf-8')
+    if artist_sort:
+        artist_sort = str(artist_sort)
+        if artist_order:
+            artist_order = str(artist_order)
+
+    if album_token:
+        album_token = album_token.encode('utf-8')
+    if album_sort:
+        album_sort = str(album_sort)
+        if album_order:
+            album_order = str(album_order)
+
+    if track_token:
+        track_token = track_token.encode('utf-8')
+    if track_sort:
+        track_sort = str(track_sort)
+        if track_order:
+            track_order = str(track_order)
+
+    return (term, artist_token, artist_sort, artist_order,
+            album_token, album_sort, album_order,
+            track_token, track_sort, track_order)
+
+
+@crud.route('/search', methods=['GET'])
+def search_template():
+    term, artist_token, artist_sort, artist_order, album_token, album_sort, album_order, track_token, track_sort, track_order = get_search_args(request.args)
+
+    artists, artist_cursor, artist_count, artist_limit = get_model().list_artists(term=term, cursor=artist_token, sort_by=artist_sort, order=artist_order)
+    albums, album_cursor, album_count, album_limit = get_model().list_albums(term=term, cursor=album_token, sort_by=album_sort, order=album_order)
+    tracks, track_cursor, track_count, track_limit = get_model().list_tracks(term=term, cursor=track_token, sort_by=track_sort, order=track_order)
+    return render_template("search.html", artists=artists, artist_cursor=artist_cursor, artist_sort_by=artist_sort, artist_order=artist_order, artist_count=artist_count, artist_limit=artist_limit,
+                                          albums=albums, albums_cursor=album_cursor, albums_sort_by=album_sort, albums_order=artist_order, albums_count=album_count, albums_limit=album_limit,
+                                          tracks=tracks, tracks_cursor=track_cursor, tracks_sort_by=track_sort, tracks_order=track_order, tracks_count=track_count, tracks_limit=track_limit)
+
+
 # ---------------------- ARTISTS -------------------------- #
 # [START list_artists_template]
 @crud.route('/artists', methods=['GET'])

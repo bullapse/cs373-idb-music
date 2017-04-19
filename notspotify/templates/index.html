@@ -54,7 +54,7 @@
     <div class="container-fluid" style="text-align: center;">
       <img class="image-responsive" src="../static/Spotify_logo_with_text.svg.png"></img>
     </div>
-    
+
   </body>
   {% endblock %}
 
@@ -64,8 +64,8 @@
         <div class="splash">
           <div id="splashblock">
             <p id="splashtext"><a id="splashlink" href="/tracks">Discover Music.</a></p>
-            <form id="splashSearch">
-              <input type="text" name="search" placeholder="Search...">
+            <form id="splashSearch" method="get" action="/search">
+              <input type="text" name="term" placeholder="Search..." >
             </form>
           </div>
         </div>
