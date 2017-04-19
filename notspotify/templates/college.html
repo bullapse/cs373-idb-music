@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block background %}
+  <div id="bckgrnd">
+  </div>
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/artists">Artists</a></li>
+          <li><a href="/albums">Albums</a></li>
+          <li><a href="/tracks">Tracks</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script>
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+var universities = {{universities | tojson}}['universities'];
+var regions = {{regions | tojson}};
+var degrees = {{degrees | tojson}}['degrees'];
+console.log(degrees.map(function(deg){return deg.num_percent_private}).reduce(function(a, b){return a + b}, 0));
+universities = universities.filter(function(uni){return uni.academic_cost!== undefined && typeof(uni.academic_cost) === 'number' && !isNaN(uni.academic_cost)});
+universities = universities.sort(function(a,b) {return (a.academic_cost < b.academic_cost) ? 1 : ((b.academic_cost < a.academic_cost) ? -1 : 0);} );
+var private_prices = Object.entries(regions).map(function(region){return region[1][0];});
+var public_prices = Object.entries(regions).map(function(region){return region[1][1];});
+$(function () {
+        $('#container').highcharts({
+            chart: {type: 'column'},
+            title: {text: 'Average Region Cost'},
+            subtitle: {text: 'Source: collegedb'},
+            xAxis: {categories: Object.keys(regions)},
+            yAxis: {min: 0,title: {text: 'Price'}},
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.2f} $</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {column: {pointPadding: 0.2,borderWidth: 0}},
+            series: [{
+                name: 'Private',
+                data: private_prices
+
+            }, {
+                name: 'Public',
+                data: public_prices
+            }]
+        });
+
+        $('#container1').highcharts({
+            chart: {type: 'column'},
+            title: {text: 'Top Ten Most Expensive Universities'},
+            subtitle: {text: 'Source: collegedb'},
+            xAxis: {categories: universities.slice(0, 10).map(function(uni){return uni.name})},
+            yAxis: {min: 60000,title: {text: 'Price'}},
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:red;padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:f} $</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {column: {pointPadding: 0.2,borderWidth: 0}},
+            series: [{
+                name: 'Cost',
+                data: universities.slice(0, 10).map(function(uni){return uni.academic_cost})
+            }]
+        });
+
+        $('#container2').highcharts({
+            chart: {type: 'pie'},
+            title: {text: 'Percent of Degrees given'},
+            subtitle: {text: 'Source: collegedb'},
+            xAxis: {categories: universities.slice(0, 10).map(function(uni){return uni.name})},
+            yAxis: {min: 60000,title: {text: 'Price'}},
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:red;padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:f} $</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {column: {pointPadding: 0.2,borderWidth: 0}},
+            series: [{
+                name: 'Cost',
+                data: universities.slice(0, 10).map(function(uni){return uni.academic_cost})
+            }]
+        });
+    });</script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+{% endblock %}
