@@ -42,14 +42,21 @@
          <th></th>
          <th>
            Name
+    		   <a href="/search?artist_sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+    		   <a href="/search?artist_sort=name&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
          </th>
          <th>
            Followers
+           <a href="/search?artist_sort=followers"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?artist_sort=followers&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
          </th>
          <th>
            Popularity
+           <a href="/search?artist_sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?artist_sort=popularity&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
          </th>
          <th># of Albums</th>
+         <th># of Tracks</th>
        </tr>
      </thead>
      <tbody>
@@ -74,7 +81,9 @@
          <td>
            {{artist.numofalbums}}
          </td>
-
+         <td>
+           {{artist.number_of_tracks}}
+         </td>
        </tr>
        {% endfor %}
      </tbody>
@@ -87,6 +96,8 @@
         <th></th>
         <th>
           Name
+		  <a href="/search?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+		  <a href="artists?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
         </th>
         <th>
           Release Date
