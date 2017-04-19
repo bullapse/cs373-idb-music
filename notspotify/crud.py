@@ -70,7 +70,7 @@ def search_template():
     artists, artist_cursor, artist_count, artist_limit = get_model().list_artists(term=term, cursor=artist_token, sort_by=artist_sort, order=artist_order)
     albums, album_cursor, album_count, album_limit = get_model().list_albums(term=term, cursor=album_token, sort_by=album_sort, order=album_order)
     tracks, track_cursor, track_count, track_limit = get_model().list_tracks(term=term, cursor=track_token, sort_by=track_sort, order=track_order)
-    return render_template("search.html", artists=artists, artist_cursor=artist_cursor, artist_sort_by=artist_sort, artist_order=artist_order, artist_count=artist_count, artist_limit=artist_limit,
+    return render_template("search.html", term=term, artists=artists, artist_cursor=artist_cursor, artist_sort_by=artist_sort, artist_order=artist_order, artist_count=artist_count, artist_limit=artist_limit,
                                           albums=albums, albums_cursor=album_cursor, albums_sort_by=album_sort, albums_order=artist_order, albums_count=album_count, albums_limit=album_limit,
                                           tracks=tracks, tracks_cursor=track_cursor, tracks_sort_by=track_sort, tracks_order=track_order, tracks_count=track_count, tracks_limit=track_limit)
 
@@ -94,8 +94,8 @@ def list_artist_description_template(id):
     artist = get_model().read_artist(id)
     artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
     artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
-    artist['albums'], _ = get_model().list_albums_by_artist(id)
-    artist['tracks'], _ = get_model().list_tracks_by_artist(id)
+    artist['albums'], _, _, _ = get_model().list_albums_by_artist(id)
+    artist['tracks'], _, _, _ = get_model().list_tracks_by_artist(id)
     print(artist['tracks'])
     return render_template("artist_description.html", artist=artist)
 # [END list_artist_description_template]
@@ -115,8 +115,8 @@ def artist_description_name(name):
 @crud.route('/artist/track/<id>', methods=['GET'])
 def list_artist_description__by_track_template(id):
     token, sort, order = get_args(request.args)
-    artists, next_page_token = get_model().list_artists_by_track(id, cursor=token)
-    return render_template("artists.html", artists=artists, next_page_token=next_page_token)
+    artists, cursor, count, limit = get_model().list_artists_by_track(id, cursor=token)
+    return render_template("artists.html", artists=artists, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END list_artist_description__by_track_template]
 
 
@@ -124,8 +124,8 @@ def list_artist_description__by_track_template(id):
 @crud.route('/artist/track/name/<name>', methods=['GET'])
 def list_artist_description__by_track_name_template(name):
     token, sort, order = get_args(request.args)
-    artists = get_model().list_artists_by_track_name(name, cursor=token)
-    return render_template("artists.html", artists=artists, next_page_token=next_page_token)
+    artists, cursor, count, limit = get_model().list_artists_by_track_name(name, cursor=token)
+    return render_template("artists.html", artists=artists, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END list_artist_description__by_track_name]
 
 
@@ -133,8 +133,8 @@ def list_artist_description__by_track_name_template(name):
 @crud.route('/artist/album/<id>', methods=['GET'])
 def list_artist_description__by_album_template(id):
     token, sort, order = get_args(request.args)
-    artists = get_model().list_artists_by_album(id, cursor=token)
-    return render_template("artists.html", artists=artists, next_page_token=next_page_token)
+    artists, cursor, count, limit = get_model().list_artists_by_album(id, cursor=token)
+    return render_template("artists.html", artists=artists, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END list_artist_description__by_album_template]
 
 
@@ -142,8 +142,8 @@ def list_artist_description__by_album_template(id):
 @crud.route('/artist/album/name/<name>', methods=['GET'])
 def list_artist_description__by_album_name_template(name):
     token, sort, order = get_args(request.args)
-    artists, next_page_token = get_model().list_artists_by_album_name(name, cursor=token)
-    return render_template("artists.html", artists=artists, next_page_token=next_page_token)
+    artists, cursor, count, limit = get_model().list_artists_by_album_name(name, cursor=token)
+    return render_template("artists.html", artists=artists, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END list_artist_description__by_album_name]
 
 # ---------------------- ALBUMS -------------------------- #
@@ -163,10 +163,11 @@ def list_albums_template():
 # [START album_description_id_template]
 @crud.route('/album/<id>', methods=['GET'])
 def album_description_id_template(id):
+    token, sort, order = get_args(request.args)
     album = get_model().read_album(id)
     artists = get_model().list_artists_by_album(id)
-    tracks = get_model().list_tracks_by_album(id)
-    return render_template("album_description.html", album=album, tracks=tracks, artists=artists)
+    tracks, _, _, _ = get_model().list_tracks_by_album(id)
+    return render_template("album_description.html", album=album, tracks=tracks, artists=artistsf)
 # [END album_description_id_template]
 
 
@@ -182,8 +183,8 @@ def album_description_name_template(name):
 @crud.route('/album/artist/name/<name>', methods=['GET'])
 def albums_by_artist_name_template(name):
     token, sort, order = get_args(request.args)
-    albums, next_page_token = get_model().list_albums_by_artist_name(name, cursor=token)
-    return render_template("albums.html", albums=albums, next_page_token=next_page_token)
+    albums, cursor, count, limit = get_model().list_albums_by_artist_name(name, cursor=token)
+    return render_template("albums.html", albums=albums, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END albums_by_artist_name_template]
 
 
@@ -191,8 +192,8 @@ def albums_by_artist_name_template(name):
 @crud.route('/album/artist/<id>', methods=['GET'])
 def albums_by_artist_template(id):
     token, sort, order = get_args(request.args)
-    albums, next_page_token = get_model().list_albums_by_artist(id, cursor=token)
-    return render_template("albums.html", albums=albums, next_page_token=next_page_token)
+    albums, cursor, count, limit = get_model().list_albums_by_artist(id, cursor=token)
+    return render_template("albums.html", albums=albums, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END albums_by_artist_template]
 
 # ---------------------- TRACKS -------------------------- #
@@ -211,8 +212,8 @@ def list_tracks_template():
 @crud.route('/track/artist/name/<name>')
 def tracks_by_artist_name_template(name):
     token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_artist_name(name)
-    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
+    tracks, cursor, count, limit = get_model().list_tracks_by_artist_name(name)
+    return render_template("tracks.html", tracks=tracks, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END tracks_by_artist_name_template]
 
 
@@ -220,8 +221,8 @@ def tracks_by_artist_name_template(name):
 @crud.route('/track/artist/<id>')
 def tracks_by_artist_template(id):
     token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_artist(id)
-    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
+    tracks, cursor, count, limit = get_model().list_tracks_by_artist(id)
+    return render_template("tracks.html", tracks=tracks, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END tracks_by_artist_template]
 
 
@@ -229,8 +230,8 @@ def tracks_by_artist_template(id):
 @crud.route('/track/album/name/<name>')
 def tracks_by_album_name_template(name):
     token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_album_name(name)
-    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
+    tracks, cursor, count, limit = get_model().list_tracks_by_album_name(name)
+    return render_template("tracks.html", tracks=tracks, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END tracks_by_album_name_template]
 
 
@@ -238,8 +239,8 @@ def tracks_by_album_name_template(name):
 @crud.route('/track/album/<id>')
 def tracks_by_album_template(id):
     token, sort, order = get_args(request.args)
-    tracks, next_page_token = get_model().list_tracks_by_album(id)
-    return render_template("tracks.html", tracks=tracks, next_page_token=next_page_token)
+    tracks, cursor, count, limit = get_model().list_tracks_by_album(id)
+    return render_template("tracks.html", tracks=tracks, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
 # [END tracks_by_album_template]
 
 
@@ -247,8 +248,8 @@ def tracks_by_album_template(id):
 @crud.route('/track/<id>')
 def track_description_id_template(id):
     track = get_model().read_track(id)
-    track['albums'], _ = get_model().list_albums_by_track(id)
-    track['artists'], _ = get_model().list_artists_by_track(id)
+    track['albums'], _, _, _ = get_model().list_albums_by_track(id)
+    track['artists'], _, _, _  = get_model().list_artists_by_track(id)
     return render_template("track_description.html", track=track)
 # [END track_description_id_template]
 
@@ -257,8 +258,8 @@ def track_description_id_template(id):
 @crud.route('/track/<id>')
 def track_description_id_api(id):
     track = get_model().read_track(id)
-    track['albums'], _ = get_model().list_albums_by_track(id)
-    track['artists'], _ = get_model().list_artists_by_track(id)
+    track['albums'], _, _, _ = get_model().list_albums_by_track(id)
+    track['artists'], _, _, _ = get_model().list_artists_by_track(id)
     return jsonify(track)
 # [END track_description_id_api]
 
