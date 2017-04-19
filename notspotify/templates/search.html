@@ -34,29 +34,31 @@
 {% endblock %}
 
 {% block content %}
+{% if not (artists or albums or artists) %}
+<h2 class="text-success">Sorry nothing was found using {{term}} ...</h2>
+{% endif %}
+{% if artists %}
 <div class="container">
-  <h2 class="text-success">Artists</h4>
+  <h2 class="text-success">Artists</h2>
   <table id="table0">
      <thead>
        <tr>
          <th></th>
          <th>
            Name
-    		   <a href="/search?artist_sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-    		   <a href="/search?artist_sort=name&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+    		   <!-- <a href="/search?term={{term}}&artist_sort=name&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+    		   <a href="/search?term={{term}}&artist_sort=name&artist_order=desc&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
          </th>
          <th>
            Followers
-           <a href="/search?artist_sort=followers"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-           <a href="/search?artist_sort=followers&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+           <!-- <a href="/search?term={{term}}&artist_sort=followers&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?term={{term}}&artist_sort=followers&artist_order=desc&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
          </th>
          <th>
            Popularity
-           <a href="/search?artist_sort=popularity"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-           <a href="/search?artist_sort=popularity&artist_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+           <!-- <a href="/search?term={{term}}&artist_sort=popularity&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?term={{term}}&artist_sort=popularity&artist_order=desc&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
          </th>
-         <th># of Albums</th>
-         <th># of Tracks</th>
        </tr>
      </thead>
      <tbody>
@@ -78,38 +80,40 @@
            </div>
          </div>
          </td>
-         <td>
-           {{artist.numofalbums}}
-         </td>
-         <td>
-           {{artist.number_of_tracks}}
-         </td>
        </tr>
        {% endfor %}
      </tbody>
    </table>
    <!-- TODO include pageniation -->
-   <h2 class="text-success">Albums</h4>
+ </div>
+   {% endif %}
+   {% if albums %}
+   <div class="container">
+
+   <h2 class="text-success">Albums</h2>
   <table id="table0">
     <thead>
       <tr>
         <th></th>
         <th>
           Name
-		  <a href="/search?sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
-		  <a href="artists?sort=name&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+          <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order=desc&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
         </th>
         <th>
           Release Date
+          <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=release_date&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=release_date&album_order=desc&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
         </th>
         <th>
           Number of Tracks
-        </th>
-        <th>
-          Number of Artists
+          <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=number_of_tracks&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=number_of_tracks&album_order=dessc&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
         </th>
         <th>
           Popularity
+          <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=popularity&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+          <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=popularity&album_order=desc&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
         </th>
       </tr>
     </thead>
@@ -140,18 +144,28 @@
     </tbody>
   </table>
   <!-- TODO include pageniation -->
-  <h2 class="text-success">Tracks</h4>
+  </div>
+  {% endif %}
+  {% if tracks %}
+  <div class="container">
+  <h2 class="text-success">Tracks</h2>
    <table id="table0">
      <thead>
        <tr>
          <th>Name
+           <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order={{albums_order}}&track_sort=name"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order={{albums_order}}&track_sort=name&track_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
          </th>
          <th>
            Explicit
          </th>
          <th>Runtime
-           </th>
+           <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order={{albums_order}}&track_sort=runtime"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order={{albums_order}}&track_sort=runtime&track_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
+         </th>
          <th>Popularity
+           <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order={{albums_order}}&track_sort=runtime"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+           <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order={{albums_order}}&track_sort=runtime&track_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
          </th>
          <th>Preview</th>
        </tr>
@@ -171,11 +185,11 @@
            {{track.runtime}}
          </td>
          <td>
-        <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar"
-            aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
-          </div>
-        </div>
+           <div class="progress">
+             <div class="progress-bar progress-bar-success" role="progressbar"
+                aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
+             </div>
+           </div>
          </td>
          <td>
            <audio controls>
@@ -187,5 +201,6 @@
      </tbody>
    </table>
    <!-- TODO include pageniation -->
+   {% endif %}
 </div>
 {% endblock %}
