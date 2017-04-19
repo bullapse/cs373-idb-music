@@ -67,7 +67,6 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
     sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
     if term:
-        search = True
         conditions = []
         term = str(term).split(' ')
         for q in term:
@@ -101,7 +100,7 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .limit(limit)
                      .offset(cursor))
     artists = builtin_list(map(from_sql, query.all()))
-    if not search:
+    if not term:
         count = Artist.query.count()
     return (artists, cursor, count, limit)
 # [END list_artists]
@@ -216,7 +215,6 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
     cursor = int(cursor) if cursor else 0
 
     if term:
-        search = True
         conditions = []
         term = str(term).split(' ')
         for q in term:
@@ -250,7 +248,7 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .limit(limit)
                      .offset(cursor))
     albums = builtin_list(map(from_sql, query.all()))
-    if not search:
+    if not term:
         count = Album.query.count()
     return (albums, cursor, count, limit)
 # [END list_albums]
@@ -378,7 +376,6 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
     sort_by = sort(sort_by)
     cursor = int(cursor) if cursor else 0
     if term:
-        search = True
         conditions = []
         term = str(term).split(' ')
         for q in term:
@@ -411,7 +408,7 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
-    if not search:
+    if not term:
         count = Track.query.count()
     tracks = builtin_list(map(from_sql, query.all()))
     return (tracks, cursor, count, limit)

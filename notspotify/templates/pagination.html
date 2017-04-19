@@ -20,7 +20,7 @@
     {% endfor %}
     {% if next_cursor <= count %}
     <li class="page-item">
-      <a class="page-link" href="?page_token={{prev_cursor}}&sort={{sort_param}}&order={{order_param}}" aria-label="Previous">
+      <a class="page-link" href="?page_token={{next_cursor}}&sort={{sort_param}}&order={{order_param}}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
