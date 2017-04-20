@@ -19,6 +19,7 @@
       event.preventDefault();
       $('#search').addClass('open');
       $('#splashblock').addClass('ghost');
+      $('.previewTrack').addClass('hidePreview');
       $('#search > form > input[type="search"]').focus();
     });
 
@@ -26,6 +27,7 @@
       if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
         $(this).removeClass('open');
         $('#splashblock').removeClass('ghost');
+        $('.previewTrack').removeClass('hidePreview');
       }
     });
   });
