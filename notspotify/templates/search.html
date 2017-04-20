@@ -21,10 +21,13 @@
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
           <li><a href="/index.html">Home</a></li>
-          <li class="active"><a href="/artists">Artists</a></li>
+          <li><a href="/artists">Artists</a></li>
           <li><a href="/albums">Albums</a></li>
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/about.html">About</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#search">Search</a></li>
         </ul>
       </div>
     </div>
@@ -34,6 +37,7 @@
 {% endblock %}
 
 {% block content %}
+{{ super() }}
 {% if not (artists or albums or artists) %}
 	<h2 class="text-success center">Sorry nothing was found using {{term}}</h2>
 {% else %}

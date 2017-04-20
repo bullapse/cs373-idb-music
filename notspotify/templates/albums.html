@@ -25,6 +25,9 @@
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/about.html">About</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#search">Search</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -33,6 +36,7 @@
 {% endblock %}
 
 {% block content %}
+{{ super() }}
 
 
 
@@ -86,7 +90,7 @@
           </td>
           <td>
           <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar"
+            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
               aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
             </div>
           </div>
