@@ -167,7 +167,7 @@ def album_description_id_template(id):
     album = get_model().read_album(id)
     artists = get_model().list_artists_by_album(id)
     tracks, _, _, _ = get_model().list_tracks_by_album(id)
-    return render_template("album_description.html", album=album, tracks=tracks, artists=artistsf)
+    return render_template("album_description.html", album=album, tracks=tracks, artists=artists)
 # [END album_description_id_template]
 
 
