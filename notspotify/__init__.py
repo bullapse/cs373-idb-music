@@ -16,12 +16,8 @@ import logging
 import subprocess
 import os
 import requests
-import requests_toolbelt.adapters.appengine
-from google.appengine.api import urlfetch
 
 from flask import current_app, Flask, url_for, render_template
-
-requests_toolbelt.adapters.appengine.monkeypatch()
 
 def create_app(config, debug=False, testing=False, config_overrides=None):
     app = Flask(__name__)
