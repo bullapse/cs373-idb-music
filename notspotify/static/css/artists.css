@@ -146,11 +146,21 @@ tr:hover {
 #details {
     background-color: #c0c0c0;
 }
+#center-logo {
+    visibility: hidden;
+}
 h1 {
     border-left: 6px darkgreen;
     background-color: #82b919;
     color: white;
     text-indent: 6px;
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+.navbar-brand>img {
+    padding: 7px 10px;
 }
 #splashblock {
     min-height: 100%;
@@ -175,6 +185,15 @@ h1 {
     width: 100%;
     margin-left: 25px;
     margin-right: 25px;
+}
+#splashInfo {
+    background-color: black;
+    color: white;
+    opacity: 0.7;
+    font-size: 2em;
+    padding-top: 10px;
+    height: 25%;
+    width: 100%;
 }
 
 p#splashtext a {
