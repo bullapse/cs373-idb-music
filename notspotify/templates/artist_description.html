@@ -16,7 +16,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+        <a class="navbar-brand" href="/index.html">
+        <img style="width:64px;" src="../static/Spotify_logo_with_text.svg.png">
+        NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
@@ -51,7 +53,7 @@
         <div><strong>Followers: </strong>{{artist.followers}}</div>
         <div><strong>Popularity: </strong></div>
         <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" 
+        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
           aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
         </div>
         </div>
@@ -101,7 +103,7 @@
         </td>
         <td>
         <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar" 
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
             aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
           </div>
         </div>
@@ -147,7 +149,7 @@
          </td>
          <td>
         <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar" 
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
             aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
           </div>
         </div>
