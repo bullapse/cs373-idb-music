@@ -39,11 +39,13 @@
 {% block content %}
 {{ super() }}
 {% if not (artists or albums or artists) %}
-<h2 class="text-success">Sorry nothing was found using {{term}} ...</h2>
+	<h2 class="text-success center">Sorry nothing was found using {{term}}</h2>
+{% else %}
+	<h2 class="text-success center">Results for  <b>{{term}}</b></h2>
 {% endif %}
 {% if artists %}
 <div class="container">
-  <h2 class="text-success">Artists</h2>
+  <h2 class="text-success">Artists: {{artist_count}}</h2>
   <table id="table0">
      <thead>
        <tr>
@@ -88,13 +90,45 @@
        {% endfor %}
      </tbody>
    </table>
-   <!-- TODO include pageniation -->
- </div>
+   <!-- Pages -->
+   {% set prev_cursor = artist_cursor - artist_limit %}
+   {% set next_cursor = artist_cursor + artist_limit %}
+
+   <nav class="text-center">
+     <ul class="pagination">
+       {% if prev_cursor >= 0 %}
+       <li class="page-item">
+         <a class="page-link" href="?term={{term}}&artist_page_token={{prev_cursor}}" aria-label="Previous">
+           <span aria-hidden="true">&laquo;</span>
+           <span class="sr-only">Previous</span>
+         </a>
+       </li>
+       {% endif %}
+       {% if artist_count < artist_limit %}
+       <li><a href="?term={{term}}&artist_page_token={{page}}">1</a></li>
+       {% else %}
+         {% for page in range(0, artist_count, artist_limit) %}
+         {% if page > artist_cursor - (3 * artist_limit) and page < artist_cursor + (3 * artist_limit) %}
+         <li><a href="?term={{term}}&artist_page_token={{page}}">{{(page // artist_limit) + 1}}</a></li>
+         {% endif %}
+         {% endfor %}
+         {% if next_cursor < artist_count %}
+         <li class="page-item">
+           <a class="page-link" href="?term={{term}}&artist_page_token={{next_cursor}}" aria-label="Next">
+             <span aria-hidden="true">&raquo;</span>
+             <span class="sr-only">Next</span>
+           </a>
+         </li>
+         {% endif %}
+      {% endif %}
+     </ul>
+   </nav>
+   <!-- end Pages -->
    {% endif %}
    {% if albums %}
    <div class="container">
 
-   <h2 class="text-success">Albums</h2>
+   <h2 class="text-success">Albums: {{album_count}}</h2>
   <table id="table0">
     <thead>
       <tr>
@@ -147,12 +181,45 @@
       {% endfor %}
     </tbody>
   </table>
-  <!-- TODO include pageniation -->
+  <!-- Pages -->
+  {% set prev_cursor = album_cursor - album_limit %}
+  {% set next_cursor = album_cursor + album_limit %}
+
+  <nav class="text-center">
+    <ul class="pagination">
+      {% if prev_cursor >= 0 %}
+      <li class="page-item">
+        <a class="page-link" href="?term={{term}}&album_page_token={{prev_cursor}}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if album_count < album_limit %}
+      <li><a href="?term={{term}}&artist_page_token={{page}}">1</a></li>
+      {% else %}
+        {% for page in range(0, album_count, album_limit) %}
+        {% if page > album_cursor - (3 * album_limit) and page < album_cursor + (3 * album_limit) %}
+        <li><a href="?term={{term}}&album_page_token={{page}}">{{(page // album_limit) + 1}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if next_cursor < album_count %}
+        <li class="page-item">
+          <a class="page-link" href="?term={{term}}&album_page_token={{next_cursor}}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        {% endif %}
+     {% endif %}
+    </ul>
+  </nav>
+  <!-- end Pages -->
   </div>
   {% endif %}
   {% if tracks %}
   <div class="container">
-  <h2 class="text-success">Tracks</h2>
+  <h2 class="text-success">Tracks: {{track_count}}</h2>
    <table id="table0">
      <thead>
        <tr>
@@ -204,7 +271,40 @@
        {% endfor %}
      </tbody>
    </table>
-   <!-- TODO include pageniation -->
+   <!-- Pages -->
+   {% set prev_cursor = track_cursor - track_limit %}
+   {% set next_cursor = track_cursor + track_limit %}
+
+   <nav class="text-center">
+     <ul class="pagination">
+       {% if prev_cursor >= 0 %}
+       <li class="page-item">
+         <a class="page-link" href="?term={{term}}&track_page_token={{prev_cursor}}" aria-label="Previous">
+           <span aria-hidden="true">&laquo;</span>
+           <span class="sr-only">Previous</span>
+         </a>
+       </li>
+       {% endif %}
+       {% if track_count < track_limit %}
+       <li><a href="?term={{term}}&track_page_token={{page}}">1</a></li>
+       {% else %}
+         {% for page in range(0, track_count, track_limit) %}
+         {% if page > track_cursor - (3 * track_limit) and page < track_cursor + (3 * track_limit) %}
+         <li><a href="?term={{term}}&track_page_token={{page}}">{{(page // track_limit) + 1}}</a></li>
+         {% endif %}
+         {% endfor %}
+         {% if next_cursor < track_count %}
+         <li class="page-item">
+           <a class="page-link" href="?term={{term}}&track_page_token={{next_cursor}}" aria-label="Next">
+             <span aria-hidden="true">&raquo;</span>
+             <span class="sr-only">Next</span>
+           </a>
+         </li>
+         {% endif %}
+      {% endif %}
+     </ul>
+   </nav>
+   <!-- end Pages -->
    {% endif %}
 </div>
 {% endblock %}
