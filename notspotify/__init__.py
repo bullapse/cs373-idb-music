@@ -104,17 +104,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         state_response = requests.get('http://collegedb.me/api/states').json()
         uni_response = requests.get('http://collegedb.me/api/universities').json()
         degrees_response = requests.get('http://collegedb.me/api/degrees').json()
-        regions = {}
-        for state in state_response['states']:
-            if state['region'] not in regions:
-                regions[state['region']] = [[state['average_private_cost']],[state['average_public_cost']]]
-            else:
-                regions[state['region']][0] += [state['average_private_cost']]
-                regions[state['region']][1] += [state['average_public_cost']]
-        for region, averages in regions.items():
-            averages[0] = sum(averages[0]) / len(averages[0])
-            averages[1] = sum(averages[1]) / len(averages[1])
-        return render_template('college.html', regions=regions, universities=uni_response, degrees=degrees_response)
+        return render_template('college.html', states=state_response, universities=uni_response, degrees=degrees_response)
 
     # @app.route("/spotifycallback", methods=['GET'])
     # def spotifycallback():
