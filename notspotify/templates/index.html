@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block scripts %}
+{{ super() }}
 <link href='//fonts.googleapis.com/css?family=Vampiro One' rel='stylesheet'>
   <script>
   $(document).ready(function(){
@@ -46,27 +47,24 @@
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/about.html">About</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#search">Search</a></li>
+        </ul>
       </div>
     </div>
   </nav>
-
-  <body>
-    <div class="container-fluid" style="text-align: center;">
-      <img class="image-responsive" src="../static/Spotify_logo_with_text.svg.png"></img>
-    </div>
-
-  </body>
   {% endblock %}
 
   {% block content %}
+  {{ super() }}
+  <div class="container-fluid" style="text-align: center;">
+      <img class="image-responsive" src="../static/Spotify_logo_with_text.svg.png"></img>
+  </div>
   <div class="container-fluid">
     <div class="row">
         <div class="splash">
           <div id="splashblock">
             <p id="splashtext"><a id="splashlink" href="/tracks">Discover Music.</a></p>
-            <form id="splashSearch" method="get" action="/search">
-              <input type="text" name="term" placeholder="Search..." >
-            </form>
           </div>
         </div>
     </div>
