@@ -17,6 +17,7 @@ import subprocess
 import os
 import requests
 import requests_toolbelt.adapters.appengine
+from google.appengine.api import urlfetch
 
 from flask import current_app, Flask, url_for, render_template
 
