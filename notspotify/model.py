@@ -114,6 +114,11 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
         for artist in artists:
             artist['search_type'] = "and"
         artists += builtin_list(map(from_sql, query.all()))
+        for artist in artists:
+            for artist2 in artists:
+                if artist['name'] == artist2['name'] and "search_type" not in artist2:
+                    artists.remove(artist2)
+                    break
     else:
         artists = builtin_list(map(from_sql, query.all()))
     if not term:
@@ -278,6 +283,11 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
         for album in albums:
             album['search_type'] = "and"
         albums += builtin_list(map(from_sql, query.all()))
+        for album in albums:
+            for album2 in albums:
+                if album['name'] == album2['name'] and "search_type" not in album2:
+                    albums.remove(album2)
+                    break
     else:
         albums = builtin_list(map(from_sql, query.all()))
         count = Album.query.count()
@@ -457,6 +467,10 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
         for track in tracks:
             track['search_type'] = "and"
         tracks += builtin_list(map(from_sql, query.all()))
+    for track in tracks:
+        for track2 in tracks:
+            if track['name'] == track2['name'] and "search_type" not in track2:
+                tracks.remove(track2)
     return (tracks, cursor, count, limit)
 # [END list_tracks]
 
