@@ -16,7 +16,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+        <a class="navbar-brand" href="/index.html">
+        <img style="width:64px;" src="../static/Spotify_logo_with_text.svg.png">
+        NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
@@ -26,6 +28,9 @@
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/about.html">About</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#search">Search</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -34,22 +39,25 @@
 {% endblock %}
 
 {% block content %}
+{{ super() }}
 <div class="container">
   <div class="media">
-    <div class="col-md-6">
-      <img class="img-responsive" src="{{artist.image_url}}">
+    <div class="media-left">
+      <img src="{{artist.image_url}}">
     </div>
-    <div class="col-md-6">
+    <div class="media-body">
       <h1 id="headerBorder">{{artist.name}}</h1>
-      <h4 class="text-success">Popularity:</h4>
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" 
+      <div class="details"> 
+        <div><strong>Number of Tracks: </strong>{{artist.number_of_tracks}}</div>
+        <div><strong>Number of Albums: </strong>{{artist.number_of_albums}}</div>
+        <div><strong>Followers: </strong>{{artist.followers}}</div>
+        <div><strong>Popularity: </strong></div>
+        <div class="progress">
+        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
           aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
         </div>
+        </div>
       </div>
-      <h4 class="text-success">Followers: <small>{{artist.followers}}</small></h4>
-      <h4 class="text-success">Number of Tracks: <small>{{artist.number_of_tracks}}</small></h4>
-      <h4 class="text-success">Number of Albums: <small>{{artist.number_of_albums}}</small></h4>
     </div>
   </div>
 <h1 id="headerBorder">Albums by {{artist.name}}</h1>
@@ -95,7 +103,7 @@
         </td>
         <td>
         <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar" 
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
             aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
           </div>
         </div>
@@ -141,7 +149,7 @@
          </td>
          <td>
         <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar" 
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
             aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
           </div>
         </div>

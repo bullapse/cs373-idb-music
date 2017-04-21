@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block menubar %}
-<div id="wrapper">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -16,31 +15,37 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+        <a class="navbar-brand" href="/index.html">
+        <img style="width:64px;" src="../static/Spotify_logo_with_text.svg.png">
+        NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
           <li><a href="/index.html">Home</a></li>
-          <li class="active"><a href="/artists">Artists</a></li>
+          <li><a href="/artists">Artists</a></li>
           <li><a href="/albums">Albums</a></li>
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/about.html">About</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#search">Search</a></li>
+        </ul>
       </div>
     </div>
   </nav>
-</div>
-
 {% endblock %}
 
 {% block content %}
+{{ super() }}
 {% if not (artists or albums or artists) %}
-<h2 class="text-success">Sorry nothing was found using {{term}} ...</h2>
+	<h2 class="text-success center">Sorry nothing was found using {{term}}</h2>
+{% else %}
+	<h2 class="text-success center">Results for  <b>{{term}}</b></h2>
 {% endif %}
 {% if artists %}
 <div class="container">
-  <h2 class="text-success">Artists</h2>
-  <table id="table0">
+  <h1>Artists: {{artist_count}}</h1>
+  <table class="table table-responsive" id="table0">
      <thead>
        <tr>
          <th></th>
@@ -59,6 +64,9 @@
            <!-- <a href="/search?term={{term}}&artist_sort=popularity&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
            <a href="/search?term={{term}}&artist_sort=popularity&artist_order=desc&album_sort={{albums_sort_by}}&album_order={{albums_order}}&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
          </th>
+         <th>
+           Match Type
+         </th>
        </tr>
      </thead>
      <tbody>
@@ -75,23 +83,62 @@
          </td>
          <td>
          <div class="progress">
-           <div class="progress-bar progress-bar-success" role="progressbar"
+           <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
              aria-valuemin="0" aria-valuemax="100" style="width:{{artist.popularity}}%">
            </div>
          </div>
          </td>
+    		 <td>
+    			{% if artist.search_type %}
+            {{artist.search_type}}
+          {% else %}
+            <p>
+              or
+            </p>
+          {% endif %}
+    		 </td>
        </tr>
        {% endfor %}
      </tbody>
    </table>
-   <!-- TODO include pageniation -->
- </div>
+   <!-- Pages -->
+   {% set prev_cursor = artist_cursor - artist_limit %}
+   {% set next_cursor = artist_cursor + artist_limit %}
+
+   <nav class="text-center">
+     <ul class="pagination">
+       {% if prev_cursor >= 0 %}
+       <li class="page-item">
+         <a class="page-link" href="?term={{term}}&artist_page_token={{prev_cursor}}" aria-label="Previous">
+           <span aria-hidden="true">&laquo;</span>
+           <span class="sr-only">Previous</span>
+         </a>
+       </li>
+       {% endif %}
+       {% if artist_count < artist_limit %}
+       <li><a href="?term={{term}}&artist_page_token={{page}}">1</a></li>
+       {% else %}
+         {% for page in range(0, artist_count, artist_limit) %}
+         {% if page > artist_cursor - (3 * artist_limit) and page < artist_cursor + (3 * artist_limit) %}
+         <li><a href="?term={{term}}&artist_page_token={{page}}">{{(page // artist_limit) + 1}}</a></li>
+         {% endif %}
+         {% endfor %}
+         {% if next_cursor < artist_count %}
+         <li class="page-item">
+           <a class="page-link" href="?term={{term}}&artist_page_token={{next_cursor}}" aria-label="Next">
+             <span aria-hidden="true">&raquo;</span>
+             <span class="sr-only">Next</span>
+           </a>
+         </li>
+         {% endif %}
+      {% endif %}
+     </ul>
+   </nav>
+   <!-- end Pages -->
    {% endif %}
    {% if albums %}
-   <div class="container">
-
-   <h2 class="text-success">Albums</h2>
-  <table id="table0">
+   <h1>Albums: {{album_count}}</h1>
+  <table class="table table-responsive" id="table0">
     <thead>
       <tr>
         <th></th>
@@ -115,6 +162,9 @@
           <!-- <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=popularity&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
           <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=popularity&album_order=desc&track_sort={{track_sory_by}}&track_order={{track_order}}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
         </th>
+        <th>
+          Match Type
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -134,22 +184,62 @@
         </td>
         <td>
         <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar"
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
             aria-valuemin="0" aria-valuemax="100" style="width:{{album.popularity}}%">
           </div>
         </div>
+        </td>
+        <td>
+         {% if album.search_type %}
+           {{album.search_type}}
+         {% else %}
+           <p>
+             or
+           </p>
+         {% endif %}
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
-  <!-- TODO include pageniation -->
-  </div>
+  <!-- Pages -->
+  {% set prev_cursor = album_cursor - album_limit %}
+  {% set next_cursor = album_cursor + album_limit %}
+
+  <nav class="text-center">
+    <ul class="pagination">
+      {% if prev_cursor >= 0 %}
+      <li class="page-item">
+        <a class="page-link" href="?term={{term}}&album_page_token={{prev_cursor}}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if album_count < album_limit %}
+      <li><a href="?term={{term}}&artist_page_token={{page}}">1</a></li>
+      {% else %}
+        {% for page in range(0, album_count, album_limit) %}
+        {% if page > album_cursor - (3 * album_limit) and page < album_cursor + (3 * album_limit) %}
+        <li><a href="?term={{term}}&album_page_token={{page}}">{{(page // album_limit) + 1}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if next_cursor < album_count %}
+        <li class="page-item">
+          <a class="page-link" href="?term={{term}}&album_page_token={{next_cursor}}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        {% endif %}
+     {% endif %}
+    </ul>
+  </nav>
+  <!-- end Pages -->
   {% endif %}
   {% if tracks %}
-  <div class="container">
-  <h2 class="text-success">Tracks</h2>
-   <table id="table0">
+  <h1>Tracks: {{track_count}}</h1>
+   <table class="table table-responsive" id="table0">
      <thead>
        <tr>
          <th>Name
@@ -168,6 +258,9 @@
            <a href="/search?term={{term}}&artist_sort={{artist_sort}}&artist_order={{artist_order}}&album_sort=name&album_order={{albums_order}}&track_sort=runtime&track_order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> -->
          </th>
          <th>Preview</th>
+         <th>
+           Match Type
+         </th>
        </tr>
      </thead>
      <tbody>
@@ -186,7 +279,7 @@
          </td>
          <td>
            <div class="progress">
-             <div class="progress-bar progress-bar-success" role="progressbar"
+             <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
                 aria-valuemin="0" aria-valuemax="100" style="width:{{track.popularity}}%">
              </div>
            </div>
@@ -196,11 +289,53 @@
            <source src={{track.preview_url}} type="audio/mpeg">
            </audio>
          </td>
+         <td>
+          {% if track.search_type %}
+            {{track.search_type}}
+          {% else %}
+            <p>
+              or
+            </p>
+          {% endif %}
+         </td>
        </tr>
        {% endfor %}
      </tbody>
    </table>
-   <!-- TODO include pageniation -->
+   <!-- Pages -->
+   {% set prev_cursor = track_cursor - track_limit %}
+   {% set next_cursor = track_cursor + track_limit %}
+
+   <nav class="text-center">
+     <ul class="pagination">
+       {% if prev_cursor >= 0 %}
+       <li class="page-item">
+         <a class="page-link" href="?term={{term}}&track_page_token={{prev_cursor}}" aria-label="Previous">
+           <span aria-hidden="true">&laquo;</span>
+           <span class="sr-only">Previous</span>
+         </a>
+       </li>
+       {% endif %}
+       {% if track_count < track_limit %}
+       <li><a href="?term={{term}}&track_page_token={{page}}">1</a></li>
+       {% else %}
+         {% for page in range(0, track_count, track_limit) %}
+         {% if page > track_cursor - (3 * track_limit) and page < track_cursor + (3 * track_limit) %}
+         <li><a href="?term={{term}}&track_page_token={{page}}">{{(page // track_limit) + 1}}</a></li>
+         {% endif %}
+         {% endfor %}
+         {% if next_cursor < track_count %}
+         <li class="page-item">
+           <a class="page-link" href="?term={{term}}&track_page_token={{next_cursor}}" aria-label="Next">
+             <span aria-hidden="true">&raquo;</span>
+             <span class="sr-only">Next</span>
+           </a>
+         </li>
+         {% endif %}
+      {% endif %}
+     </ul>
+   </nav>
+   <!-- end Pages -->
    {% endif %}
 </div>
 {% endblock %}

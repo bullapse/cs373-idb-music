@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block background %}
+  <div id="bckgrnd">
+  </div>
+{% endblock %}
+
+{% block menubar %}
+<div id="wrapper">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/artists">Artists</a></li>
+          <li><a href="/albums">Albums</a></li>
+          <li><a href="/tracks">Tracks</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script>
+var universities = {{universities | tojson}}['universities'];
+var states = {{states | tojson}}['states'];
+var degrees = {{degrees | tojson}}['degrees'];
+var regions = {  public: {},  private: {}}
+states.forEach(function(state){
+  regions.public[state.region] = regions.public[state.region] || [];
+  regions.public[state.region].push(state.average_public_cost);
+  regions.private[state.region] = regions.private[state.region] || [];
+  regions.private[state.region].push(state.average_private_cost);
+});
+Object.keys(regions.public).forEach(function(region){
+  regions.public[region] = regions.public[region].reduce(function(a ,b){return a + b}, 0) / regions.public[region].length;});
+Object.keys(regions.private).forEach(function(region){
+  regions.private[region] = regions.private[region].reduce(function(a ,b){return a + b}, 0) / regions.private[region].length;});
+university_costs = universities.filter(function(uni){return uni.academic_cost!== undefined && typeof(uni.academic_cost) === 'number' && !isNaN(uni.academic_cost)})
+.sort(function(a,b) {return (a.academic_cost < b.academic_cost) ? 1 : ((b.academic_cost < a.academic_cost) ? -1 : 0);});
+$(function () {
+        $('#container').highcharts({
+            chart: {type: 'column'},
+            title: {text: 'Average Region Cost'},
+            subtitle: {text: 'Source: collegedb'},
+            xAxis: {categories: Object.keys(regions.public)},
+            yAxis: {min: 0,title: {text: 'Price'}},
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.2f} $</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {column: {pointPadding: 0.2,borderWidth: 0}},
+            series: [{
+                name: 'Private',
+                data: Object.values(regions.private)
+
+            }, {
+                name: 'Public',
+                data: Object.values(regions.public)
+            }]
+        });
+
+        $('#container1').highcharts({
+            chart: {type: 'line'},
+            title: {text: 'Top Ten Most Expensive Universities'},
+            subtitle: {text: 'Source: collegedb'},
+            xAxis: {categories: university_costs.slice(0, 10).map(function(uni){return uni.name})},
+            yAxis: {min: 60000,title: {text: 'Price'}},
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:red;padding:0">{series.name}: </td>' +
+                    '<td style="padding:0; color:green"><b>{point.y:f} $</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {column: {pointPadding: 0.2,borderWidth: 0}},
+            series: [{
+                name: 'Cost',
+                data: university_costs.slice(0, 10).map(function(uni){return uni.academic_cost})
+            }]
+        });
+
+        $('#container2').highcharts({
+            chart: {type: 'pie'},
+            title: {text: 'Percent of Degrees at Public Schools'},
+            subtitle: {text: 'Source: collegedb'},
+            tooltip: {
+                pointFormat: '{point.name}: <b>{point.y:f}%</b>'
+            },
+            plotOptions: {
+                pie: {dataLabels: {enabled: false,}}
+            },
+            series: [{
+                name: 'Percent',
+                data: (degrees.sort(function(a,b) {return (a.num_percent_public < b.num_percent_public) ? 1 : ((b.num_percent_public < a.num_percent_public) ? -1 : 0);})).map(function(deg) {
+                  return {name: deg.name, y: deg.num_percent_public}
+                })
+            }]
+        });
+
+        $('#container3').highcharts({
+            chart: {type: 'pie'},
+            title: {text: 'Percent of Degrees at Private Schools'},
+            subtitle: {text: 'Source: collegedb'},
+            tooltip: {
+                pointFormat: '{point.name}: <b>{point.y:f}%</b>'
+            },
+            plotOptions: {
+                pie: {dataLabels: {enabled: false,}}
+            },
+            series: [{
+                name: 'Percent',
+                data: (degrees.sort(function(a,b) {return (a.num_percent_private < b.num_percent_private) ? 1 : ((b.num_percent_private < a.num_percent_private) ? -1 : 0);})).map(function(deg) {
+                  return {name: deg.name, y: deg.num_percent_private}
+                })
+            }]
+        });
+    });</script>
+
+<div class="container" style="text-align:center">
+  <div class="jumbotron">
+    <h2>CollegeDB Stats</h2>
+  </div>
+</div>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container2" style="width: 50%; height: 400px; display: inline-block"></div><div id="container3" style="width: 50%; height: 400px; display: inline-block"></div>
+
+
+
+{% endblock %}

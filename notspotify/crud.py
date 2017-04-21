@@ -71,8 +71,8 @@ def search_template():
     albums, album_cursor, album_count, album_limit = get_model().list_albums(term=term, cursor=album_token, sort_by=album_sort, order=album_order)
     tracks, track_cursor, track_count, track_limit = get_model().list_tracks(term=term, cursor=track_token, sort_by=track_sort, order=track_order)
     return render_template("search.html", term=term, artists=artists, artist_cursor=artist_cursor, artist_sort_by=artist_sort, artist_order=artist_order, artist_count=artist_count, artist_limit=artist_limit,
-                                          albums=albums, albums_cursor=album_cursor, albums_sort_by=album_sort, albums_order=artist_order, albums_count=album_count, albums_limit=album_limit,
-                                          tracks=tracks, tracks_cursor=track_cursor, tracks_sort_by=track_sort, tracks_order=track_order, tracks_count=track_count, tracks_limit=track_limit)
+                                          albums=albums, album_cursor=album_cursor, album_sort_by=album_sort, album_order=artist_order, album_count=album_count, album_limit=album_limit,
+                                          tracks=tracks, track_cursor=track_cursor, track_sort_by=track_sort, track_order=track_order, track_count=track_count, track_limit=track_limit)
 
 
 # ---------------------- ARTISTS -------------------------- #
@@ -84,7 +84,7 @@ def list_artists_template():
     for artist in artists:
         artist['number_of_albums'] = get_model().num_albums_by_artist(artist['id'])
         artist['number_of_tracks'] = get_model().num_tracks_by_artist(artist['id'])
-    return render_template("artists.html", artists=artists, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
+    return render_template("artists.html", artists=artists, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit, pagination=True)
 # [END list_artists_template]
 
 
@@ -156,7 +156,7 @@ def list_albums_template():
     albums, cursor, count, limit = get_model().list_albums(cursor=token, sort_by=sort, order=order)
     for album in albums:
         album['number_of_artists'] = get_model().get_number_of_artist_on_album(album['id'])
-    return render_template("albums.html", albums=albums, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
+    return render_template("albums.html", albums=albums, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit, pagination=True)
 # [END list_albums_template]
 
 
@@ -167,7 +167,7 @@ def album_description_id_template(id):
     album = get_model().read_album(id)
     artists = get_model().list_artists_by_album(id)
     tracks, _, _, _ = get_model().list_tracks_by_album(id)
-    return render_template("album_description.html", album=album, tracks=tracks, artists=artistsf)
+    return render_template("album_description.html", album=album, tracks=tracks, artists=artists)
 # [END album_description_id_template]
 
 
@@ -204,7 +204,7 @@ def albums_by_artist_template(id):
 def list_tracks_template():
     token, sort, order = get_args(request.args)
     tracks, cursor, count, limit = get_model().list_tracks(cursor=token, sort_by=sort, order=order)
-    return render_template("tracks.html", tracks=tracks, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit)
+    return render_template("tracks.html", tracks=tracks, cursor=cursor, sort_by=sort, order=order, count=count, limit=limit, pagination=True)
 # [END list_tracks_template]
 
 
