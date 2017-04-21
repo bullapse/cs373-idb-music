@@ -78,6 +78,11 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(db.desc(sort_by))
                      .limit(limit)
                      .offset(cursor))
+            and_query = (Artist.query
+                         .filter(db.and_(*conditions))
+                         .order_by(db.desc(sort_by))
+                         .limit(limit)
+                         .offset(cursor))
             count = (Artist.query
                      .filter(db.or_(*conditions)).count())
         else:
@@ -92,6 +97,11 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            and_query = (Artist.query
+                         .filter(db.and_(*conditions))
+                         .order_by(sort_by)
+                         .limit(limit)
+                         .offset(cursor))
             count = (Artist.query
                      .filter(db.or_(*conditions)).count())
         else:
@@ -99,7 +109,13 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
-    artists = builtin_list(map(from_sql, query.all()))
+    if term:
+        artists = builtin_list(map(from_sql, and_query.all()))
+        for artist in artists:
+            artist['search_type'] = "and"
+        artists += builtin_list(map(from_sql, query.all()))
+    else:
+        artists = builtin_list(map(from_sql, query.all()))
     if not term:
         count = Artist.query.count()
     return (artists, cursor, count, limit)
@@ -223,9 +239,14 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
         if term:
             query = (Album.query
                      .filter(db.or_(*conditions))
-                     .order_by(sort_by)
+                     .order_by(db.desc(sort_by))
                      .limit(limit)
                      .offset(cursor))
+            and_query = (Album.query
+                         .filter(db.and_(*conditions))
+                         .order_by(db.desc(sort_by))
+                         .limit(limit)
+                         .offset(cursor))
             count = (Album.query
                      .filter(db.or_(*conditions)).count())
         else:
@@ -240,6 +261,11 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            and_query = (Album.query
+                         .filter(db.and_(*conditions))
+                         .order_by(sort_by)
+                         .limit(limit)
+                         .offset(cursor))
             count = (Album.query
                      .filter(db.or_(*conditions)).count())
         else:
@@ -247,8 +273,13 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
-    albums = builtin_list(map(from_sql, query.all()))
-    if not term:
+    if term:
+        albums = builtin_list(map(from_sql, and_query.all()))
+        for album in albums:
+            album['search_type'] = "and"
+        albums += builtin_list(map(from_sql, query.all()))
+    else:
+        albums = builtin_list(map(from_sql, query.all()))
         count = Album.query.count()
     return (albums, cursor, count, limit)
 # [END list_albums]
@@ -387,6 +418,11 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            and_query = (Track.query
+                         .filter(db.and_(*conditions))
+                         .order_by(sort_by)
+                         .limit(limit)
+                         .offset(cursor))
             count = (Track.query
                      .filter(db.or_(*conditions)).count())
         else:
@@ -401,6 +437,11 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
                      .order_by(sort_by)
                      .limit(limit)
                      .offset(cursor))
+            and_query = (Track.query
+                         .filter(db.and_(*conditions))
+                         .order_by(sort_by)
+                         .limit(limit)
+                         .offset(cursor))
             count = (Track.query
                      .filter(db.or_(*conditions)).count())
         else:
@@ -410,7 +451,12 @@ def list_tracks(term=None, limit=20, cursor=None, sort_by=None, order=None):
                      .offset(cursor))
     if not term:
         count = Track.query.count()
-    tracks = builtin_list(map(from_sql, query.all()))
+        tracks = builtin_list(map(from_sql, query.all()))
+    else:
+        tracks = builtin_list(map(from_sql, and_query.all()))
+        for track in tracks:
+            track['search_type'] = "and"
+        tracks += builtin_list(map(from_sql, query.all()))
     return (tracks, cursor, count, limit)
 # [END list_tracks]
 
