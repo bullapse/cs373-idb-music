@@ -118,7 +118,6 @@ def list_artists(term=None, limit=10, cursor=None, sort_by=None, order=None):
             for artist2 in artists:
                 if artist['name'] == artist2['name'] and "search_type" not in artist2:
                     artists.remove(artist2)
-                    break
     else:
         artists = builtin_list(map(from_sql, query.all()))
     if not term:
@@ -287,7 +286,6 @@ def list_albums(term=None, limit=10, cursor=None, sort_by=None, order=None):
             for album2 in albums:
                 if album['name'] == album2['name'] and "search_type" not in album2:
                     albums.remove(album2)
-                    break
     else:
         albums = builtin_list(map(from_sql, query.all()))
         count = Album.query.count()
