@@ -78,7 +78,7 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ff9bbe36358; Album&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f85383530b8; Album&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('album', MetaData(bind=None), Column('id',...r(), table=&lt;album&gt;, nullable=False), schema=None)</dl>
 
@@ -159,7 +159,7 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ff9bbe89dd8; Artist&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f8538332b38; Artist&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('artist', MetaData(bind=None), Column('id'...(), table=&lt;artist&gt;, nullable=False), schema=None)</dl>
 
@@ -242,7 +242,7 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ff9bbe36898; Track&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f85383535f8; Track&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('track', MetaData(bind=None), Column('id',... String(length=128), table=&lt;track&gt;), schema=None)</dl>
 
@@ -286,17 +286,17 @@ Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqla
  <dl><dt><a name="-from_sql"><strong>from_sql</strong></a>(row)</dt><dd><tt>Translates&nbsp;a&nbsp;SQLAlchemy&nbsp;model&nbsp;instance&nbsp;into&nbsp;a&nbsp;dictionary</tt></dd></dl>
  <dl><dt><a name="-get_number_of_artist_on_album"><strong>get_number_of_artist_on_album</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;num_albums_by_artist]</tt></dd></dl>
  <dl><dt><a name="-init_app"><strong>init_app</strong></a>(app)</dt></dl>
- <dl><dt><a name="-list_albums"><strong>list_albums</strong></a>(limit=10, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
+ <dl><dt><a name="-list_albums"><strong>list_albums</strong></a>(term=None, limit=10, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
  <dl><dt><a name="-list_albums_by_artist"><strong>list_albums_by_artist</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist]</tt></dd></dl>
  <dl><dt><a name="-list_albums_by_artist_name"><strong>list_albums_by_artist_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist_name]</tt></dd></dl>
  <dl><dt><a name="-list_albums_by_track"><strong>list_albums_by_track</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist]</tt></dd></dl>
  <dl><dt><a name="-list_albums_by_track_name"><strong>list_albums_by_track_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums_by_artist_name]</tt></dd></dl>
- <dl><dt><a name="-list_artists"><strong>list_artists</strong></a>(limit=10, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists]</tt></dd></dl>
+ <dl><dt><a name="-list_artists"><strong>list_artists</strong></a>(term=None, limit=10, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists]</tt></dd></dl>
  <dl><dt><a name="-list_artists_by_album"><strong>list_artists_by_album</strong></a>(id)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_album]</tt></dd></dl>
  <dl><dt><a name="-list_artists_by_album_name"><strong>list_artists_by_album_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_album_name]</tt></dd></dl>
  <dl><dt><a name="-list_artists_by_track"><strong>list_artists_by_track</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_track]</tt></dd></dl>
  <dl><dt><a name="-list_artists_by_track_name"><strong>list_artists_by_track_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_artists_by_track_name]</tt></dd></dl>
- <dl><dt><a name="-list_tracks"><strong>list_tracks</strong></a>(limit=20, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_tracks]</tt></dd></dl>
+ <dl><dt><a name="-list_tracks"><strong>list_tracks</strong></a>(term=None, limit=20, cursor=None, sort_by=None, order=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_tracks]</tt></dd></dl>
  <dl><dt><a name="-list_tracks_by_album"><strong>list_tracks_by_album</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
  <dl><dt><a name="-list_tracks_by_album_name"><strong>list_tracks_by_album_name</strong></a>(name, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>
  <dl><dt><a name="-list_tracks_by_artist"><strong>list_tracks_by_artist</strong></a>(id, limit=10, cursor=None)</dt><dd><tt>#&nbsp;[START&nbsp;list_albums]</tt></dd></dl>

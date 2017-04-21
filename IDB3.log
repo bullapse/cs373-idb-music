@@ -1,0 +1,1443 @@
+commit ef71c3a869615a8c4a77044fa03cfd1a4b605141
+Merge: 02b8e18 54eafa6
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 20 19:32:51 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music
+
+commit 54eafa6fe9f6d61e160deb35185b739d29f867b2
+Merge: 0003ff0 acf6870
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 20 19:32:37 2017 -0500
+
+    Merge pull request #104 from bullapse/sbull_dev
+    
+    Sbull dev
+
+commit acf6870034a43a4526999064c36aaf00b2a347a2
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 20 19:32:09 2017 -0500
+
+    update template for seach to use and and or search terms
+
+commit 0003ff07dfcdde76d66e43276e0c2cc725de5a56
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 18:52:38 2017 -0500
+
+    remove URLfetch stuff
+
+commit 417b983727c868ac4725cb0ea47c7bfaaf0387f9
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 20 18:15:41 2017 -0500
+
+    update api to reflect changes made in models for pages
+
+commit 2bd67f2e703381d8634a09273e7701ed2194ac42
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 18:15:41 2017 -0500
+
+    adding urlfetch?
+
+commit a824a34759f61ecdaa18f4a0f12388893b1bc351
+Merge: 8441e4b 4b5020c
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 18:02:02 2017 -0500
+
+    Merge pull request #103 from bullapse/sam_dev
+    
+    Sam dev
+
+commit 4b5020c87bba7e712f561fc5772cd0d8818e668b
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 17:45:48 2017 -0500
+
+    finishing critiques
+
+commit 0e82492821981e16b579fb84f8d3f5ac6d8e1332
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 12:04:57 2017 -0500
+
+    added critiques
+
+commit c11b7461c693cd20820c9ba35f00d4b0121ad30e
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Wed Apr 19 22:30:22 2017 -0500
+
+    added usage of collegedb API
+
+commit 8441e4b286e32147236587d49dd5a4c932de069c
+Merge: cacc180 b38e6ff
+Author: hbao65 <bao.hungqq@gmail.com>
+Date:   Wed Apr 19 20:51:08 2017 -0500
+
+    Merge pull request #102 from bullapse/hbao65-dev
+    
+    Hbao65 dev
+
+commit b38e6ffbb39e34c2fa38796d2c28aef7fe7371ff
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Wed Apr 19 20:31:07 2017 -0500
+
+    new images
+
+commit 86551289ab820158a65b1c4e4df3d635df07b218
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Wed Apr 19 20:21:24 2017 -0500
+
+    update to splash and navbar
+
+commit cacc180a8bb6920b70f13dbfc48858d80ed810b0
+Merge: 85502d6 3dd9eb1
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Wed Apr 19 19:14:35 2017 -0500
+
+    Merge pull request #100 from bullapse/sbull_dev
+    
+    Sbull dev
+
+commit 3dd9eb12c56a0f567984cf0a557692217c305b89
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Apr 19 19:13:47 2017 -0500
+
+    fix typo
+
+commit 2ee849ea9bd827e733eb064f3054e19ab858c39e
+Merge: 7fdda81 85502d6
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Apr 19 19:11:02 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music into sbull_dev
+
+commit 85502d65ebb96a17f9e8470defaa5870be52c48e
+Merge: 0aba53e 980d48d
+Author: hbao65 <bao.hungqq@gmail.com>
+Date:   Wed Apr 19 19:06:11 2017 -0500
+
+    Merge pull request #99 from bullapse/hbao65-dev
+    
+    Hbao65 dev
+
+commit 980d48d8839b0227861fad9e4f458a5efcae3890
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Wed Apr 19 19:03:50 2017 -0500
+
+    fix styling on all pages, preview hiding, updated splash
+
+commit 7fdda81b53e338f8d4ba8d50b8cd46dd8e5d2591
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Apr 19 18:37:11 2017 -0500
+
+    fix pagination for search tables
+
+commit b140ed4ebc182a1afc0794237ca9b5b3fb458d85
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Apr 19 18:27:12 2017 -0500
+
+    finsih search page
+
+commit ebfdbeb906516405547626a39e5d1bf64eb280c4
+Merge: 2df60d5 0aba53e
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Wed Apr 19 18:19:09 2017 -0500
+
+    merged from master
+
+commit 024601763b432d2e7c73cf5568bc060eec097bdc
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Wed Apr 19 13:49:50 2017 -0500
+
+    placeholder for work
+
+commit 0aba53e1c3d289675fd5cc97a9d0d1dcc4340107
+Merge: 8c86ca3 660b753
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 18 21:53:38 2017 -0500
+
+    Merge pull request #97 from bullapse/sbull_dev
+    
+    refactor sub search code
+
+commit 660b7535fed43c05a9e48e5ca06cfcdcb8864426
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 18 21:52:37 2017 -0500
+
+    refactor sub search code
+
+commit 2df60d5f4d5209dc754bc05f1e7c1e699e1226df
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 18 21:41:31 2017 -0500
+
+    added search bar to every page but About.
+
+commit 85e8bfe19d84108389666e764f56bec2ee1ad61e
+Merge: 3584048 8c86ca3
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 18 20:04:01 2017 -0500
+
+    Merge branch 'master' into hbao65-dev
+
+commit 8c86ca31c2bc24eb493677c9c741de3d10235c69
+Merge: c06cd56 f5ff689
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 18 20:02:14 2017 -0500
+
+    Merge pull request #95 from bullapse/sbull_dev
+    
+    Sbull dev
+
+commit f5ff68900b5132326315426990c79d246e596c14
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 18 20:01:34 2017 -0500
+
+    working search with search bar
+
+commit 3584048ca90caf342c051c1c79abd977c5be9075
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 18 19:49:57 2017 -0500
+
+    fixed up artist and tracks details page
+
+commit babd81013c3dff6d5d2c5a6e24bfac200998b11f
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 18 19:41:39 2017 -0500
+
+    backend working for search
+
+commit cafc9ffda64c3725bca979e16297c3d48bb7d629
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 18 18:21:23 2017 -0500
+
+    start search. WIP
+
+commit c06cd56d4cd13002ee30c382222ed95a5849536a
+Merge: 25ec539 3e5643b
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 18 17:14:10 2017 -0500
+
+    Merge pull request #91 from bullapse/hbao65-dev
+    
+    Hbao65 dev
+
+commit 25ec5399092f9931b8d8846e028a993a5dd76f3c
+Merge: 29607f7 42dbfa8
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 18 16:58:00 2017 -0500
+
+    Merge pull request #83 from bullapse/sam_dev
+    
+    Sam dev
+
+commit 42dbfa81e3569888029f98a7a6fada7774b17867
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Tue Apr 18 08:22:23 2017 -0500
+
+    fixed tests for new behavior
+
+commit 29607f7351afd58bec015bc825242d79046d890c
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Tue Apr 18 08:14:09 2017 -0500
+
+    fixed logo border
+
+commit 3e5643b525f94e05b0b9a0f764695cada09972e4
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 18 03:35:34 2017 -0500
+
+    added sharks
+
+commit ec65e064f188ff153d40f1f23b9fc52dd62675a2
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 18 03:29:42 2017 -0500
+
+    add more pics and pseudo search bar to splash
+
+commit 0b84a097edb49b33e7fb3eff49527628bcad0418
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 18 00:48:53 2017 -0500
+
+    fixing page layouts
+
+commit f87bb6bc22000f5de5d257b0261b508518fe6712
+Merge: c984dcd 07c3560
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Mon Apr 17 22:45:20 2017 -0500
+
+    fix merge issues
+
+commit e6a81c5c438a0ff9b67d53fb10c027f8afc80ff8
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Mon Apr 17 20:53:40 2017 -0500
+
+    templated the pagination
+
+commit ae4844fd298ad2bb9346d61ad5a961342bc8a932
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Mon Apr 17 20:43:03 2017 -0500
+
+    cleaning things up a little
+
+commit 6623067db62de6a96d940b969124f8bedf07cc93
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Mon Apr 17 16:27:21 2017 -0500
+
+    added pagination to artists and albums
+
+commit b8c457c6825b0a07352e11081dd0503390309fb7
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Mon Apr 17 15:57:58 2017 -0500
+
+    finished paging for tracks
+
+commit e47b04d75e1bfe7b2e8f8feda33d29444cbf8442
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Mon Apr 17 15:13:06 2017 -0500
+
+    fixed sorting and paging issue and added arrows to paging
+
+commit 7a511c4289dff66ae1ad63732f9d1661e70de635
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Mon Apr 17 13:53:28 2017 -0500
+
+    changing up pagination
+
+commit 02b8e1835a5cbd199fb35e265fb8cd7195ca1e27
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Mon Apr 10 15:55:45 2017 -0500
+
+    update P4 json
+
+commit 07c35608fa086821de913dc3c8a60d95505f458d
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 20:29:43 2017 -0500
+
+    add log
+
+commit 9a49220bf15982be0c00ded086d10cdc96331e45
+Merge: e73286b f92d8c5
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 20:28:20 2017 -0500
+
+    Merge pull request #77 from bullapse/sam_dev
+    
+    add logo
+
+commit f92d8c554539620acfe2709f3099636869260561
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 20:27:48 2017 -0500
+
+    add logo
+
+commit e73286bccc76a10090a578f2acd464b0dbc11786
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 20:11:35 2017 -0500
+
+    Update README.md
+
+commit f2114dce50528809843dba53ce0293fe279ffb0a
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 20:11:14 2017 -0500
+
+    Update README.md
+
+commit b3c5faef08cfb7f0eb086c3011d02e2775498eb2
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 20:08:30 2017 -0500
+
+    update log
+
+commit 13535ef11be0b8ed1ae05103a3936deed710cdab
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 20:07:18 2017 -0500
+
+    update pydoc html
+
+commit 870662371a71638c8dbb2378876c0ce98546ea66
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 20:05:45 2017 -0500
+
+    update apiary
+
+commit 4377bd3f7d283f82e38bbdc5fa9fef6d555772ce
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 20:01:46 2017 -0500
+
+    added log
+
+commit 41c61d193d2e5449dd037f31feacde2a5521e615
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 19:59:41 2017 -0500
+
+    add json
+
+commit ec7262b7fc931a72e8ec2312d0a15d45295f930e
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 19:52:08 2017 -0500
+
+    update about page stats
+
+commit 736e281ef035557e83d59a8031d5ef9563da0c38
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 19:44:10 2017 -0500
+
+    update makefile
+
+commit 29007bf52336cbc0ecf86d0779f618e935898f30
+Merge: e2cefdc 0253ed3
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 19:42:42 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music
+
+commit e2cefdc8140b5370145b9157dda833e58f92493f
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 19:40:43 2017 -0500
+
+    removed dup field
+
+commit 0253ed3d137a9d869f9a71eb6cb5f952f19c65e0
+Merge: 31f833a 79a3579
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 19:39:41 2017 -0500
+
+    Merge pull request #76 from bullapse/sam_dev
+    
+    redid UML diagram
+
+commit 79a3579b42ae991989b9aac8f03540691c9d80cb
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 19:37:41 2017 -0500
+
+    redid UML diagram
+
+commit 31f833a8b1c17dcb982e05155eafd0e114ee5ee0
+Merge: 0b654d9 2a2c40d
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 19:08:44 2017 -0500
+
+    Merge pull request #74 from bullapse/sbull_dev
+    
+    Sbull dev
+
+commit 0b654d98cc6e68f3569f713c82e80e8cb38322d9
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 19:07:09 2017 -0500
+
+    removed pyc files
+
+commit b5a761b1c3ca7491c2899af619984c8ff5f0bbb7
+Author: Cameron <cameron@wireless-10-147-98-242.public.utexas.edu>
+Date:   Thu Apr 6 19:02:42 2017 -0500
+
+    Removed env stuff; front end changes remain
+
+commit 2a2c40d994dc2587fb8329b0f98209c0427075f7
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 18:59:39 2017 -0500
+
+    update rest api
+
+commit c984dcd2b33f78cbde85f08b7729fe2fee91d33c
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Apr 6 18:58:38 2017 -0500
+
+    finish splash animations
+
+commit cdd2b0cc9030174ca1cd77a16c50f445b0f4db04
+Merge: 8a88804 f1753c1
+Author: Cameron <cameron@wireless-10-147-98-242.public.utexas.edu>
+Date:   Thu Apr 6 18:51:06 2017 -0500
+
+    Merge branch 'cam_dev'
+    Updated front end of table and individual pages
+
+commit f1753c141b1b94f2a7b32465ff41bfc0d5fe2c77
+Author: Cameron <cameron@wireless-10-147-98-242.public.utexas.edu>
+Date:   Thu Apr 6 18:45:51 2017 -0500
+
+    Made individual pages reponsive
+
+commit 7064777144bc5684f6c6b2d29a047da3a6050e93
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 18:23:20 2017 -0500
+
+    remove name from api
+
+commit 2c6421259eefb861074cdd5d24c94ef3ffc03ff7
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Apr 6 18:06:45 2017 -0500
+
+    working on splash page
+
+commit 8a888042973162c0838e85d8a9e8cecd291cb56d
+Merge: 2371d29 a7c1c4a
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 17:30:32 2017 -0500
+
+    Merge pull request #68 from bullapse/sbull_dev
+    
+    Sbull dev
+
+commit a7c1c4aa3aaf2bc391d697b4657ea964b1f4e9b5
+Merge: 49b17bf 2371d29
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 17:28:25 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music into sbull_dev
+
+commit 49b17bf760e1753e49043f7cee7aa69941447ca2
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 17:27:13 2017 -0500
+
+    add version to api
+
+commit 6fd719ca2f589f72353435a8c7a438e38b93f5cc
+Author: Cameron <cameron@wireless-10-147-98-242.public.utexas.edu>
+Date:   Thu Apr 6 17:25:36 2017 -0500
+
+    All pages up to date with progress bar
+
+commit 2371d2950edba31e13c6885e0eb36c825f1455c2
+Merge: a6fde59 d54a172
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 17:21:24 2017 -0500
+
+    Merge pull request #67 from bullapse/sam_dev
+    
+    Testing suite changes and clean up
+
+commit 20e2a922b15983d6c4c3bb0d5ab548cbe3998aee
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 17:18:29 2017 -0500
+
+    refactor api out to it's own file
+
+commit d54a17298d7b113816e976a212cc4e6c5ae677cd
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 17:16:05 2017 -0500
+
+    add to requirements
+
+commit 558d2acba990139383ffb931362252bf67127e14
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Apr 6 16:27:15 2017 -0500
+
+    finished track and track description
+
+commit cb791b9616150e1c8f7d2427a7ebc88385286eef
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 16:23:42 2017 -0500
+
+    removed css from about
+
+commit 6a202c4d9097415309d1c5b5a07b34c83902f834
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 16:18:23 2017 -0500
+
+    added tests for sorting
+
+commit 696740c7777c2b349b97b33d3839736b83d2bdb9
+Merge: a278e84 a6fde59
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 16:02:46 2017 -0500
+
+    Merge branch 'master' into sam_dev
+
+commit a278e843488d0a5eb2afa57a41ea6d59a539c6d9
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 6 15:59:17 2017 -0500
+
+    finally got tests working in browser
+
+commit 82aee378760715b7b6199a328e4a9b3c8247e087
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Apr 6 15:55:47 2017 -0500
+
+    dynamically add progress rating for each table row
+
+commit 2e7bc8b23a9d736d7178709ccaf145e0833d38df
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 15:05:36 2017 -0500
+
+    Add REST api in addition to templates
+
+commit a6fde59457d2819ca04be4e9ad04415c790f90c2
+Merge: 3591740 988ca4c
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Apr 6 14:12:05 2017 -0500
+
+    Merge pull request #65 from bullapse/sbull_dev
+    
+    update tracks sort by
+
+commit 988ca4cf7db052ff5da3aeff8b54d7bc36b3d55c
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 6 14:08:21 2017 -0500
+
+    update tracks sort by
+
+commit e72446729fba1891cae0d9a6496ab09da8d16ba0
+Author: Cameron <cameron@wireless-10-147-98-242.public.utexas.edu>
+Date:   Thu Apr 6 13:16:33 2017 -0500
+
+    Added progress bar to popularity field
+
+commit 5abe2805154e05638461ae4d0921160331d072a0
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Apr 6 01:08:23 2017 -0500
+
+    moving some things around
+
+commit d633c87ad67731ae1831e0d85d09f165373ba4db
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Apr 6 00:30:57 2017 -0500
+
+    updated track description page and css
+
+commit 933d8b420fffc5d1bb283351e4efffc459ef9594
+Author: Cameron <cameron@wireless-10-147-98-242.public.utexas.edu>
+Date:   Wed Apr 5 15:25:31 2017 -0500
+
+    Updated text color and popularity of individual pages, albums
+
+commit 359174080f5f564c88dd3c1d95052f7f87884d93
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Apr 5 14:51:51 2017 -0500
+
+    update hrefs for root
+
+commit 21cdc67b3d3d1172c67370934e7b6b1f317a67a8
+Merge: f60473d 75a4a7f
+Author: Cameron <cameron@wireless-10-146-235-197.public.utexas.edu>
+Date:   Wed Apr 5 13:43:45 2017 -0500
+
+    Updated to master, album page working
+
+commit 75a4a7f23acf010c34a21206017420c0ff1de00a
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Apr 5 13:15:04 2017 -0500
+
+    add sort and order query for albums
+
+commit ef3101634665cdbbc07b92ec22ff391496983b20
+Merge: 425ff0e fe82608
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Wed Apr 5 12:37:19 2017 -0500
+
+    Merge branch 'master' into sam_dev
+
+commit 425ff0e4e5748a88ce2f1dd745a77ad6697d351b
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Wed Apr 5 12:36:44 2017 -0500
+
+    finally getting somewhere with setting up tests
+
+commit fe82608f6c12ca7fd52c69d47ca254edf538e9b0
+Merge: 0213e5f e8d27bd
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 4 23:23:22 2017 -0500
+
+    Merge pull request #57 from bullapse/sbull_dev
+    
+    Sbull dev
+
+commit e8d27bde62422a0df2dd76a31408095489a2ed84
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 23:21:42 2017 -0500
+
+    update templates to only sort on main page
+
+commit 1a838fa62ade83cd92e35f2497596b359b2c4d85
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 23:12:59 2017 -0500
+
+    working with all description pages. Need to add sort and order by for albums and tracks
+
+commit fbe1e9f0949cff3792088a2f2e3a5babd67d5ade
+Merge: 5c50b59 0213e5f
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 21:06:40 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music into sbull_dev
+
+commit 0213e5f146fbf210fc655b642fc738b115e2fb59
+Merge: 17bb2e1 a9cccb6
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 4 21:05:50 2017 -0500
+
+    Merge pull request #56 from bullapse/hbao65-dev
+    
+    Hbao65 dev
+
+commit 5c50b5983776b5bed0b69f54bca40b98c089c0d2
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 20:47:02 2017 -0500
+
+    update artist_description
+
+commit f60473d0f587e7cafe30203d08694561687b0a4f
+Author: Cameron <cameron@wireless-10-147-98-242.public.utexas.edu>
+Date:   Tue Apr 4 20:35:29 2017 -0500
+
+    Updated artist page with sortable fields pulling data
+
+commit a9cccb6f3def6cf4a5eeb17fa6fef6c23e1f4b40
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 4 20:18:42 2017 -0500
+
+    removed sorting from explicit
+
+commit 17bb2e17fc680cdc467ace25f226e59d3446ae26
+Merge: 2aaf144 29723b5
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 4 20:18:19 2017 -0500
+
+    Merge pull request #54 from bullapse/sbull_dev
+    
+    update typo
+
+commit 29723b566bfbbc5e2afb116ee12178e8977c5d66
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 20:17:39 2017 -0500
+
+    update typo
+
+commit 2aaf144d7d5e19dfa9d2e955160d1b7200ce68bb
+Merge: 9fc74cd c54bf54
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 4 20:13:19 2017 -0500
+
+    Merge pull request #52 from bullapse/sbull_dev
+    
+    add jquery to make row clickable
+
+commit c54bf541db6beec69ab7d0b26405aefccc078d7e
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 20:12:57 2017 -0500
+
+    add jquery to make row clickable
+
+commit bfe2147a345c4f00298d06979039f21e9ce7ee7f
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 4 20:08:57 2017 -0500
+
+    updated tracks
+
+commit 9fc74cd66a374b14f5308d48dd67a52b1c42bdf2
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 19:26:03 2017 -0500
+
+    update about endpoint
+
+commit 69c99be40e7e520ebcfa563d2b41f76acedb5651
+Merge: 5aa3077 2dc3e99
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 4 19:25:43 2017 -0500
+
+    Merge branch 'master' into hbao65-dev
+
+commit 5aa3077adcf51f2dc27c8a5afeec532e332b7a51
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 4 19:24:50 2017 -0500
+
+    small stuff
+
+commit 2dc3e992f9c043d955cdc52823c2268a5b49b290
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 19:18:01 2017 -0500
+
+    get artist page working with sorting
+
+commit 8d93e55caa10bfdbf6b0c570eadb95b0f1628523
+Merge: 05a6396 abff387
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Tue Apr 4 17:56:49 2017 -0500
+
+    Merge branch 'master' into hbao65-dev
+
+commit 66ec3cf876a4b2b668b83e0fd548ecbac690b1b1
+Merge: ed427cd abff387
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Tue Apr 4 17:54:47 2017 -0500
+
+    merging master in
+
+commit abff3879f98966f95cb70efa2a805152484ec04e
+Merge: ba62727 7e776f2
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Apr 4 17:31:39 2017 -0500
+
+    Merge pull request #50 from bullapse/sbull_dev
+    
+    Sbull dev
+
+commit 7e776f21037551888a00f47634fc3187ebd0b996
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 17:20:14 2017 -0500
+
+    fix tracks
+
+commit 6a98bf4bcd925ac353ff6566df021dbd82887dfc
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 15:13:40 2017 -0500
+
+    use base.html as base template. Setup framework for albums and tracks
+
+commit 50c67671275c5ed5fdbe4dac8babd1e2b0fa1680
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Apr 4 14:29:42 2017 -0500
+
+    update api to use render_template.
+
+commit 28ebd67019c51e300164f8a4053dd4ccd7f555fe
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Mon Apr 3 22:50:23 2017 -0500
+
+    update open. WIP. Need to update apiary to use page token
+
+commit 877e6cf1cf664997dfdfaa33cdb0ce2c3ece4532
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Mon Apr 3 22:45:12 2017 -0500
+
+    update model. Add endpoitns and implments queries for many to many relationships for artist
+
+commit 05a6396eceff22b94197bc5b49372fded002edb3
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Sun Apr 2 13:30:10 2017 -0500
+
+    updated base and description pages
+
+commit c45d2bcf219265c94ff91c8801c88693d14cb2f2
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Sun Apr 2 02:15:51 2017 -0500
+
+    Update app.yaml
+
+commit 32ae8a9a537d2f932a9f984e2ff91dc7ba75593b
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Sun Apr 2 00:07:46 2017 -0500
+
+    Update app.yaml
+
+commit cca031b50db13a7e67e88f9ac8bcebdd66c62136
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Sat Apr 1 19:51:11 2017 -0500
+
+    working with REST api. Updated templates to show data
+
+commit 9e539227832bc8a17a24f7e0652bedb7b7a68434
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Sat Apr 1 19:31:15 2017 -0500
+
+    created base template html and updated index and artists
+
+commit c9693ae885223c35c1adf98170a1cd2180cad20f
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Sat Apr 1 18:38:14 2017 -0500
+
+    working with many to many relationships. Still needs work on the algo to load the database with a playlist
+
+commit 8e40f616ed13d925c7514e9ed4747252064a0702
+Merge: 1d196e7 8295eb0
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Sat Apr 1 17:49:16 2017 -0500
+
+    Merge branch 'sbull_dev' into hbao65-dev
+
+commit 1d196e7cfeadd1920e21e8b44ff20d015d6498a9
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Sat Apr 1 17:48:21 2017 -0500
+
+    updated albums with sorting
+
+commit 8295eb06112cc8532b4a3e78d9283b02639b1457
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Sat Apr 1 17:45:10 2017 -0500
+
+    fix typo
+
+commit 16e7f4b8683a142b52cf4f34f6d03ddb8d2ae48d
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Sat Apr 1 17:33:10 2017 -0500
+
+    add templates for displaying data from REST api
+
+commit c91909d7c267a4e2abc29a75bc603cce64282d1c
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Sat Apr 1 17:11:51 2017 -0500
+
+    finish REST API. WIP on getting correct relationship of models
+
+commit dbcaaf635d8126714540cccba3e63240c1d5ff2b
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Sat Apr 1 15:04:26 2017 -0500
+
+    add init. need to start working on crud routes for the models.
+
+commit 60dd8a11e1aa20ffeca5d653aa885f3415ec4d03
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Sat Apr 1 14:00:48 2017 -0500
+
+    WIP, Getting sql and models working with google cloud.
+
+commit ed427cd2b3f5a8ccd3c254e892c1dad8c289ec64
+Merge: 5db25c2 88fa99f
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Sat Apr 1 12:22:48 2017 -0500
+
+    merging sbull_dev changes
+
+commit 5db25c2ff271295871e26d3dc2b5cd20150df289
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Sat Apr 1 11:55:31 2017 -0500
+
+    dynamic loading of table data
+
+commit 88fa99f2b1713a6b23794cd6f956aafc7a27ffac
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Fri Mar 31 16:18:38 2017 -0500
+
+    update models to have many to many relationships
+
+commit 15f099b359ef79bdb548a0af22efca3e164a9fbc
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 23:06:07 2017 -0500
+
+    working authentication
+
+commit e367682ea8e88bc98d78a2f4b8d9901c6f58d45a
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 21:21:47 2017 -0500
+
+    remove lib folder
+
+commit da3c8047cb0a6698e3b6978d9ec245faa22f9d00
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 21:14:28 2017 -0500
+
+    test GET on cloud
+
+commit 003bb8b6f7885a6391a081bd6c3ee022e98c8fb4
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 21:10:50 2017 -0500
+
+    test GET on cloud
+
+commit 7689fc9b7eb27f8abc2953c3b5c77305cbfdcadb
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 20:20:08 2017 -0500
+
+    add requirement for app.py for gloud requests
+
+commit 2ed3bb96cc5d46fb598a54cdfab9a405118f7c71
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 20:15:09 2017 -0500
+
+    add requirements for requests in gcloud
+
+commit 223af57d6fe9ec37e5d0427763aabab86c813342
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 20:07:24 2017 -0500
+
+    add requests to requirements for cloud
+
+commit 6005d090a04f350faf94edb8583f2c302cdab737
+Merge: 101dc80 d1dbd49
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 19:36:38 2017 -0500
+
+    add login functionality. wip
+
+commit 101dc80ea09a3cc466887fdbd880dcd6895f9d3c
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 17:56:21 2017 -0500
+
+    init of rest api
+
+commit 3b6311eb9d7bd770e632266bbc5f619d80451801
+Merge: 6c8d65f ba62727
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 30 16:10:34 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music into sbull_dev
+
+commit ba62727aa8a50f10e3c15afe3976158fd4c9c38f
+Merge: 5ff5df3 9618e59
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 30 12:49:36 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music
+
+commit 5ff5df31a896c33ddaf5252d8ac7a28a94d43a61
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 30 12:38:41 2017 -0500
+
+    script for adding to db
+
+commit d1dbd49e60485b3f9c69ce47ed52a04ac73956b6
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Mar 29 17:32:06 2017 -0500
+
+    update gitingore to include log
+
+commit 200397c6f72b4829a3c4cad09ad89536d3569d7d
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Mar 29 17:30:45 2017 -0500
+
+    start on side project of authorizing users with spotify and getting a users playlist.
+
+commit 6c8d65f1a1b29f54daed3dbdf219128c96cca8b8
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Mar 29 16:15:22 2017 -0500
+
+    make modifications for easier devops
+
+commit 7dc4e6f8d78c680f89f8e3671ac5fa5a3ce8a29e
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Wed Mar 29 15:45:08 2017 -0500
+
+    update json
+
+commit 9618e59496b1472fcf82d9a3a22f6fd99ccb19aa
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 23 21:34:43 2017 -0500
+
+    final commit to update commits
+
+commit c2bc4f0b22d0de6a7da8a25ef2b642ef93e182ee
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 23 21:28:15 2017 -0500
+
+    final commit
+
+commit c62bb7c48b88816cea7ea207a074f4644008769d
+Merge: c685b74 1372b98
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 23 21:20:15 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music
+
+commit c685b74968558e61c8b35f3ed0a047d0e2bbcd16
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 23 21:20:10 2017 -0500
+
+     add apiary doc
+
+commit 1372b981f38252891d78400fad636e6bf19b67bf
+Merge: 22bb44d 6b91e40
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Mar 23 21:10:05 2017 -0500
+
+    Merge pull request #30 from bullapse/sbull_about_update
+    
+    update about page. Still needs an update for number of commits, but w…
+
+commit 6b91e40ad8802b3303c41d5cc8a67a958d315a0f
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 23 21:09:37 2017 -0500
+
+    update about page. Still needs an update for number of commits, but we can just do that in master
+
+commit 22bb44d290347f3245c10f77e53160c12498d9f2
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 20:39:17 2017 -0500
+
+    fixed about page nav active issue
+
+commit 277aade65fddd9af0c373e67210bc56bd821a20b
+Merge: 6ef2814 de98c46
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 18:52:21 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music
+
+commit 6ef281493c2e3ea588979bb0565bbdc73c995cdb
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 18:52:10 2017 -0500
+
+    changed about page name
+
+commit de98c46062a343e6eb142f5f1531beacf65f9152
+Merge: 0466b83 c28db7e
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Mar 23 18:49:18 2017 -0500
+
+    Merge pull request #26 from bullapse/sbull_json
+    
+    add travis yaml and project json. Still need to update github SHA, bu…
+
+commit c28db7ec4a781655d09fdf563a37f4f4f19d8ae4
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 23 18:47:51 2017 -0500
+
+    add travis yaml and project json. Still need to update github SHA, but we can do that in master
+
+commit 0466b83a14147f86ee7c991f62737dd31e959890
+Merge: b8256b0 d788dfd
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 18:38:56 2017 -0500
+
+    Merge pull request #25 from bullapse/cam_dev
+    
+    Cam dev
+
+commit d788dfd42857ea2c5a297013e432eef9d0f42e1f
+Merge: 86bc0ca 410b632
+Author: Cameron <cameron@wireless-10-146-139-120.public.utexas.edu>
+Date:   Thu Mar 23 18:32:58 2017 -0500
+
+    Merge branch 'cam_dev' of https://github.com/bullapse/cs373-idb-music into cam_dev
+
+commit 86bc0ca0f58187dd3d705afee15fce6bf88a9fe6
+Author: Cameron <cameron@wireless-10-146-139-120.public.utexas.edu>
+Date:   Thu Mar 23 18:31:45 2017 -0500
+
+    Added about page
+
+commit b8256b09d888cc1d135d869c8698bca29ff5ba97
+Merge: 61c0d1f 37bdb3d
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 18:28:50 2017 -0500
+
+    Merge pull request #24 from bullapse/sam_dev
+    
+    added apiary blueprint
+
+commit 37bdb3dee3392fbfd8222791345e6447e0c5d1f4
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 18:27:21 2017 -0500
+
+    added apiary blueprint
+
+commit 61c0d1f69140c61252fe4675c3e2f7fb5dbc7f16
+Merge: e901df4 d5a9cc5
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 18:18:27 2017 -0500
+
+    Merge pull request #22 from bullapse/sam_dev
+    
+    Sam dev
+
+commit d5a9cc542c527b87cff236c2445c42e556cd8506
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 18:16:19 2017 -0500
+
+    added UML model
+
+commit e901df4ed4ebdf53f91a53e4782666362d3f1469
+Merge: 64768c6 0d94316
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Mar 23 18:10:13 2017 -0500
+
+    Merge pull request #23 from bullapse/sbull_add_jquery
+    
+    move scripts to static folder for flask
+
+commit 0d94316d8cf893b20d2efe1b828984a3eaf87d21
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Mar 23 17:58:15 2017 -0500
+
+    move scripts to static folder for flask
+
+commit 410b632555ff1a6253013e4e1de9e911d104508c
+Merge: d4f998f 64768c6
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 17:50:37 2017 -0500
+
+    merged with master and updated albums
+
+commit d27e0162dc0a13d2fe7099325bb02c39b4d4623e
+Merge: d375d9b 64768c6
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 17:37:28 2017 -0500
+
+    Merge branch 'master' into sam_dev
+
+commit d375d9be0c59f950faf141eaff4e05b746d41265
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 17:36:59 2017 -0500
+
+    added tests
+
+commit 64768c661a50b754964f7beafbfc870b7756c7b7
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Mar 23 17:18:28 2017 -0500
+
+    fix typo
+
+commit 4044c8c511083271dfe7bbb7bae19afe6fb593dc
+Merge: 502e6aa aebffd3
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 17:15:10 2017 -0500
+
+    Merge pull request #21 from bullapse/sam_dev
+    
+    minor fix
+
+commit aebffd35a83c90a444e18ed20fa7283f306526b1
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 17:14:23 2017 -0500
+
+    minor fix
+
+commit 502e6aa4c8c786ebcb7bf9865715c388fcee27fc
+Merge: f686824 0cc8b8d
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 17:10:24 2017 -0500
+
+    Merge pull request #20 from bullapse/sam_dev
+    
+    Sam dev
+
+commit 0cc8b8def19aec97ad86d2b87eee574eef39a6b4
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 16:59:47 2017 -0500
+
+    renamed to app.py
+
+commit 9bdb7c6dc68831958e6766824ad17463375441a3
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 16:55:43 2017 -0500
+
+    changed pages to new css
+
+commit 5a372fe63cd72d22720b13e82763eaf45660bf68
+Merge: 0520140 cbccc60
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 16:35:29 2017 -0500
+
+    Merge branch 'hbao65-dev' into sam_dev
+
+commit cbccc60680c6319756d4e7abd0e73470c4384cc1
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Mar 23 15:57:23 2017 -0500
+
+    added hover
+
+commit 389c2c4e92e283e855fcf12ea0958fc1963200e9
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Mar 23 15:43:05 2017 -0500
+
+    fixed nav bar in index and artist.html
+
+commit 868a07632ad92fb600cd9002fa086d5ebfb3096f
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Mar 23 15:40:51 2017 -0500
+
+    finished artist page and css
+
+commit 7a0104c0fc401e0cfefbcc54c11730f4c335146d
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Thu Mar 23 13:17:32 2017 -0500
+
+    added rotating background images and jquery script
+
+commit 052014069936c85afdbd338dcbf6e6111656ac09
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 11:52:20 2017 -0500
+
+    better?
+
+commit d4f998fe14717b32520416d7d137ecd36ea21d15
+Author: Cameron <cameron@wireless-10-147-202-38.public.utexas.edu>
+Date:   Thu Mar 23 11:04:49 2017 -0500
+
+    Added static data to Album page
+
+commit a4862e9227f2ace1a866400bdff4b22d43942019
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Mar 23 10:25:31 2017 -0500
+
+    moved column sorting out to a js
+
+commit ddbfe81d6ccfba7890628f948b6ad3be2a66c5fa
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Wed Mar 22 18:31:59 2017 -0500
+
+    first go at tracks page
+
+commit f6868249a72300b505cb6a4db124299ee613ca20
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Wed Mar 22 15:39:24 2017 -0500
+
+    Update index.html
+
+commit ac307f0591e5e59946374ab851c9911b9e09b9a9
+Merge: 7b72950 8a9b005
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Tue Mar 21 22:28:49 2017 -0500
+
+    Merge pull request #12 from bullapse/sbull_pull_spotify_data
+    
+    add make file and functions to get data for our static HTML files
+
+commit 7b7295078d016f8bb8bcb75ad6d57e6e84476dec
+Merge: b931385 3244502
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Tue Mar 21 22:26:07 2017 -0500
+
+    Merge pull request #13 from bullapse/sam_dev
+    
+    wrote the file for declaring the model in the db
+
+commit 8a9b005daa331826851fdd2106c691bb3c0a9f99
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 22:19:49 2017 -0500
+
+    add placeholder files and render them with flask
+
+commit e617ded12ef6f3f1c37de6f593e1c3372621da61
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 22:04:03 2017 -0500
+
+    update css image files to static'
+
+commit 6c9472af146744d653a84140eda95e7f5cd1c4ac
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 22:01:08 2017 -0500
+
+    update css file location
+
+commit e6ddf7ff4e3e0b689f9d72aad56bc2d09745c412
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:58:14 2017 -0500
+
+    add lib
+
+commit e46023a466be52dc4be9456a4b4181b6edff5d09
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:53:34 2017 -0500
+
+    add vendor
+
+commit 5f96184ab2c54820b2312a96c77633a51d30f6a7
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:51:24 2017 -0500
+
+    update appengine_config to import vendor
+
+commit 92791346815d0a1a091e9872f7e67f7f94a027b1
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:48:09 2017 -0500
+
+    update lib
+
+commit 3244502ec33fae4008a441b42d97e3deac40ff79
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Tue Mar 21 21:41:45 2017 -0500
+
+    renamed model file and removed other
+
+commit 19a94b539d72cbcf325ae98c1f0de3670076a1bd
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:36:13 2017 -0500
+
+    update yaml
+
+commit 2b2be99c05eb634b6637dbe5f0aec8f2e4be9f2c
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:35:14 2017 -0500
+
+    add requirements
+
+commit 4ac749613ec28f8c3198d8864e1b9c3b1413324e
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Tue Mar 21 21:30:50 2017 -0500
+
+    changed the attributes in the declaration
+
+commit 4121abc625bdb0ed218ffcea6e8ae5c9cb6cab57
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:30:39 2017 -0500
+
+    remove unused file
+
+commit a15778916c238aba57b04b1ed6e6ee425cf3bbb7
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:23:28 2017 -0500
+
+    updat eyaml
+
+commit 99bd5ca323575971ec50ebdafa8def55c137406c
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:21:39 2017 -0500
+
+    remove libraries
+
+commit 9894e8976fd9b5f19e0e6ecbdebdbad00f04d546
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:20:52 2017 -0500
+
+    update app.yaml
+
+commit b26a36c7f070a8f7b4e5e6cfd8ed482003c0e5dd
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:16:42 2017 -0500
+
+    add flask add library
+
+commit 7479ea57b6f77c625954a0c90ed92775d3d41105
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:11:47 2017 -0500
+
+    change file name
+
+commit 670c271b2def835f4481d25cfd42050b7f35512a
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:09:54 2017 -0500
+
+    remove run for app engine
+
+commit 52a035bfea461c3c2defe28b92ce991484f35ecb
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:07:25 2017 -0500
+
+    change port
+
+commit 1e68fd16d4e461ca9f1144b59bcceb0ca63be37d
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 21:02:06 2017 -0500
+
+    setup init app and render html using flask
+
+commit 58847ac8318abf3bf1cdc859d3b4060b9a96fb6e
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Tue Mar 21 20:53:24 2017 -0500
+
+    added script to insert into db
+
+commit 9fcc29a7d5ba6a50c8b2949bd7db2b276ce49ea2
+Merge: f70b2a1 d9476e0
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Tue Mar 21 20:23:45 2017 -0500
+
+    Merge branch 'hqb65-frontend' of github.com:bullapse/cs373-idb-music into sbull_pull_spotify_data
+
+commit d9476e09ac7fd058a36ac709a9b154cbf09d2055
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Mon Mar 20 21:54:53 2017 -0500
+
+    added background image and image files
+
+commit f70b2a11d9361fb047e460e8938dd3e4493fd995
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Mon Mar 20 21:42:23 2017 -0500
+
+    add make file and functions to get data for our static HTML files
+
+commit b03de9ac27496b50d90a575a803f71257347ca67
+Author: Hung <bao.hungqq@gmail.com>
+Date:   Mon Mar 20 21:18:03 2017 -0500
+
+    basic front end set up
+
+commit 39dbb2cedb45b08aa3964b516f75b476602deb53
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Mon Mar 20 21:16:31 2017 -0500
+
+    wrote the file for declaring the model in the db
+
+commit b931385cf64d36259dbdf7f9688fc0e15a3ed319
+Author: Spencer Bull <sbull@cs.utexas.edu>
+Date:   Thu Mar 9 10:16:14 2017 -0600
+
+    Initial commit

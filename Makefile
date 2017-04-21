@@ -60,10 +60,10 @@ get_album:
 get_track:
 	$(PYTHON) -c 'import getSpotify; print(getSpotify.get_track())'
 
-IDB1.log:
-	git log > IDB2.log
+IDB3.log:
+	git log > IDB3.log
 
-IDB1.html:
+IDB3.html:
 	$(PYDOC) -w ./notspotify/model.py
 
 check:
@@ -113,6 +113,10 @@ test_not_spotify:
 	$(COVERAGE) run    --branch notspotify/tests.py > TestNotSpotify.tmp 2>&1
 	$(COVERAGE) report -m                      >> TestNotSpotify.tmp
 	cat TestCollatz.tmp
+
+we_done:
+	IDB3.log
+	IDB3.html
 
 run:
 	$(PYTHON) main.py
