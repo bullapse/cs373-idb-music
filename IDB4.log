@@ -1,3 +1,65 @@
+commit 87c4ae72af71486fa08d0459db5d04a2a647f1ee
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 20 21:04:39 2017 -0500
+
+    remove break statement in dup search
+
+commit f3d05f836dd3937a153cc3fd045afe7669fbb65a
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 20 21:03:13 2017 -0500
+
+    fix searching to remove
+
+commit 7a2f09119e72e9d6c53b55177ed16bf5d78104e1
+Merge: 3826026 a28f36b
+Author: cameronmoeller <cameronmoeller1@yahoo.com>
+Date:   Thu Apr 20 20:32:13 2017 -0500
+
+    Merge pull request #106 from bullapse/cam_dev
+    
+    Cam dev
+
+commit 382602609c38bcbe17e98d846536f8f4fdda5b25
+Merge: f44949b 40a3e3a
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 20 20:31:30 2017 -0500
+
+    Merge branch 'master' of github.com:bullapse/cs373-idb-music
+
+commit f44949bf16dc3e92d673d123329102510b49ef67
+Author: Spencer Bull <spencerbull2554@gmail.com>
+Date:   Thu Apr 20 20:31:24 2017 -0500
+
+    update makefile
+
+commit a28f36bdbf5954d41395794e5f080771f04d802a
+Merge: 4102657 40a3e3a
+Author: Cameron <cameron@wireless-10-147-42-46.public.utexas.edu>
+Date:   Thu Apr 20 20:30:44 2017 -0500
+
+    Merge branch 'master' into cam_dev
+
+commit 40a3e3a341137f8ddbef32179346b2636941eddd
+Merge: 54eafa6 8c8fe2a
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 20:18:24 2017 -0500
+
+    Merge pull request #105 from bullapse/sam_dev
+    
+    Sam dev
+
+commit 8c8fe2a7834c4e77045d08fadb30545c5f3fd4a0
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 20:17:21 2017 -0500
+
+    updated about page
+
+commit 3ddb998f0a0af032e75b336b70ef91efea49d19f
+Author: Sam Nguyen <tsnguyen@utexas.edu>
+Date:   Thu Apr 20 19:43:08 2017 -0500
+
+    added college chart header
+
 commit ef71c3a869615a8c4a77044fa03cfd1a4b605141
 Merge: 02b8e18 54eafa6
 Author: Spencer Bull <spencerbull2554@gmail.com>
@@ -148,6 +210,13 @@ Date:   Wed Apr 19 13:49:50 2017 -0500
 
     placeholder for work
 
+commit 4102657dbb66845795be6f2ba93dd0e5bef1b939
+Merge: 7f41d5d 0aba53e
+Author: Cameron <cameron@wireless-10-146-57-138.public.utexas.edu>
+Date:   Wed Apr 19 13:04:14 2017 -0500
+
+    Merge branch 'master' into cam_dev
+
 commit 0aba53e1c3d289675fd5cc97a9d0d1dcc4340107
 Merge: 8c86ca3 660b753
 Author: Spencer Bull <sbull@cs.utexas.edu>
@@ -168,6 +237,12 @@ Author: Hung <bao.hungqq@gmail.com>
 Date:   Tue Apr 18 21:41:31 2017 -0500
 
     added search bar to every page but About.
+
+commit 7f41d5d765560481d758d1084484e5d1a3b39eca
+Author: Cameron <cameron@wireless-10-146-57-138.public.utexas.edu>
+Date:   Tue Apr 18 20:25:03 2017 -0500
+
+    Fixed track time and added explicit image
 
 commit 85e8bfe19d84108389666e764f56bec2ee1ad61e
 Merge: 3584048 8c86ca3
