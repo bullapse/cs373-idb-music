@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block scripts %}
+{{ super() }}
+<link href='//fonts.googleapis.com/css?family=Vampiro One' rel='stylesheet'>
   <script>
   $(document).ready(function(){
     $('#slides').cycle({
@@ -20,6 +22,12 @@
     <img src="../static/concert2.jpg" class="bg"/>
     <img src="../static/concert3.jpg" class="bg"/>
     <img src="../static/concert4.jpg" class="bg"/>
+    <img src="../static/concert5.jpg" class="bg"/>
+    <img src="../static/concert6.jpg" class="bg"/>
+    <img src="../static/concert7.jpg" class="bg"/>
+    <img src="../static/concert9.jpg" class="bg"/>
+    <img src="../static/concert10.jpg" class="bg"/>
+    <img src="../static/concert8.jpg" class="bg"/>
   </div>
   {% endblock %}
   {% block menubar %}
@@ -31,7 +39,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/index.html">NotSpotify</a>
+        <a class="navbar-brand" href="/index.html">
+        <img style="width:64px;" src="../static/Spotify_logo_with_text.svg.png"></img>
+        NotSpotify</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
@@ -41,14 +51,29 @@
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/about.html">About</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#search">Search</a></li>
+        </ul>
       </div>
     </div>
   </nav>
+  {% endblock %}
 
-  <body>
-    <div class="container-fluid" style="text-align: center;">
-      <img class="image-responsive" src="../static/Spotify_logo_with_text.svg.png"></img>
+  {% block content %}
+  {{ super() }}
+  <div class="container-fluid" style="text-align: center;">
+      <img id="center-logo" class="image-responsive" src="../static/Spotify_logo_with_text.svg.png"></img>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="splash">
+          <div id="splashblock">
+            <p id="splashtext"><a id="splashlink" href="/tracks">Discover Music.</a></p>
+            <div id="splashInfo">Search everything about music and discover new tracks!</div>
+          </div>
+        </div>
     </div>
-    
-  </body>
+  </div>
+
+
   {% endblock %}

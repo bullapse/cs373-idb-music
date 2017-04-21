@@ -15,9 +15,9 @@
 import logging
 import subprocess
 import os
+import requests
 
 from flask import current_app, Flask, url_for, render_template
-
 
 def create_app(config, debug=False, testing=False, config_overrides=None):
     app = Flask(__name__)
@@ -43,7 +43,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     app.register_blueprint(crud)
     from .api import api
     app.register_blueprint(api)
-    
+
     # Add a default root route.
     @app.route("/")
     def index():
@@ -95,6 +95,13 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
             process = e.output
 
         return process.decode("utf-8")
+
+    @app.route("/college")
+    def college():
+        state_response = requests.get('http://collegedb.me/api/states').json()
+        uni_response = requests.get('http://collegedb.me/api/universities').json()
+        degrees_response = requests.get('http://collegedb.me/api/degrees').json()
+        return render_template('college.html', states=state_response, universities=uni_response, degrees=degrees_response)
 
     # @app.route("/spotifycallback", methods=['GET'])
     # def spotifycallback():

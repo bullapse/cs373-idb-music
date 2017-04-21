@@ -1,3 +1,8 @@
+body {
+    height: 100vh;
+    min-height: 100%;
+    width: 100%;
+}
 #bckgrnd {
     height: 100vh;
     min-height: 100%;
@@ -12,11 +17,93 @@
     background-size: cover;
     -o-background-size: cover;
 }
-table {
-    border-collapse: collapse;
+#search {
+    position: fixed;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    padding: 8px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    -webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+
+    -webkit-transform: translate(0px, -100%) scale(0, 0);
+	-moz-transform: translate(0px, -100%) scale(0, 0);
+	-o-transform: translate(0px, -100%) scale(0, 0);
+	-ms-transform: translate(0px, -100%) scale(0, 0);
+	transform: translate(0px, -100%) scale(0, 0);
+
+    opacity: 0;
 }
+
+#search.open {
+    -webkit-transform: translate(0px, 0px) scale(1, 1);
+    -moz-transform: translate(0px, 0px) scale(1, 1);
+	-o-transform: translate(0px, 0px) scale(1, 1);
+	-ms-transform: translate(0px, 0px) scale(1, 1);
+	transform: translate(0px, 0px) scale(1, 1);
+    opacity: 1;
+}
+
+#search input[type="search"] {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0);
+    font-size: 60px;
+    font-weight: 300;
+    text-align: center;
+    border: 0px;
+    margin: 0px auto;
+    margin-top: -51px;
+    padding-left: 30px;
+    padding-right: 30px;
+    outline: none;
+}
+#search .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 61px;
+    margin-left: -45px;
+}
+#search .close {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+	background-color: #428bca;
+	border-color: #357ebd;
+	opacity: 1;
+	padding: 10px 17px;
+	font-size: 27px;
+}
+#splashSearch input[type=text] {
+	color: black;
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#splashSearch input[type=text]:focus {
+    width: 80%;
+}
+.previewTrack.hidePreview {
+    visibility: hidden;
+}
+
 th, td {
     text-align: left;
     padding: 8px;
@@ -34,4 +121,132 @@ th {
 tr:hover {
     background-color: #262626;
     color: #a7f37f;
+}
+.media {
+    background-color: #c0c0c0;
+}
+.media-left {
+    width: 350px;
+    height: 350px;
+    float: left;
+}
+.media-left img {
+    width: 100%;
+    height: 100%;
+}
+.media-body {
+    height: 100%;
+    padding-right: 10px;
+}
+#details {
+    background-color: #c0c0c0;
+}
+#center-logo {
+    visibility: hidden;
+}
+h1 {
+    border-left: 6px darkgreen;
+    background-color: #82b919;
+    color: white;
+    text-indent: 6px;
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+.navbar-brand>img {
+    padding: 7px 10px;
+}
+#splashblock {
+    min-height: 100%;
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+    color: white;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    display: inline-block;
+    text-align: center;
+}
+#splashblock.ghost {
+    opacity: 0.2;
+    transition: opacity ease-in 0.25s;
+    -webkit-transition: opacity ease-in 0.25s;
+    -moz-transition: opacity ease-in 0.25s;
+    -o-transition: opacity ease-in 0.25s;
+}
+.splash {
+    display: inline-block;
+    width: 100%;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+#splashInfo {
+    background-color: black;
+    color: white;
+    opacity: 0.7;
+    font-size: 2em;
+    padding-top: 10px;
+    height: 25%;
+    width: 100%;
+}
+
+p#splashtext a {
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+p#splashtext a{
+    color: #82b919;
+    font-family: Vampiro One, proxima_nova, Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7em;
+    position: relative;
+    top: 10%;
+    text-align: center;
+    opacity: 1;
+}
+a#splashlink{
+    color: #82b919;
+}
+p#splashtext a:hover {
+    color:#ffffff;
+}
+
+p#splashtext a:hover {
+  -webkit-animation: neon4 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon4 1.5s ease-in-out infinite alternate;
+  animation: neon4 1.5s ease-in-out infinite alternate;
+}
+
+p#splashtext a:hover {
+  color: #ffffff;
+}
+
+@-webkit-keyframes neon4 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
+  }
+}
+
+@-moz-keyframes neon4 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
+  }
+}
+
+@keyframes neon4 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
+  }
 }
