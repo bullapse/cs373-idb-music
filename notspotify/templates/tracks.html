@@ -51,7 +51,7 @@
           <th>
             Explicit
           </th>
-          <th>Runtime
+          <th>Length
             <a href="/tracks?sort=runtime"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
             <a href="/tracks?sort=runtime&order=desc"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
             </th>
@@ -70,11 +70,10 @@
             </td>
             <td>
               {% if track.explicit %}
-              {{track.explicit}}
-              {% endif %}
-            </td>
+                <img src="../static/explicit.jpg" height="40px">
+              {% endif %}           </td>
             <td>
-              {{track.runtime}}
+              {{track.runtime//60000}}:{{"{:0>2d}".format((track.runtime%60000)//1000)}}
             </td>
             <td>
             <div class="progress">
