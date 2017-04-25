@@ -3,7 +3,6 @@
 # Run 'pip install -r requirements.txt -t lib/' to install these dependencies
 # in `lib/` subdirectory.
 #
-# Note: The `lib` directory is added to `sys.path` by `appengine_config.py`.
 Flask==0.12
 Flask-Testing==0.6.2
 requests==2.13.0
